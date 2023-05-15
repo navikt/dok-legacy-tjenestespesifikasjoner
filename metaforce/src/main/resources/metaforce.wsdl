@@ -1,0 +1,1883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="InteractOnlineProcess" targetNamespace="http://metaforce.se/services/"
+				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+				  xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+				  xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://metaforce.se/services/"
+				  xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+				  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+				  xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+				  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+				  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+				  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+				  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+				  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+				  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsp:Policy wsu:Id="GeneralServiceBinding_policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsoma:OptimizedMimeSerialization
+						xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+				<sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken> 
+									<wsp:Policy/> 
+								</sp:HttpsToken> 
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256/>
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict/>
+							</wsp:Policy>
+						</sp:Layout>
+						<sp:IncludeTimestamp/>
+					</wsp:Policy>
+				</sp:TransportBinding>
+				<sp:SignedEncryptedSupportingTokens xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+					<wsp:Policy>
+						<sp:UsernameToken
+								sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+							<wsp:Policy>
+								<sp:WssUsernameToken10/>
+							</wsp:Policy>
+						</sp:UsernameToken>
+					</wsp:Policy>
+				</sp:SignedEncryptedSupportingTokens>
+				<sp:Wss11 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+					<wsp:Policy/>
+				</sp:Wss11>
+				<sp:Trust13 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+					<wsp:Policy>
+						<sp:MustSupportIssuedTokens/>
+						<sp:RequireClientEntropy/>
+						<sp:RequireServerEntropy/>
+					</wsp:Policy>
+				</sp:Trust13>
+				<wsaw:UsingAddressing/>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsdl:types>
+		<xs:schema elementFormDefault="qualified" targetNamespace="http://metaforce.se/services/"
+				   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:import namespace="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+			<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<xs:element name="GS_CreateDocument">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metafile" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="data" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="textRows" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="attachments" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_CreateDocumentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_CreateDocumentResult" nillable="true" type="q1:DocumentReturn"
+									xmlns:q1="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_CreateDocumentTmpData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metafile" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="tempDataKey" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="textRows" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="attachments" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_CreateDocumentTmpDataResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_CreateDocumentTmpDataResult" nillable="true" type="q2:DocumentReturn"
+									xmlns:q2="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_PrintDXML">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="docXML" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="data" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_PrintDXMLResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_PrintDXMLResult" nillable="true" type="q3:DocumentReturn"
+									xmlns:q3="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadInArchive">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metaFile" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="textRows" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="data" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="attachments" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadInArchiveResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_LoadInArchiveResult" nillable="true" type="q4:UpdateDocReturn"
+									xmlns:q4="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadInArchiveTmpData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metaFile" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="textRows" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="tempDataKey" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="attachments" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadInArchiveTmpDataResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_LoadInArchiveTmpDataResult" nillable="true" type="q5:UpdateDocReturn"
+									xmlns:q5="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadInArchiveDXML">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="docXML" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="data" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadInArchiveDXMLResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_LoadInArchiveDXMLResult" nillable="true" type="q6:UpdateDocReturn"
+									xmlns:q6="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_InsertTempData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="xData" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_InsertTempDataResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_InsertTempDataResult" nillable="true" type="q7:BaseReturn"
+									xmlns:q7="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_DeleteTempData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="tempDataKey" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_DeleteTempDataResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_DeleteTempDataResult" nillable="true" type="q8:BaseReturn"
+									xmlns:q8="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetTempData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="tempDataKey" nillable="true" type="xs:string"/>
+						<xs:element minOccurs="0" name="deleteData" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetTempDataResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetTempDataResult" nillable="true" type="q9:BaseReturn"
+									xmlns:q9="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetInfoAndFonts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetInfoAndFontsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetInfoAndFontsResult" nillable="true"
+									type="q10:MetaEngineInfoReturn"
+									xmlns:q10="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_OpenDocument">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="jobId" type="xs:int"/>
+						<xs:element minOccurs="0" name="docId" type="xs:int"/>
+						<xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_OpenDocumentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_OpenDocumentResult" nillable="true" type="q11:DocumentReturn"
+									xmlns:q11="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_SearchFolder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="top" type="xs:int"/>
+						<xs:element minOccurs="0" name="whereConditions" nillable="true" type="q12:ArrayOfWhereCondition"
+									xmlns:q12="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+						<xs:element minOccurs="0" name="sorters" nillable="true" type="q13:ArrayOfSorter"
+									xmlns:q13="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+						<xs:element minOccurs="0" name="resultColumns" nillable="true" type="q14:ArrayOfstring"
+									xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+						<xs:element minOccurs="0" name="folder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_SearchFolderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_SearchFolderResult" nillable="true" type="q15:SearchResult"
+									xmlns:q15="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocuments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="whereConditions" nillable="true" type="q16:ArrayOfWhereCondition"
+									xmlns:q16="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+						<xs:element minOccurs="0" name="updateColumns" nillable="true" type="q17:ArrayOfKeyValueOfstringstring"
+									xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+						<xs:element minOccurs="0" name="archFolder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocumentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_UpdateDocumentsResult" nillable="true" type="q18:BaseReturn"
+									xmlns:q18="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocument">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="jobId" type="xs:int"/>
+						<xs:element minOccurs="0" name="docId" type="xs:int"/>
+						<xs:element minOccurs="0" name="updateColumns" nillable="true" type="q19:ArrayOfKeyValueOfstringstring"
+									xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+						<xs:element minOccurs="0" name="archFolder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocumentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_UpdateDocumentResult" nillable="true" type="q20:BaseReturn"
+									xmlns:q20="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_DeleteDocument">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="jobId" type="xs:int"/>
+						<xs:element minOccurs="0" name="docId" type="xs:int"/>
+						<xs:element minOccurs="0" name="archFolder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_DeleteDocumentResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_DeleteDocumentResult" nillable="true" type="q21:BaseReturn"
+									xmlns:q21="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetFolderList">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetFolderListResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetFolderListResult" nillable="true" type="q22:BaseReturn"
+									xmlns:q22="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetFolder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="archFolder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetFolderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetFolderResult" nillable="true" type="q23:BaseReturn"
+									xmlns:q23="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_InitializeAndLeaseInstance">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="parameters" nillable="true" type="q24:ArrayOfKeyValueOfstringstring"
+									xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+						<xs:element minOccurs="0" name="xData" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_InitializeAndLeaseInstanceResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_InitializeAndLeaseInstanceResult" nillable="true"
+									type="q25:InitInstanceReturn"
+									xmlns:q25="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_InitializeInstance">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="parameters" nillable="true" type="q26:ArrayOfKeyValueOfstringstring"
+									xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+						<xs:element minOccurs="0" name="xData" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_InitializeInstanceResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_InitializeInstanceResult" nillable="true"
+									type="q27:InitInstanceReturn"
+									xmlns:q27="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LeaseInstance">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LeaseInstanceResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_LeaseInstanceResult" nillable="true" type="q28:InitInstanceReturn"
+									xmlns:q28="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LeaseInstanceSuffixed">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+						<xs:element minOccurs="0" name="configSuffix" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LeaseInstanceSuffixedResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_LeaseInstanceSuffixedResult" nillable="true"
+									type="q29:InitInstanceReturn"
+									xmlns:q29="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetInstanceInfo">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetInstanceInfoResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetInstanceInfoResult" nillable="true" type="q30:InfoInstanceReturn"
+									xmlns:q30="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetInstanceList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="top" type="xs:int"/>
+						<xs:element minOccurs="0" name="whereConditions" nillable="true" type="q31:ArrayOfWhereCondition"
+									xmlns:q31="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+						<xs:element minOccurs="0" name="sorters" nillable="true" type="q32:ArrayOfSorter"
+									xmlns:q32="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+						<xs:element minOccurs="0" name="dataLevel" type="q33:DataLevel"
+									xmlns:q33="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetInstanceListResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetInstanceListResult" nillable="true" type="q34:InstanceListReturn"
+									xmlns:q34="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetOnlineDocuments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="metaLogic" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetOnlineDocumentsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetOnlineDocumentsResult" nillable="true" type="q35:BaseReturn"
+									xmlns:q35="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_ChangeInstanceStatus">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+						<xs:element minOccurs="0" name="newStatus" type="q36:InstanceStatus"
+									xmlns:q36="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_ChangeInstanceStatusResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_ChangeInstanceStatusResult" nillable="true"
+									type="q37:InstanceBaseReturn"
+									xmlns:q37="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetStartDocBrowseUrl">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="parameters" nillable="true" type="q38:ArrayOfKeyValueOfstringstring"
+									xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetStartDocBrowseUrlResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetStartDocBrowseUrlResult" nillable="true"
+									type="q39:InitInstanceReturn"
+									xmlns:q39="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetStartInstanceBrowseUrl">
+				<xs:complexType>
+					<xs:sequence/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetStartInstanceBrowseUrlResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetStartInstanceBrowseUrlResult" nillable="true"
+									type="q40:InitInstanceReturn"
+									xmlns:q40="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetStartInstanceBrowseUrlSuffixed">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="configSuffix" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_GetStartInstanceBrowseUrlSuffixedResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_GetStartInstanceBrowseUrlSuffixedResult" nillable="true"
+									type="q41:InitInstanceReturn"
+									xmlns:q41="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocument2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="jobId" type="xs:int"/>
+						<xs:element minOccurs="0" name="docId" type="xs:int"/>
+						<xs:element minOccurs="0" name="updateColumns" nillable="true" type="q42:ArrayOfKeyValueOfstringstring"
+									xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+						<xs:element minOccurs="0" name="archFolder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocument2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_UpdateDocument2Result" nillable="true" type="q43:ArchiveReturn"
+									xmlns:q43="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocuments2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="whereConditions" nillable="true" type="q44:ArrayOfWhereCondition"
+									xmlns:q44="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+						<xs:element minOccurs="0" name="updateColumns" nillable="true" type="q45:ArrayOfKeyValueOfstringstring"
+									xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+						<xs:element minOccurs="0" name="archFolder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_UpdateDocuments2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_UpdateDocuments2Result" nillable="true" type="q46:ArchiveReturn"
+									xmlns:q46="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_DeleteDocument2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="jobId" type="xs:int"/>
+						<xs:element minOccurs="0" name="docId" type="xs:int"/>
+						<xs:element minOccurs="0" name="archFolder" nillable="true" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_DeleteDocument2Response">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_DeleteDocument2Result" nillable="true" type="q47:ArchiveReturn"
+									xmlns:q47="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadPdfInArchive">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="pdfBuf" nillable="true" type="xs:base64Binary"/>
+						<xs:element minOccurs="0" name="xIndexData" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element minOccurs="0" name="options" nillable="true">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any minOccurs="0" processContents="lax"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GS_LoadPdfInArchiveResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="0" name="GS_LoadPdfInArchiveResult" nillable="true" type="q48:UpdateDocReturn"
+									xmlns:q48="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+		<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+				   targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/"
+				   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+			<xs:element name="anyType" nillable="true" type="xs:anyType"/>
+			<xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+			<xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+			<xs:element name="boolean" nillable="true" type="xs:boolean"/>
+			<xs:element name="byte" nillable="true" type="xs:byte"/>
+			<xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+			<xs:element name="decimal" nillable="true" type="xs:decimal"/>
+			<xs:element name="double" nillable="true" type="xs:double"/>
+			<xs:element name="float" nillable="true" type="xs:float"/>
+			<xs:element name="int" nillable="true" type="xs:int"/>
+			<xs:element name="long" nillable="true" type="xs:long"/>
+			<xs:element name="QName" nillable="true" type="xs:QName"/>
+			<xs:element name="short" nillable="true" type="xs:short"/>
+			<xs:element name="string" nillable="true" type="xs:string"/>
+			<xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+			<xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+			<xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+			<xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+			<xs:element name="char" nillable="true" type="tns:char"/>
+			<xs:simpleType name="char">
+				<xs:restriction base="xs:int"/>
+			</xs:simpleType>
+			<xs:element name="duration" nillable="true" type="tns:duration"/>
+			<xs:simpleType name="duration">
+				<xs:restriction base="xs:duration">
+					<xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+					<xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+					<xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="guid" nillable="true" type="tns:guid"/>
+			<xs:simpleType name="guid">
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:attribute name="FactoryType" type="xs:QName"/>
+			<xs:attribute name="Id" type="xs:ID"/>
+			<xs:attribute name="Ref" type="xs:IDREF"/>
+		</xs:schema>
+		<xs:schema elementFormDefault="qualified"
+				   targetNamespace="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"
+				   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/"
+				   xmlns:tns="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants">
+			<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+			<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<xs:complexType name="DocumentReturn">
+				<xs:complexContent mixed="false">
+					<xs:extension base="tns:BaseReturn">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="Document" nillable="true" type="tns:Document"/>
+							<xs:element minOccurs="0" name="ExecutionTime" type="ser:duration"/>
+							<xs:element minOccurs="0" name="ExecutionTimeInternal" type="ser:duration"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="DocumentReturn" nillable="true" type="tns:DocumentReturn"/>
+			<xs:complexType name="BaseReturn">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Data" nillable="true">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:any minOccurs="0" processContents="lax"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="IsOK" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="BaseReturn" nillable="true" type="tns:BaseReturn"/>
+			<xs:complexType name="Document">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Blob" nillable="true" type="xs:base64Binary"/>
+					<xs:element minOccurs="0" name="Format" nillable="true" type="tns:DocumentFormat"/>
+					<xs:element minOccurs="0" name="Length" type="xs:int"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="Document" nillable="true" type="tns:Document"/>
+			<xs:complexType name="DocumentFormat">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="DocFormat" type="tns:Format"/>
+					<xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="DocumentFormat" nillable="true" type="tns:DocumentFormat"/>
+			<xs:simpleType name="Format">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="NOTSET"/>
+					<xs:enumeration value="PDF"/>
+					<xs:enumeration value="XML"/>
+					<xs:enumeration value="AFPDS"/>
+					<xs:enumeration value="Postscript"/>
+					<xs:enumeration value="RTF"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="Format" nillable="true" type="tns:Format"/>
+			<xs:complexType name="UpdateDocReturn">
+				<xs:complexContent mixed="false">
+					<xs:extension base="tns:BaseReturn">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="DocID" type="xs:int"/>
+							<xs:element minOccurs="0" name="ErrCode" type="tns:InstanceErrorCodes"/>
+							<xs:element minOccurs="0" name="JobID" type="xs:int"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="UpdateDocReturn" nillable="true" type="tns:UpdateDocReturn"/>
+			<xs:simpleType name="InstanceErrorCodes">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="OK"/>
+					<xs:enumeration value="DataMissing"/>
+					<xs:enumeration value="MetaFileMissing"/>
+					<xs:enumeration value="InstanceLocked"/>
+					<xs:enumeration value="InstanceLeasingClosed"/>
+					<xs:enumeration value="InstanceMissing"/>
+					<xs:enumeration value="InstanceClosed"/>
+					<xs:enumeration value="InstanceLeasingExpired"/>
+					<xs:enumeration value="InstanceInvalid"/>
+					<xs:enumeration value="InstanceLeasedByOtherUser"/>
+					<xs:enumeration value="GeneralError"/>
+					<xs:enumeration value="NoProcessAttachedToDocument"/>
+					<xs:enumeration value="CustomServiceCallError"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="InstanceErrorCodes" nillable="true" type="tns:InstanceErrorCodes"/>
+			<xs:complexType name="MetaEngineInfoReturn">
+				<xs:complexContent mixed="false">
+					<xs:extension base="tns:BaseReturn">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="Fonts" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:any minOccurs="0" processContents="lax"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" name="MetaEngineInfo" nillable="true" type="tns:MetaEngineInfo"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="MetaEngineInfoReturn" nillable="true" type="tns:MetaEngineInfoReturn"/>
+			<xs:complexType name="MetaEngineInfo">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="ComputerName" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="ConfigPath" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Current_MetaLogic" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="DEBUG_MODE" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="DEBUG_PATH" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="EngineVersion" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="FontPath" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="MetaConfigPath" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="MetaDir" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="MetaEngineLocation" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="MetaFontPath" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="MetaLogicVersion" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="StartAppFileName" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="MetaEngineInfo" nillable="true" type="tns:MetaEngineInfo"/>
+			<xs:complexType name="ArrayOfWhereCondition">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="WhereCondition" nillable="true"
+								type="tns:WhereCondition"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfWhereCondition" nillable="true" type="tns:ArrayOfWhereCondition"/>
+			<xs:complexType name="WhereCondition">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Chainer" type="tns:Chainer"/>
+					<xs:element minOccurs="0" name="Column" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Comparer" type="tns:Comparer"/>
+					<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WhereCondition" nillable="true" type="tns:WhereCondition"/>
+			<xs:simpleType name="Chainer">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="NOTSET"/>
+					<xs:enumeration value="AND"/>
+					<xs:enumeration value="OR"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="Chainer" nillable="true" type="tns:Chainer"/>
+			<xs:simpleType name="Comparer">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="EQ"/>
+					<xs:enumeration value="LT"/>
+					<xs:enumeration value="LTE"/>
+					<xs:enumeration value="GT"/>
+					<xs:enumeration value="GTE"/>
+					<xs:enumeration value="LIKE"/>
+					<xs:enumeration value="NE"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="Comparer" nillable="true" type="tns:Comparer"/>
+			<xs:complexType name="ArrayOfSorter">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="Sorter" nillable="true" type="tns:Sorter"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfSorter" nillable="true" type="tns:ArrayOfSorter"/>
+			<xs:complexType name="Sorter">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Column" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="SortOrder" type="tns:SortOrder"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="Sorter" nillable="true" type="tns:Sorter"/>
+			<xs:simpleType name="SortOrder">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="ASC"/>
+					<xs:enumeration value="DESC"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="SortOrder" nillable="true" type="tns:SortOrder"/>
+			<xs:complexType name="SearchResult">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="IsOK" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="Rows" nillable="true" type="tns:ArrayOfRow"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="SearchResult" nillable="true" type="tns:SearchResult"/>
+			<xs:complexType name="ArrayOfRow">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfRow" nillable="true" type="tns:ArrayOfRow"/>
+			<xs:complexType name="Row">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Columns" nillable="true" type="q1:ArrayOfKeyValueOfstringColumnvBNv3oMe"
+								xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="Row" nillable="true" type="tns:Row"/>
+			<xs:complexType name="Column">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="Column" nillable="true" type="tns:Column"/>
+			<xs:complexType name="InitInstanceReturn">
+				<xs:complexContent mixed="false">
+					<xs:extension base="tns:InstanceBaseReturn">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="InstanceId" type="xs:int"/>
+							<xs:element minOccurs="0" name="LeaseId" type="ser:guid"/>
+							<xs:element minOccurs="0" name="StartURL" nillable="true" type="xs:string"/>
+							<xs:element minOccurs="0" name="UseWord" type="xs:boolean"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="InitInstanceReturn" nillable="true" type="tns:InitInstanceReturn"/>
+			<xs:complexType name="InstanceBaseReturn">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="ErrCode" type="tns:InstanceErrorCodes"/>
+					<xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="IsOK" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="SessionLifeSpan" type="xs:int"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="InstanceBaseReturn" nillable="true" type="tns:InstanceBaseReturn"/>
+			<xs:complexType name="InfoInstanceReturn">
+				<xs:complexContent mixed="false">
+					<xs:extension base="tns:InstanceBaseReturn">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="Data" nillable="true">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:any minOccurs="0" processContents="lax"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+							<xs:element minOccurs="0" name="DocID" type="xs:int"/>
+							<xs:element minOccurs="0" name="ErrorText" nillable="true" type="xs:string"/>
+							<xs:element minOccurs="0" name="InstanceId" type="xs:int"/>
+							<xs:element minOccurs="0" name="JobID" type="xs:int"/>
+							<xs:element minOccurs="0" name="LeaseStatus" type="xs:int"/>
+							<xs:element minOccurs="0" name="LeasedTime" type="xs:dateTime"/>
+							<xs:element minOccurs="0" name="Letter" nillable="true" type="xs:string"/>
+							<xs:element minOccurs="0" name="MetaLogic" nillable="true" type="xs:string"/>
+							<xs:element minOccurs="0" name="SaveTime" type="xs:dateTime"/>
+							<xs:element minOccurs="0" name="Status" type="tns:InstanceStatus"/>
+							<xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="InfoInstanceReturn" nillable="true" type="tns:InfoInstanceReturn"/>
+			<xs:simpleType name="InstanceStatus">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Initialized"/>
+					<xs:enumeration value="Locked"/>
+					<xs:enumeration value="UserSaved"/>
+					<xs:enumeration value="UserSaveAndContinue"/>
+					<xs:enumeration value="EndWithError"/>
+					<xs:enumeration value="EndApproved"/>
+					<xs:enumeration value="UserCanceled"/>
+					<xs:enumeration value="PendingApproval"/>
+					<xs:enumeration value="ErrorApproval"/>
+					<xs:enumeration value="RevertToSaved"/>
+					<xs:enumeration value="InstanceError">
+						<xs:annotation>
+							<xs:appinfo>
+								<EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">99
+								</EnumerationValue>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="InstanceStatus" nillable="true" type="tns:InstanceStatus"/>
+			<xs:simpleType name="DataLevel">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="None"/>
+					<xs:enumeration value="Root"/>
+					<xs:enumeration value="All"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="DataLevel" nillable="true" type="tns:DataLevel"/>
+			<xs:complexType name="InstanceListReturn">
+				<xs:complexContent mixed="false">
+					<xs:extension base="tns:InstanceBaseReturn">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="Instances" nillable="true" type="tns:ArrayOfInstance"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="InstanceListReturn" nillable="true" type="tns:InstanceListReturn"/>
+			<xs:complexType name="ArrayOfInstance">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="Instance" nillable="true" type="tns:Instance"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfInstance" nillable="true" type="tns:ArrayOfInstance"/>
+			<xs:complexType name="Instance">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Attachments" nillable="true">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:any minOccurs="0" processContents="lax"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="0" name="CheckInputForm" nillable="true">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:any minOccurs="0" processContents="lax"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="0" name="Data" nillable="true">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:any minOccurs="0" processContents="lax"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Doc" nillable="true" type="xs:base64Binary"/>
+					<xs:element minOccurs="0" name="DocId" type="xs:int"/>
+					<xs:element minOccurs="0" name="ErrorText" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Id" type="xs:int"/>
+					<xs:element minOccurs="0" name="JobId" type="xs:int"/>
+					<xs:element minOccurs="0" name="LeaseId" type="ser:guid"/>
+					<xs:element minOccurs="0" name="LeaseStatus" type="xs:int"/>
+					<xs:element minOccurs="0" name="LeasedTime" type="xs:dateTime"/>
+					<xs:element minOccurs="0" name="Letter" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="LogicTimeStamp" type="xs:unsignedLong"/>
+					<xs:element minOccurs="0" name="MetaLogic" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Process" nillable="true">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:any minOccurs="0" processContents="lax"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="0" name="ResImages" nillable="true">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:any minOccurs="0" processContents="lax"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="0" name="SaveTime" type="xs:dateTime"/>
+					<xs:element minOccurs="0" name="Status" type="tns:InstanceStatus"/>
+					<xs:element minOccurs="0" name="Step" type="xs:int"/>
+					<xs:element minOccurs="0" name="Texts" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="UrlParams" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="UseAttachments" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="UseSpellcheck" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="UseStoreState" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="UseWord" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="Instance" nillable="true" type="tns:Instance"/>
+			<xs:complexType name="ArchiveReturn">
+				<xs:complexContent mixed="false">
+					<xs:extension base="tns:BaseReturn">
+						<xs:sequence>
+							<xs:element minOccurs="0" name="AffectedRows" type="xs:int"/>
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="ArchiveReturn" nillable="true" type="tns:ArchiveReturn"/>
+		</xs:schema>
+		<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+				   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+				   xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<xs:import namespace="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+			<xs:complexType name="ArrayOfstring">
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring"/>
+			<xs:complexType name="ArrayOfKeyValueOfstringColumnvBNv3oMe">
+				<xs:annotation>
+					<xs:appinfo>
+						<IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringColumnvBNv3oMe">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Key" nillable="true" type="xs:string"/>
+								<xs:element name="Value" nillable="true" type="q1:Column"
+											xmlns:q1="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfKeyValueOfstringColumnvBNv3oMe" nillable="true"
+						type="tns:ArrayOfKeyValueOfstringColumnvBNv3oMe"/>
+			<xs:complexType name="ArrayOfKeyValueOfstringstring">
+				<xs:annotation>
+					<xs:appinfo>
+						<IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringstring">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Key" nillable="true" type="xs:string"/>
+								<xs:element name="Value" nillable="true" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ArrayOfKeyValueOfstringstring" nillable="true" type="tns:ArrayOfKeyValueOfstringstring"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="IGeneralService_GS_CreateDocument_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_CreateDocument"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_CreateDocument_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_CreateDocumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_CreateDocumentTmpData_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_CreateDocumentTmpData"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_CreateDocumentTmpData_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_CreateDocumentTmpDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_PrintDXML_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_PrintDXML"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_PrintDXML_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_PrintDXMLResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadInArchive_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadInArchive"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadInArchive_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadInArchiveResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadInArchiveTmpData_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadInArchiveTmpData"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadInArchiveTmpData_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadInArchiveTmpDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadInArchiveDXML_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadInArchiveDXML"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadInArchiveDXML_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadInArchiveDXMLResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_InsertTempData_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_InsertTempData"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_InsertTempData_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_InsertTempDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_DeleteTempData_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_DeleteTempData"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_DeleteTempData_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_DeleteTempDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetTempData_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetTempData"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetTempData_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetTempDataResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetInfoAndFonts_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetInfoAndFonts"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetInfoAndFonts_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetInfoAndFontsResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_OpenDocument_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_OpenDocument"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_OpenDocument_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_OpenDocumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_SearchFolder_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_SearchFolder"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_SearchFolder_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_SearchFolderResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocuments_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocuments"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocuments_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocumentsResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocument_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocument"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocument_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_DeleteDocument_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_DeleteDocument"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_DeleteDocument_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_DeleteDocumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetFolderList_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetFolderList"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetFolderList_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetFolderListResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetFolder_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetFolder"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetFolder_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetFolderResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_InitializeAndLeaseInstance_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_InitializeAndLeaseInstance"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_InitializeAndLeaseInstance_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_InitializeAndLeaseInstanceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_InitializeInstance_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_InitializeInstance"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_InitializeInstance_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_InitializeInstanceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LeaseInstance_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LeaseInstance"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LeaseInstance_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LeaseInstanceResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LeaseInstanceSuffixed_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LeaseInstanceSuffixed"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LeaseInstanceSuffixed_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LeaseInstanceSuffixedResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetInstanceInfo_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetInstanceInfo"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetInstanceInfo_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetInstanceInfoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetInstanceList_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetInstanceList"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetInstanceList_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetInstanceListResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetOnlineDocuments_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetOnlineDocuments"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetOnlineDocuments_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetOnlineDocumentsResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_ChangeInstanceStatus_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_ChangeInstanceStatus"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_ChangeInstanceStatus_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_ChangeInstanceStatusResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetStartDocBrowseUrl_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetStartDocBrowseUrl"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetStartDocBrowseUrl_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetStartDocBrowseUrlResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetStartInstanceBrowseUrl_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetStartInstanceBrowseUrl"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetStartInstanceBrowseUrl_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetStartInstanceBrowseUrlResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetStartInstanceBrowseUrlSuffixed_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetStartInstanceBrowseUrlSuffixed"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_GetStartInstanceBrowseUrlSuffixed_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_GetStartInstanceBrowseUrlSuffixedResponse"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocument2_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocument2"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocument2_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocument2Response"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocuments2_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocuments2"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_UpdateDocuments2_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_UpdateDocuments2Response"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_DeleteDocument2_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_DeleteDocument2"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_DeleteDocument2_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_DeleteDocument2Response"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadPdfInArchive_InputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadPdfInArchive"/>
+	</wsdl:message>
+	<wsdl:message name="IGeneralService_GS_LoadPdfInArchive_OutputMessage">
+		<wsdl:part name="parameters" element="tns:GS_LoadPdfInArchiveResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="IGeneralService">
+		<wsdl:operation name="GS_CreateDocument">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_CreateDocument"
+						message="tns:IGeneralService_GS_CreateDocument_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_CreateDocumentResponse"
+						 message="tns:IGeneralService_GS_CreateDocument_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_CreateDocumentTmpData">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_CreateDocumentTmpData"
+						message="tns:IGeneralService_GS_CreateDocumentTmpData_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_CreateDocumentTmpDataResponse"
+						 message="tns:IGeneralService_GS_CreateDocumentTmpData_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_PrintDXML">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_PrintDXML"
+						message="tns:IGeneralService_GS_PrintDXML_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_PrintDXMLResponse"
+						 message="tns:IGeneralService_GS_PrintDXML_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadInArchive">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadInArchive"
+						message="tns:IGeneralService_GS_LoadInArchive_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadInArchiveResponse"
+						 message="tns:IGeneralService_GS_LoadInArchive_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadInArchiveTmpData">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadInArchiveTmpData"
+						message="tns:IGeneralService_GS_LoadInArchiveTmpData_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadInArchiveTmpDataResponse"
+						 message="tns:IGeneralService_GS_LoadInArchiveTmpData_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadInArchiveDXML">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadInArchiveDXML"
+						message="tns:IGeneralService_GS_LoadInArchiveDXML_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadInArchiveDXMLResponse"
+						 message="tns:IGeneralService_GS_LoadInArchiveDXML_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_InsertTempData">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_InsertTempData"
+						message="tns:IGeneralService_GS_InsertTempData_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_InsertTempDataResponse"
+						 message="tns:IGeneralService_GS_InsertTempData_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_DeleteTempData">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_DeleteTempData"
+						message="tns:IGeneralService_GS_DeleteTempData_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_DeleteTempDataResponse"
+						 message="tns:IGeneralService_GS_DeleteTempData_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetTempData">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetTempData"
+						message="tns:IGeneralService_GS_GetTempData_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetTempDataResponse"
+						 message="tns:IGeneralService_GS_GetTempData_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetInfoAndFonts">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetInfoAndFonts"
+						message="tns:IGeneralService_GS_GetInfoAndFonts_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetInfoAndFontsResponse"
+						 message="tns:IGeneralService_GS_GetInfoAndFonts_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_OpenDocument">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_OpenDocument"
+						message="tns:IGeneralService_GS_OpenDocument_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_OpenDocumentResponse"
+						 message="tns:IGeneralService_GS_OpenDocument_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_SearchFolder">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_SearchFolder"
+						message="tns:IGeneralService_GS_SearchFolder_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_SearchFolderResponse"
+						 message="tns:IGeneralService_GS_SearchFolder_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocuments">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocuments"
+						message="tns:IGeneralService_GS_UpdateDocuments_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocumentsResponse"
+						 message="tns:IGeneralService_GS_UpdateDocuments_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocument">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocument"
+						message="tns:IGeneralService_GS_UpdateDocument_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocumentResponse"
+						 message="tns:IGeneralService_GS_UpdateDocument_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_DeleteDocument">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_DeleteDocument"
+						message="tns:IGeneralService_GS_DeleteDocument_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_DeleteDocumentResponse"
+						 message="tns:IGeneralService_GS_DeleteDocument_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetFolderList">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetFolderList"
+						message="tns:IGeneralService_GS_GetFolderList_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetFolderListResponse"
+						 message="tns:IGeneralService_GS_GetFolderList_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetFolder">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetFolder"
+						message="tns:IGeneralService_GS_GetFolder_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetFolderResponse"
+						 message="tns:IGeneralService_GS_GetFolder_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_InitializeAndLeaseInstance">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_InitializeAndLeaseInstance"
+						message="tns:IGeneralService_GS_InitializeAndLeaseInstance_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_InitializeAndLeaseInstanceResponse"
+						 message="tns:IGeneralService_GS_InitializeAndLeaseInstance_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_InitializeInstance">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_InitializeInstance"
+						message="tns:IGeneralService_GS_InitializeInstance_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_InitializeInstanceResponse"
+						 message="tns:IGeneralService_GS_InitializeInstance_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LeaseInstance">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LeaseInstance"
+						message="tns:IGeneralService_GS_LeaseInstance_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LeaseInstanceResponse"
+						 message="tns:IGeneralService_GS_LeaseInstance_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LeaseInstanceSuffixed">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LeaseInstanceSuffixed"
+						message="tns:IGeneralService_GS_LeaseInstanceSuffixed_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LeaseInstanceSuffixedResponse"
+						 message="tns:IGeneralService_GS_LeaseInstanceSuffixed_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetInstanceInfo">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetInstanceInfo"
+						message="tns:IGeneralService_GS_GetInstanceInfo_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetInstanceInfoResponse"
+						 message="tns:IGeneralService_GS_GetInstanceInfo_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetInstanceList">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetInstanceList"
+						message="tns:IGeneralService_GS_GetInstanceList_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetInstanceListResponse"
+						 message="tns:IGeneralService_GS_GetInstanceList_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetOnlineDocuments">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetOnlineDocuments"
+						message="tns:IGeneralService_GS_GetOnlineDocuments_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetOnlineDocumentsResponse"
+						 message="tns:IGeneralService_GS_GetOnlineDocuments_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_ChangeInstanceStatus">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_ChangeInstanceStatus"
+						message="tns:IGeneralService_GS_ChangeInstanceStatus_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_ChangeInstanceStatusResponse"
+						 message="tns:IGeneralService_GS_ChangeInstanceStatus_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetStartDocBrowseUrl">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetStartDocBrowseUrl"
+						message="tns:IGeneralService_GS_GetStartDocBrowseUrl_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetStartDocBrowseUrlResponse"
+						 message="tns:IGeneralService_GS_GetStartDocBrowseUrl_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetStartInstanceBrowseUrl">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetStartInstanceBrowseUrl"
+						message="tns:IGeneralService_GS_GetStartInstanceBrowseUrl_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetStartInstanceBrowseUrlResponse"
+						 message="tns:IGeneralService_GS_GetStartInstanceBrowseUrl_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetStartInstanceBrowseUrlSuffixed">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetStartInstanceBrowseUrlSuffixed"
+						message="tns:IGeneralService_GS_GetStartInstanceBrowseUrlSuffixed_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_GetStartInstanceBrowseUrlSuffixedResponse"
+						 message="tns:IGeneralService_GS_GetStartInstanceBrowseUrlSuffixed_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocument2">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocument2"
+						message="tns:IGeneralService_GS_UpdateDocument2_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocument2Response"
+						 message="tns:IGeneralService_GS_UpdateDocument2_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocuments2">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocuments2"
+						message="tns:IGeneralService_GS_UpdateDocuments2_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_UpdateDocuments2Response"
+						 message="tns:IGeneralService_GS_UpdateDocuments2_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_DeleteDocument2">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_DeleteDocument2"
+						message="tns:IGeneralService_GS_DeleteDocument2_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_DeleteDocument2Response"
+						 message="tns:IGeneralService_GS_DeleteDocument2_OutputMessage"/>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadPdfInArchive">
+			<wsdl:input wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadPdfInArchive"
+						message="tns:IGeneralService_GS_LoadPdfInArchive_InputMessage"/>
+			<wsdl:output wsaw:Action="http://metaforce.se/services/IGeneralService/GS_LoadPdfInArchiveResponse"
+						 message="tns:IGeneralService_GS_LoadPdfInArchive_OutputMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="GeneralServiceBinding" type="tns:IGeneralService">
+		<wsp:PolicyReference URI="#GeneralServiceBinding_policy"/>
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="GS_CreateDocument">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_CreateDocument" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_CreateDocumentTmpData">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_CreateDocumentTmpData"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_PrintDXML">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_PrintDXML" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadInArchive">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_LoadInArchive" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadInArchiveTmpData">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_LoadInArchiveTmpData"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadInArchiveDXML">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_LoadInArchiveDXML" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_InsertTempData">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_InsertTempData" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_DeleteTempData">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_DeleteTempData" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetTempData">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetTempData" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetInfoAndFonts">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetInfoAndFonts" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_OpenDocument">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_OpenDocument" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_SearchFolder">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_SearchFolder" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocuments">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_UpdateDocuments" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocument">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_UpdateDocument" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_DeleteDocument">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_DeleteDocument" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetFolderList">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetFolderList" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetFolder">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetFolder" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_InitializeAndLeaseInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_InitializeAndLeaseInstance"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_InitializeInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_InitializeInstance" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LeaseInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_LeaseInstance" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LeaseInstanceSuffixed">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_LeaseInstanceSuffixed"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetInstanceInfo">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetInstanceInfo" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetInstanceList">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetInstanceList" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetOnlineDocuments">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetOnlineDocuments" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_ChangeInstanceStatus">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_ChangeInstanceStatus"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetStartDocBrowseUrl">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetStartDocBrowseUrl"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetStartInstanceBrowseUrl">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetStartInstanceBrowseUrl"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_GetStartInstanceBrowseUrlSuffixed">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_GetStartInstanceBrowseUrlSuffixed"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocument2">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_UpdateDocument2" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_UpdateDocuments2">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_UpdateDocuments2" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_DeleteDocument2">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_DeleteDocument2" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GS_LoadPdfInArchive">
+			<soap12:operation soapAction="http://metaforce.se/services/IGeneralService/GS_LoadPdfInArchive" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="InteractOnlineProcess">
+		<wsdl:port name="GeneralServiceBinding" binding="tns:GeneralServiceBinding">
+			<soap12:address
+					location="https://d26isvw076.test.local/metaforce/Metaforce.Interact.GS_Webservice/Metaforce.Interact.Webservice.svc/ws2007HttpBindingGeneralService"/>
+			<wsa10:EndpointReference>
+				<wsa10:Address>
+					https://d26isvw076.test.local/metaforce/Metaforce.Interact.GS_Webservice/Metaforce.Interact.Webservice.svc/ws2007HttpBindingGeneralService
+				</wsa10:Address>
+			</wsa10:EndpointReference>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
