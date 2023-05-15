@@ -4,11 +4,11 @@
 	<parent>
 		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
 		<groupId>no.nav.dok</groupId>
-		<version>1.0-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 	<groupId>no.nav.tjenester.metaforce</groupId>
 	<artifactId>metaforce-general-service-tjenestespesifikasjon</artifactId>
-	<version>9.1.2-SNAPSHOT</version>
+	<version>${revision}</version>
 	<name>${project.artifactId}</name>
 	<description>
 		Pakking av MetaForce grensesnitt sammen med generert JAXB javakode.

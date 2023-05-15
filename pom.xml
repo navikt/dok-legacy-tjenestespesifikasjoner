@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.nav.dok</groupId>
 	<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>${revision}</version>
 	<name>dok-legacy-tjenestespesifikasjoner</name>
 	<packaging>pom</packaging>
 
@@ -19,6 +19,7 @@
 	</distributionManagement>
 
 	<properties>
+		<revision>1.0-SNAPSHOT</revision>
 		<jaxb2-basics.version>0.13.1</jaxb2-basics.version>
 		<jakarta.xml.version>2.3.3</jakarta.xml.version>
 		<jakarta.xml.ws-api.version>2.3.3</jakarta.xml.ws-api.version>
