@@ -17,22 +17,22 @@
 	</description>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>17</java.version>
-
 		<wsdl.directory>src/main/resources</wsdl.directory>
+		<jaxb-fluent-api.version>2.1.8</jaxb-fluent-api.version>
+		<joda-time.version>2.12.5</joda-time.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.12.5</version>
+			<version>${joda-time.version}</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics</artifactId>
+			<optional>true</optional>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -110,12 +110,12 @@
 					<dependency>
 						<groupId>net.java.dev.jaxb2-commons</groupId>
 						<artifactId>jaxb-fluent-api</artifactId>
-						<version>2.1.8</version>
+						<version>${jaxb-fluent-api.version}</version>
 					</dependency>
 					<dependency>
 						<groupId>org.jvnet.jaxb2_commons</groupId>
 						<artifactId>jaxb2-basics</artifactId>
-						<version>0.13.1</version>
+						<version>${jaxb2-basics.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
