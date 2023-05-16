@@ -20,6 +20,10 @@
 
 	<properties>
 		<revision>1.0-SNAPSHOT</revision>
+
+		<java.version>17</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 		<jaxb2-basics.version>0.13.1</jaxb2-basics.version>
 		<jakarta.xml.version>2.3.3</jakarta.xml.version>
 		<jakarta.xml.ws-api.version>2.3.3</jakarta.xml.ws-api.version>
