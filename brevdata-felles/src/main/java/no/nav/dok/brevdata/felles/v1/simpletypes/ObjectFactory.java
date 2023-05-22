@@ -6,7 +6,7 @@
 //
 
 
-package v1.simpletypes;
+package no.nav.dok.brevdata.felles.v1.simpletypes;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

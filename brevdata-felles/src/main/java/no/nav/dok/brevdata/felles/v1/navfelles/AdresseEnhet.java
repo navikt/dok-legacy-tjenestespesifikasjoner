@@ -6,7 +6,7 @@
 //
 
 
-package v1.navfelles;
+package no.nav.dok.brevdata.felles.v1.navfelles;
 
 import com.kscs.util.jaxb.Buildable;
 import com.kscs.util.jaxb.PropertyTree;

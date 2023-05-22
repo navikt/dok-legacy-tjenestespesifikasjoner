@@ -6,12 +6,13 @@
 //
 
 
-package v1.navfelles;
+package no.nav.dok.brevdata.felles.v1.navfelles;
 
 import com.kscs.util.jaxb.Buildable;
 import com.kscs.util.jaxb.PropertyTree;
 import com.kscs.util.jaxb.PropertyTreeUse;
 import no.nav.dok.brevdata.felles.v1.simpletypes.AktoerType;
+import no.nav.dok.brevdata.felles.v1.simpletypes.Spraakkode;
 import org.jvnet.jaxb2_commons.lang.Equals;
 import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.HashCode;
@@ -22,28 +23,25 @@ import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
 import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
-import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
- * Sakspart viser til personen vedtaket gjelder
+ * Gydig mottaker type
  * 
- * <p>Java class for Sakspart complex type.
+ * <p>Java class for Organisasjon complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Sakspart"&gt;
+ * &lt;complexType name="Organisasjon"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://nav.no/dok/brevdata/felles/v1/NAVFelles}Aktoer"&gt;
- *       &lt;attribute ref="{http://nav.no/dok/brevdata/felles/v1/NAVFelles}berik"/&gt;
+ *     &lt;extension base="{http://nav.no/dok/brevdata/felles/v1/NAVFelles}Mottaker"&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -52,45 +50,15 @@ import java.util.Map;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Sakspart")
-public class Sakspart
-    extends Aktoer
+@XmlType(name = "Organisasjon")
+public class Organisasjon
+    extends Mottaker
     implements Equals, HashCode, ToString
 {
 
-    @XmlAttribute(name = "berik", namespace = "http://nav.no/dok/brevdata/felles/v1/NAVFelles")
-    protected Boolean berik;
-
-    /**
-     * Gets the value of the berik property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isBerik() {
-        if (berik == null) {
-            return true;
-        } else {
-            return berik;
-        }
-    }
-
-    /**
-     * Sets the value of the berik property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setBerik(Boolean value) {
-        this.berik = value;
-    }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof Sakspart)) {
+        if (!(object instanceof Organisasjon)) {
             return false;
         }
         if (this == object) {
@@ -98,16 +66,6 @@ public class Sakspart
         }
         if (!super.equals(thisLocator, thatLocator, object, strategy)) {
             return false;
-        }
-        final Sakspart that = ((Sakspart) object);
-        {
-            boolean lhsBerik;
-            lhsBerik = ((this.berik!= null)?this.isBerik():false);
-            boolean rhsBerik;
-            rhsBerik = ((that.berik!= null)?that.isBerik():false);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "berik", lhsBerik), LocatorUtils.property(thatLocator, "berik", rhsBerik), lhsBerik, rhsBerik)) {
-                return false;
-            }
         }
         return true;
     }
@@ -119,11 +77,6 @@ public class Sakspart
 
     public int hashCode(ObjectLocator locator, HashCodeStrategy strategy) {
         int currentHashCode = super.hashCode(locator, strategy);
-        {
-            boolean theBerik;
-            theBerik = ((this.berik!= null)?this.isBerik():false);
-            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "berik", theBerik), currentHashCode, theBerik);
-        }
         return currentHashCode;
     }
 
@@ -148,11 +101,6 @@ public class Sakspart
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         super.appendFields(locator, buffer, strategy);
-        {
-            boolean theBerik;
-            theBerik = ((this.berik!= null)?this.isBerik():false);
-            strategy.appendField(locator, this, "berik", buffer, theBerik);
-        }
         return buffer;
     }
 
@@ -164,7 +112,6 @@ public class Sakspart
      */
     public<_B >void copyTo(final Builder<_B> _other) {
         super.copyTo(_other);
-        _other.berik = this.berik;
     }
 
     @Override
@@ -187,7 +134,13 @@ public class Sakspart
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Sakspart _other) {
+    public static<_B > Builder<_B> copyOf(final Mottaker _other) {
+        final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
+        _other.copyTo(_newBuilder);
+        return _newBuilder;
+    }
+
+    public static<_B > Builder<_B> copyOf(final Organisasjon _other) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder);
         return _newBuilder;
@@ -201,10 +154,6 @@ public class Sakspart
      */
     public<_B >void copyTo(final Builder<_B> _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
         super.copyTo(_other, _propertyTree, _propertyTreeUse);
-        final PropertyTree berikPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("berik"));
-        if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(berikPropertyTree!= null):((berikPropertyTree == null)||(!berikPropertyTree.isLeaf())))) {
-            _other.berik = this.berik;
-        }
     }
 
     @Override
@@ -223,7 +172,13 @@ public class Sakspart
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Sakspart _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+    public static<_B > Builder<_B> copyOf(final Mottaker _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+        final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
+        _other.copyTo(_newBuilder, _propertyTree, _propertyTreeUse);
+        return _newBuilder;
+    }
+
+    public static<_B > Builder<_B> copyOf(final Organisasjon _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder, _propertyTree, _propertyTreeUse);
         return _newBuilder;
@@ -233,7 +188,11 @@ public class Sakspart
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
-    public static Builder<Void> copyExcept(final Sakspart _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyExcept(final Mottaker _other, final PropertyTree _propertyTree) {
+        return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
+    }
+
+    public static Builder<Void> copyExcept(final Organisasjon _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
@@ -241,37 +200,70 @@ public class Sakspart
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
-    public static Builder<Void> copyOnly(final Sakspart _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyOnly(final Mottaker _other, final PropertyTree _propertyTree) {
+        return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
+    }
+
+    public static Builder<Void> copyOnly(final Organisasjon _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
     public static class Builder<_B >
-        extends Aktoer.Builder<_B>
+        extends Mottaker.Builder<_B>
         implements Buildable
     {
 
-        private Boolean berik;
 
-        public Builder(final _B _parentBuilder, final Sakspart _other, final boolean _copy) {
+        public Builder(final _B _parentBuilder, final Organisasjon _other, final boolean _copy) {
             super(_parentBuilder, _other, _copy);
             if (_other!= null) {
-                this.berik = _other.berik;
             }
         }
 
-        public Builder(final _B _parentBuilder, final Sakspart _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+        public Builder(final _B _parentBuilder, final Organisasjon _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
             super(_parentBuilder, _other, _copy, _propertyTree, _propertyTreeUse);
             if (_other!= null) {
-                final PropertyTree berikPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("berik"));
-                if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(berikPropertyTree!= null):((berikPropertyTree == null)||(!berikPropertyTree.isLeaf())))) {
-                    this.berik = _other.berik;
-                }
             }
         }
 
-        protected<_P extends Sakspart >_P init(final _P _product) {
-            _product.berik = this.berik;
+        protected<_P extends Organisasjon >_P init(final _P _product) {
             return super.init(_product);
+        }
+
+        /**
+         * Sets the new value of "kortNavn" (any previous value will be replaced)
+         * 
+         * @param kortNavn
+         *     New value of the "kortNavn" property.
+         */
+        @Override
+        public Builder<_B> withKortNavn(final String kortNavn) {
+            super.withKortNavn(kortNavn);
+            return this;
+        }
+
+        /**
+         * Sets the new value of "spraakkode" (any previous value will be replaced)
+         * 
+         * @param spraakkode
+         *     New value of the "spraakkode" property.
+         */
+        @Override
+        public Builder<_B> withSpraakkode(final Spraakkode spraakkode) {
+            super.withSpraakkode(spraakkode);
+            return this;
+        }
+
+        /**
+         * Sets the new value of "mottakeradresse" (any previous value will be replaced)
+         * 
+         * @param mottakeradresse
+         *     New value of the "mottakeradresse" property.
+         */
+        @Override
+        public Builder<_B> withMottakeradresse(final Adresse mottakeradresse) {
+            super.withMottakeradresse(mottakeradresse);
+            return this;
         }
 
         /**
@@ -280,8 +272,9 @@ public class Sakspart
          * @param berik
          *     New value of the "berik" property.
          */
+        @Override
         public Builder<_B> withBerik(final Boolean berik) {
-            this.berik = berik;
+            super.withBerik(berik);
             return this;
         }
 
@@ -322,11 +315,11 @@ public class Sakspart
         }
 
         @Override
-        public Sakspart build() {
+        public Organisasjon build() {
             if (_storedValue == null) {
-                return this.init(new Sakspart());
+                return this.init(new Organisasjon());
             } else {
-                return ((Sakspart) _storedValue);
+                return ((Organisasjon) _storedValue);
             }
         }
 
@@ -348,10 +341,9 @@ public class Sakspart
     }
 
     public static class Selector<TRoot extends com.kscs.util.jaxb.Selector<TRoot, ?> , TParent >
-        extends Aktoer.Selector<TRoot, TParent>
+        extends Mottaker.Selector<TRoot, TParent>
     {
 
-        private com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> berik = null;
 
         public Selector(final TRoot root, final TParent parent, final String propertyName) {
             super(root, parent, propertyName);
@@ -361,14 +353,7 @@ public class Sakspart
         public Map<String, PropertyTree> buildChildren() {
             final Map<String, PropertyTree> products = new HashMap<String, PropertyTree>();
             products.putAll(super.buildChildren());
-            if (this.berik!= null) {
-                products.put("berik", this.berik.init());
-            }
             return products;
-        }
-
-        public com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> berik() {
-            return ((this.berik == null)?this.berik = new com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>>(this._root, this, "berik"):this.berik);
         }
 
     }

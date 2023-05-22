@@ -5,4 +5,4 @@
 // Generated on: 2018.06.14 at 02:19:20 PM CEST 
 //
 
-package v1.navfelles;
+package no.nav.dok.brevdata.felles.v1.navfelles;

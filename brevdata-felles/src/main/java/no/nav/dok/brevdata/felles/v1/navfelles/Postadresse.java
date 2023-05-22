@@ -6,7 +6,7 @@
 //
 
 
-package v1.navfelles;
+package no.nav.dok.brevdata.felles.v1.navfelles;
 
 import com.kscs.util.jaxb.Buildable;
 import com.kscs.util.jaxb.PropertyTree;
@@ -32,12 +32,12 @@ import java.util.Map;
 /**
  * Gydig mottaker type
  * 
- * <p>Java class for Besoksadresse complex type.
+ * <p>Java class for Postadresse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Besoksadresse"&gt;
+ * &lt;complexType name="Postadresse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://nav.no/dok/brevdata/felles/v1/NAVFelles}AdresseEnhet"&gt;
  *     &lt;/extension&gt;
@@ -48,15 +48,15 @@ import java.util.Map;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Besoksadresse")
-public class Besoksadresse
+@XmlType(name = "Postadresse")
+public class Postadresse
     extends AdresseEnhet
     implements Equals, HashCode, ToString
 {
 
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof Besoksadresse)) {
+        if (!(object instanceof Postadresse)) {
             return false;
         }
         if (this == object) {
@@ -138,7 +138,7 @@ public class Besoksadresse
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Besoksadresse _other) {
+    public static<_B > Builder<_B> copyOf(final Postadresse _other) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder);
         return _newBuilder;
@@ -176,7 +176,7 @@ public class Besoksadresse
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Besoksadresse _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+    public static<_B > Builder<_B> copyOf(final Postadresse _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder, _propertyTree, _propertyTreeUse);
         return _newBuilder;
@@ -190,7 +190,7 @@ public class Besoksadresse
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
-    public static Builder<Void> copyExcept(final Besoksadresse _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyExcept(final Postadresse _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
@@ -202,7 +202,7 @@ public class Besoksadresse
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
-    public static Builder<Void> copyOnly(final Besoksadresse _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyOnly(final Postadresse _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
@@ -212,19 +212,19 @@ public class Besoksadresse
     {
 
 
-        public Builder(final _B _parentBuilder, final Besoksadresse _other, final boolean _copy) {
+        public Builder(final _B _parentBuilder, final Postadresse _other, final boolean _copy) {
             super(_parentBuilder, _other, _copy);
             if (_other!= null) {
             }
         }
 
-        public Builder(final _B _parentBuilder, final Besoksadresse _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+        public Builder(final _B _parentBuilder, final Postadresse _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
             super(_parentBuilder, _other, _copy, _propertyTree, _propertyTreeUse);
             if (_other!= null) {
             }
         }
 
-        protected<_P extends Besoksadresse >_P init(final _P _product) {
+        protected<_P extends Postadresse >_P init(final _P _product) {
             return super.init(_product);
         }
 
@@ -301,11 +301,11 @@ public class Besoksadresse
         }
 
         @Override
-        public Besoksadresse build() {
+        public Postadresse build() {
             if (_storedValue == null) {
-                return this.init(new Besoksadresse());
+                return this.init(new Postadresse());
             } else {
-                return ((Besoksadresse) _storedValue);
+                return ((Postadresse) _storedValue);
             }
         }
 

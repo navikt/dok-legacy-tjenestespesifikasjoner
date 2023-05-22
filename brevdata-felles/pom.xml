@@ -13,15 +13,11 @@
 	<name>${project.artifactId}</name>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.jdk.version>8</java.jdk.version>
-		<maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
 		<maven-release-plugin.version>3.0.0</maven-release-plugin.version>
 		<maven-assembly-plugin.version>2.5.3</maven-assembly-plugin.version>
-		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-		<!--<jaxb2-basics.version>0.6.5</jaxb2-basics.version>-->
 		<wagon-webdav-jackrabbitt.version>1.0</wagon-webdav-jackrabbitt.version>
+
+		<jaxb2-basics.version>0.6.5</jaxb2-basics.version>
 		<jaxb2-maven-plugin.version>0.13.2</jaxb2-maven-plugin.version>
 		<jaxb2-rich-contract-plugin.version>1.18.0</jaxb2-rich-contract-plugin.version>
 	</properties>
@@ -31,6 +27,15 @@
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics</artifactId>
 			<version>${jaxb2-basics.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.codesup.util</groupId>
+			<artifactId>jaxb2-rich-contract-plugin</artifactId>
+			<version>${jaxb2-rich-contract-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -49,25 +54,9 @@
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>${maven-assembly-plugin.version}</version>
 				</plugin>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin.version}</version>
-					<configuration>
-						<source>${java.jdk.version}</source>
-						<target>${java.jdk.version}</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven-jar-plugin.version}</version>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
 			<plugin>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>${maven-release-plugin.version}</version>
@@ -77,24 +66,9 @@
 					<preparationGoals>clean install</preparationGoals>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.0.0</version>
 				<configuration>
 					<failOnError>false</failOnError>
 				</configuration>

@@ -6,7 +6,7 @@
 //
 
 
-package v1.navfelles;
+package no.nav.dok.brevdata.felles.v1.navfelles;
 
 import com.kscs.util.jaxb.Buildable;
 import com.kscs.util.jaxb.PropertyTree;
@@ -27,27 +27,26 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
- * Navn på enhet i NAV
+ * Navn på ansatt i NAV
  * 
- * <p>Java class for NavEnhet complex type.
+ * <p>Java class for NavAnsatt complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="NavEnhet"&gt;
+ * &lt;complexType name="NavAnsatt"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="enhetsId" type="{http://nav.no/dok/brevdata/felles/v1/SimpleTypes}Identifikator"/&gt;
- *         &lt;element name="enhetsNavn" type="{http://nav.no/dok/brevdata/felles/v1/SimpleTypes}NonEmptyString"/&gt;
- *       &lt;/sequence&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="ansattId" type="{http://nav.no/dok/brevdata/felles/v1/SimpleTypes}Identifikator"/&gt;
+ *         &lt;element name="navn" type="{http://nav.no/dok/brevdata/felles/v1/SimpleTypes}NonEmptyString"/&gt;
+ *       &lt;/all&gt;
  *       &lt;attribute ref="{http://nav.no/dok/brevdata/felles/v1/NAVFelles}berik"/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -57,69 +56,65 @@ import java.util.Map;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NavEnhet", propOrder = {
-    "enhetsId",
-    "enhetsNavn"
+@XmlType(name = "NavAnsatt", propOrder = {
+
 })
-@XmlSeeAlso({
-    AdresseEnhet.class
-})
-public class NavEnhet implements Equals, HashCode, ToString
+public class NavAnsatt implements Equals, HashCode, ToString
 {
 
     @XmlElement(required = true)
-    protected String enhetsId;
+    protected String ansattId;
     @XmlElement(required = true)
-    protected String enhetsNavn;
+    protected String navn;
     @XmlAttribute(name = "berik", namespace = "http://nav.no/dok/brevdata/felles/v1/NAVFelles")
     protected Boolean berik;
 
     /**
-     * Gets the value of the enhetsId property.
+     * Gets the value of the ansattId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getEnhetsId() {
-        return enhetsId;
+    public String getAnsattId() {
+        return ansattId;
     }
 
     /**
-     * Sets the value of the enhetsId property.
+     * Sets the value of the ansattId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setEnhetsId(String value) {
-        this.enhetsId = value;
+    public void setAnsattId(String value) {
+        this.ansattId = value;
     }
 
     /**
-     * Gets the value of the enhetsNavn property.
+     * Gets the value of the navn property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getEnhetsNavn() {
-        return enhetsNavn;
+    public String getNavn() {
+        return navn;
     }
 
     /**
-     * Sets the value of the enhetsNavn property.
+     * Sets the value of the navn property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setEnhetsNavn(String value) {
-        this.enhetsNavn = value;
+    public void setNavn(String value) {
+        this.navn = value;
     }
 
     /**
@@ -151,28 +146,28 @@ public class NavEnhet implements Equals, HashCode, ToString
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof NavEnhet)) {
+        if (!(object instanceof NavAnsatt)) {
             return false;
         }
         if (this == object) {
             return true;
         }
-        final NavEnhet that = ((NavEnhet) object);
+        final NavAnsatt that = ((NavAnsatt) object);
         {
-            String lhsEnhetsId;
-            lhsEnhetsId = this.getEnhetsId();
-            String rhsEnhetsId;
-            rhsEnhetsId = that.getEnhetsId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "enhetsId", lhsEnhetsId), LocatorUtils.property(thatLocator, "enhetsId", rhsEnhetsId), lhsEnhetsId, rhsEnhetsId)) {
+            String lhsAnsattId;
+            lhsAnsattId = this.getAnsattId();
+            String rhsAnsattId;
+            rhsAnsattId = that.getAnsattId();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "ansattId", lhsAnsattId), LocatorUtils.property(thatLocator, "ansattId", rhsAnsattId), lhsAnsattId, rhsAnsattId)) {
                 return false;
             }
         }
         {
-            String lhsEnhetsNavn;
-            lhsEnhetsNavn = this.getEnhetsNavn();
-            String rhsEnhetsNavn;
-            rhsEnhetsNavn = that.getEnhetsNavn();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "enhetsNavn", lhsEnhetsNavn), LocatorUtils.property(thatLocator, "enhetsNavn", rhsEnhetsNavn), lhsEnhetsNavn, rhsEnhetsNavn)) {
+            String lhsNavn;
+            lhsNavn = this.getNavn();
+            String rhsNavn;
+            rhsNavn = that.getNavn();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "navn", lhsNavn), LocatorUtils.property(thatLocator, "navn", rhsNavn), lhsNavn, rhsNavn)) {
                 return false;
             }
         }
@@ -196,14 +191,14 @@ public class NavEnhet implements Equals, HashCode, ToString
     public int hashCode(ObjectLocator locator, HashCodeStrategy strategy) {
         int currentHashCode = 1;
         {
-            String theEnhetsId;
-            theEnhetsId = this.getEnhetsId();
-            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "enhetsId", theEnhetsId), currentHashCode, theEnhetsId);
+            String theAnsattId;
+            theAnsattId = this.getAnsattId();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "ansattId", theAnsattId), currentHashCode, theAnsattId);
         }
         {
-            String theEnhetsNavn;
-            theEnhetsNavn = this.getEnhetsNavn();
-            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "enhetsNavn", theEnhetsNavn), currentHashCode, theEnhetsNavn);
+            String theNavn;
+            theNavn = this.getNavn();
+            currentHashCode = strategy.hashCode(LocatorUtils.property(locator, "navn", theNavn), currentHashCode, theNavn);
         }
         {
             boolean theBerik;
@@ -234,14 +229,14 @@ public class NavEnhet implements Equals, HashCode, ToString
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            String theEnhetsId;
-            theEnhetsId = this.getEnhetsId();
-            strategy.appendField(locator, this, "enhetsId", buffer, theEnhetsId);
+            String theAnsattId;
+            theAnsattId = this.getAnsattId();
+            strategy.appendField(locator, this, "ansattId", buffer, theAnsattId);
         }
         {
-            String theEnhetsNavn;
-            theEnhetsNavn = this.getEnhetsNavn();
-            strategy.appendField(locator, this, "enhetsNavn", buffer, theEnhetsNavn);
+            String theNavn;
+            theNavn = this.getNavn();
+            strategy.appendField(locator, this, "navn", buffer, theNavn);
         }
         {
             boolean theBerik;
@@ -258,8 +253,8 @@ public class NavEnhet implements Equals, HashCode, ToString
      *     A builder instance to which the state of this object will be copied.
      */
     public<_B >void copyTo(final Builder<_B> _other) {
-        _other.enhetsId = this.enhetsId;
-        _other.enhetsNavn = this.enhetsNavn;
+        _other.ansattId = this.ansattId;
+        _other.navn = this.navn;
         _other.berik = this.berik;
     }
 
@@ -275,7 +270,7 @@ public class NavEnhet implements Equals, HashCode, ToString
         return new Builder<Void>(null, null, false);
     }
 
-    public static<_B > Builder<_B> copyOf(final NavEnhet _other) {
+    public static<_B > Builder<_B> copyOf(final NavAnsatt _other) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder);
         return _newBuilder;
@@ -288,13 +283,13 @@ public class NavEnhet implements Equals, HashCode, ToString
      *     A builder instance to which the state of this object will be copied.
      */
     public<_B >void copyTo(final Builder<_B> _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
-        final PropertyTree enhetsIdPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("enhetsId"));
-        if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(enhetsIdPropertyTree!= null):((enhetsIdPropertyTree == null)||(!enhetsIdPropertyTree.isLeaf())))) {
-            _other.enhetsId = this.enhetsId;
+        final PropertyTree ansattIdPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("ansattId"));
+        if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(ansattIdPropertyTree!= null):((ansattIdPropertyTree == null)||(!ansattIdPropertyTree.isLeaf())))) {
+            _other.ansattId = this.ansattId;
         }
-        final PropertyTree enhetsNavnPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("enhetsNavn"));
-        if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(enhetsNavnPropertyTree!= null):((enhetsNavnPropertyTree == null)||(!enhetsNavnPropertyTree.isLeaf())))) {
-            _other.enhetsNavn = this.enhetsNavn;
+        final PropertyTree navnPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("navn"));
+        if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(navnPropertyTree!= null):((navnPropertyTree == null)||(!navnPropertyTree.isLeaf())))) {
+            _other.navn = this.navn;
         }
         final PropertyTree berikPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("berik"));
         if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(berikPropertyTree!= null):((berikPropertyTree == null)||(!berikPropertyTree.isLeaf())))) {
@@ -310,17 +305,17 @@ public class NavEnhet implements Equals, HashCode, ToString
         return newCopyBuilder(null, _propertyTree, _propertyTreeUse);
     }
 
-    public static<_B > Builder<_B> copyOf(final NavEnhet _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+    public static<_B > Builder<_B> copyOf(final NavAnsatt _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder, _propertyTree, _propertyTreeUse);
         return _newBuilder;
     }
 
-    public static Builder<Void> copyExcept(final NavEnhet _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyExcept(final NavAnsatt _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
-    public static Builder<Void> copyOnly(final NavEnhet _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyOnly(final NavAnsatt _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
@@ -328,18 +323,18 @@ public class NavEnhet implements Equals, HashCode, ToString
     {
 
         protected final _B _parentBuilder;
-        protected final NavEnhet _storedValue;
-        private String enhetsId;
-        private String enhetsNavn;
+        protected final NavAnsatt _storedValue;
+        private String ansattId;
+        private String navn;
         private Boolean berik;
 
-        public Builder(final _B _parentBuilder, final NavEnhet _other, final boolean _copy) {
+        public Builder(final _B _parentBuilder, final NavAnsatt _other, final boolean _copy) {
             this._parentBuilder = _parentBuilder;
             if (_other!= null) {
                 if (_copy) {
                     _storedValue = null;
-                    this.enhetsId = _other.enhetsId;
-                    this.enhetsNavn = _other.enhetsNavn;
+                    this.ansattId = _other.ansattId;
+                    this.navn = _other.navn;
                     this.berik = _other.berik;
                 } else {
                     _storedValue = _other;
@@ -349,18 +344,18 @@ public class NavEnhet implements Equals, HashCode, ToString
             }
         }
 
-        public Builder(final _B _parentBuilder, final NavEnhet _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+        public Builder(final _B _parentBuilder, final NavAnsatt _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
             this._parentBuilder = _parentBuilder;
             if (_other!= null) {
                 if (_copy) {
                     _storedValue = null;
-                    final PropertyTree enhetsIdPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("enhetsId"));
-                    if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(enhetsIdPropertyTree!= null):((enhetsIdPropertyTree == null)||(!enhetsIdPropertyTree.isLeaf())))) {
-                        this.enhetsId = _other.enhetsId;
+                    final PropertyTree ansattIdPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("ansattId"));
+                    if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(ansattIdPropertyTree!= null):((ansattIdPropertyTree == null)||(!ansattIdPropertyTree.isLeaf())))) {
+                        this.ansattId = _other.ansattId;
                     }
-                    final PropertyTree enhetsNavnPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("enhetsNavn"));
-                    if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(enhetsNavnPropertyTree!= null):((enhetsNavnPropertyTree == null)||(!enhetsNavnPropertyTree.isLeaf())))) {
-                        this.enhetsNavn = _other.enhetsNavn;
+                    final PropertyTree navnPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("navn"));
+                    if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(navnPropertyTree!= null):((navnPropertyTree == null)||(!navnPropertyTree.isLeaf())))) {
+                        this.navn = _other.navn;
                     }
                     final PropertyTree berikPropertyTree = ((_propertyTree == null)?null:_propertyTree.get("berik"));
                     if (((_propertyTreeUse == PropertyTreeUse.INCLUDE)?(berikPropertyTree!= null):((berikPropertyTree == null)||(!berikPropertyTree.isLeaf())))) {
@@ -378,32 +373,32 @@ public class NavEnhet implements Equals, HashCode, ToString
             return this._parentBuilder;
         }
 
-        protected<_P extends NavEnhet >_P init(final _P _product) {
-            _product.enhetsId = this.enhetsId;
-            _product.enhetsNavn = this.enhetsNavn;
+        protected<_P extends NavAnsatt >_P init(final _P _product) {
+            _product.ansattId = this.ansattId;
+            _product.navn = this.navn;
             _product.berik = this.berik;
             return _product;
         }
 
         /**
-         * Sets the new value of "enhetsId" (any previous value will be replaced)
+         * Sets the new value of "ansattId" (any previous value will be replaced)
          * 
-         * @param enhetsId
-         *     New value of the "enhetsId" property.
+         * @param ansattId
+         *     New value of the "ansattId" property.
          */
-        public Builder<_B> withEnhetsId(final String enhetsId) {
-            this.enhetsId = enhetsId;
+        public Builder<_B> withAnsattId(final String ansattId) {
+            this.ansattId = ansattId;
             return this;
         }
 
         /**
-         * Sets the new value of "enhetsNavn" (any previous value will be replaced)
+         * Sets the new value of "navn" (any previous value will be replaced)
          * 
-         * @param enhetsNavn
-         *     New value of the "enhetsNavn" property.
+         * @param navn
+         *     New value of the "navn" property.
          */
-        public Builder<_B> withEnhetsNavn(final String enhetsNavn) {
-            this.enhetsNavn = enhetsNavn;
+        public Builder<_B> withNavn(final String navn) {
+            this.navn = navn;
             return this;
         }
 
@@ -419,11 +414,11 @@ public class NavEnhet implements Equals, HashCode, ToString
         }
 
         @Override
-        public NavEnhet build() {
+        public NavAnsatt build() {
             if (_storedValue == null) {
-                return this.init(new NavEnhet());
+                return this.init(new NavAnsatt());
             } else {
-                return ((NavEnhet) _storedValue);
+                return ((NavAnsatt) _storedValue);
             }
         }
 
@@ -448,8 +443,8 @@ public class NavEnhet implements Equals, HashCode, ToString
         extends com.kscs.util.jaxb.Selector<TRoot, TParent>
     {
 
-        private com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> enhetsId = null;
-        private com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> enhetsNavn = null;
+        private com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> ansattId = null;
+        private com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> navn = null;
         private com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> berik = null;
 
         public Selector(final TRoot root, final TParent parent, final String propertyName) {
@@ -460,11 +455,11 @@ public class NavEnhet implements Equals, HashCode, ToString
         public Map<String, PropertyTree> buildChildren() {
             final Map<String, PropertyTree> products = new HashMap<String, PropertyTree>();
             products.putAll(super.buildChildren());
-            if (this.enhetsId!= null) {
-                products.put("enhetsId", this.enhetsId.init());
+            if (this.ansattId!= null) {
+                products.put("ansattId", this.ansattId.init());
             }
-            if (this.enhetsNavn!= null) {
-                products.put("enhetsNavn", this.enhetsNavn.init());
+            if (this.navn!= null) {
+                products.put("navn", this.navn.init());
             }
             if (this.berik!= null) {
                 products.put("berik", this.berik.init());
@@ -472,12 +467,12 @@ public class NavEnhet implements Equals, HashCode, ToString
             return products;
         }
 
-        public com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> enhetsId() {
-            return ((this.enhetsId == null)?this.enhetsId = new com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>>(this._root, this, "enhetsId"):this.enhetsId);
+        public com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> ansattId() {
+            return ((this.ansattId == null)?this.ansattId = new com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>>(this._root, this, "ansattId"):this.ansattId);
         }
 
-        public com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> enhetsNavn() {
-            return ((this.enhetsNavn == null)?this.enhetsNavn = new com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>>(this._root, this, "enhetsNavn"):this.enhetsNavn);
+        public com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> navn() {
+            return ((this.navn == null)?this.navn = new com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>>(this._root, this, "navn"):this.navn);
         }
 
         public com.kscs.util.jaxb.Selector<TRoot, Selector<TRoot, TParent>> berik() {

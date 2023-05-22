@@ -6,7 +6,7 @@
 //
 
 
-package v1.navfelles;
+package no.nav.dok.brevdata.felles.v1.navfelles;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

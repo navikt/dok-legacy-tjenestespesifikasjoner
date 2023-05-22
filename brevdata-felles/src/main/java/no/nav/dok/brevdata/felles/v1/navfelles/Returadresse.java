@@ -6,13 +6,11 @@
 //
 
 
-package v1.navfelles;
+package no.nav.dok.brevdata.felles.v1.navfelles;
 
 import com.kscs.util.jaxb.Buildable;
 import com.kscs.util.jaxb.PropertyTree;
 import com.kscs.util.jaxb.PropertyTreeUse;
-import no.nav.dok.brevdata.felles.v1.simpletypes.AktoerType;
-import no.nav.dok.brevdata.felles.v1.simpletypes.Spraakkode;
 import org.jvnet.jaxb2_commons.lang.Equals;
 import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.HashCode;
@@ -34,14 +32,14 @@ import java.util.Map;
 /**
  * Gydig mottaker type
  * 
- * <p>Java class for Organisasjon complex type.
+ * <p>Java class for Returadresse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Organisasjon"&gt;
+ * &lt;complexType name="Returadresse"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://nav.no/dok/brevdata/felles/v1/NAVFelles}Mottaker"&gt;
+ *     &lt;extension base="{http://nav.no/dok/brevdata/felles/v1/NAVFelles}AdresseEnhet"&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -50,15 +48,15 @@ import java.util.Map;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Organisasjon")
-public class Organisasjon
-    extends Mottaker
+@XmlType(name = "Returadresse")
+public class Returadresse
+    extends AdresseEnhet
     implements Equals, HashCode, ToString
 {
 
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof Organisasjon)) {
+        if (!(object instanceof Returadresse)) {
             return false;
         }
         if (this == object) {
@@ -128,19 +126,19 @@ public class Organisasjon
         return new Builder<Void>(null, null, false);
     }
 
-    public static<_B > Builder<_B> copyOf(final Aktoer _other) {
+    public static<_B > Builder<_B> copyOf(final NavEnhet _other) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder);
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Mottaker _other) {
+    public static<_B > Builder<_B> copyOf(final AdresseEnhet _other) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder);
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Organisasjon _other) {
+    public static<_B > Builder<_B> copyOf(final Returadresse _other) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder);
         return _newBuilder;
@@ -166,103 +164,127 @@ public class Organisasjon
         return newCopyBuilder(null, _propertyTree, _propertyTreeUse);
     }
 
-    public static<_B > Builder<_B> copyOf(final Aktoer _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+    public static<_B > Builder<_B> copyOf(final NavEnhet _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder, _propertyTree, _propertyTreeUse);
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Mottaker _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+    public static<_B > Builder<_B> copyOf(final AdresseEnhet _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder, _propertyTree, _propertyTreeUse);
         return _newBuilder;
     }
 
-    public static<_B > Builder<_B> copyOf(final Organisasjon _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+    public static<_B > Builder<_B> copyOf(final Returadresse _other, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
         final Builder<_B> _newBuilder = new Builder<_B>(null, null, false);
         _other.copyTo(_newBuilder, _propertyTree, _propertyTreeUse);
         return _newBuilder;
     }
 
-    public static Builder<Void> copyExcept(final Aktoer _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyExcept(final NavEnhet _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
-    public static Builder<Void> copyExcept(final Mottaker _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyExcept(final AdresseEnhet _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
-    public static Builder<Void> copyExcept(final Organisasjon _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyExcept(final Returadresse _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.EXCLUDE);
     }
 
-    public static Builder<Void> copyOnly(final Aktoer _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyOnly(final NavEnhet _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
-    public static Builder<Void> copyOnly(final Mottaker _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyOnly(final AdresseEnhet _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
-    public static Builder<Void> copyOnly(final Organisasjon _other, final PropertyTree _propertyTree) {
+    public static Builder<Void> copyOnly(final Returadresse _other, final PropertyTree _propertyTree) {
         return copyOf(_other, _propertyTree, PropertyTreeUse.INCLUDE);
     }
 
     public static class Builder<_B >
-        extends Mottaker.Builder<_B>
+        extends AdresseEnhet.Builder<_B>
         implements Buildable
     {
 
 
-        public Builder(final _B _parentBuilder, final Organisasjon _other, final boolean _copy) {
+        public Builder(final _B _parentBuilder, final Returadresse _other, final boolean _copy) {
             super(_parentBuilder, _other, _copy);
             if (_other!= null) {
             }
         }
 
-        public Builder(final _B _parentBuilder, final Organisasjon _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
+        public Builder(final _B _parentBuilder, final Returadresse _other, final boolean _copy, final PropertyTree _propertyTree, final PropertyTreeUse _propertyTreeUse) {
             super(_parentBuilder, _other, _copy, _propertyTree, _propertyTreeUse);
             if (_other!= null) {
             }
         }
 
-        protected<_P extends Organisasjon >_P init(final _P _product) {
+        protected<_P extends Returadresse >_P init(final _P _product) {
             return super.init(_product);
         }
 
         /**
-         * Sets the new value of "kortNavn" (any previous value will be replaced)
+         * Sets the new value of "kontaktTelefonnummer" (any previous value will be replaced)
          * 
-         * @param kortNavn
-         *     New value of the "kortNavn" property.
+         * @param kontaktTelefonnummer
+         *     New value of the "kontaktTelefonnummer" property.
          */
         @Override
-        public Builder<_B> withKortNavn(final String kortNavn) {
-            super.withKortNavn(kortNavn);
+        public Builder<_B> withKontaktTelefonnummer(final String kontaktTelefonnummer) {
+            super.withKontaktTelefonnummer(kontaktTelefonnummer);
             return this;
         }
 
         /**
-         * Sets the new value of "spraakkode" (any previous value will be replaced)
+         * Sets the new value of "adresse" (any previous value will be replaced)
          * 
-         * @param spraakkode
-         *     New value of the "spraakkode" property.
+         * @param adresse
+         *     New value of the "adresse" property.
          */
         @Override
-        public Builder<_B> withSpraakkode(final Spraakkode spraakkode) {
-            super.withSpraakkode(spraakkode);
+        public Builder<_B> withAdresse(final NorskPostadresse adresse) {
+            super.withAdresse(adresse);
             return this;
         }
 
         /**
-         * Sets the new value of "mottakeradresse" (any previous value will be replaced)
+         * Returns a new builder to build the value of the "adresse" property (replacing previous value).
+         * Use {@link no.nav.dok.brevdata.felles.v1.navfelles.NorskPostadresse.Builder#end()} to return to the current builder.
          * 
-         * @param mottakeradresse
-         *     New value of the "mottakeradresse" property.
+         * @return
+         *     A new builder to build the value of the "adresse" property.
+         *     Use {@link no.nav.dok.brevdata.felles.v1.navfelles.NorskPostadresse.Builder#end()} to return to the current builder.
+         */
+        public NorskPostadresse.Builder<? extends Builder<_B>> withAdresse() {
+            return ((NorskPostadresse.Builder<? extends Builder<_B>> ) super.withAdresse());
+        }
+
+        /**
+         * Sets the new value of "enhetsId" (any previous value will be replaced)
+         * 
+         * @param enhetsId
+         *     New value of the "enhetsId" property.
          */
         @Override
-        public Builder<_B> withMottakeradresse(final Adresse mottakeradresse) {
-            super.withMottakeradresse(mottakeradresse);
+        public Builder<_B> withEnhetsId(final String enhetsId) {
+            super.withEnhetsId(enhetsId);
+            return this;
+        }
+
+        /**
+         * Sets the new value of "enhetsNavn" (any previous value will be replaced)
+         * 
+         * @param enhetsNavn
+         *     New value of the "enhetsNavn" property.
+         */
+        @Override
+        public Builder<_B> withEnhetsNavn(final String enhetsNavn) {
+            super.withEnhetsNavn(enhetsNavn);
             return this;
         }
 
@@ -278,48 +300,12 @@ public class Organisasjon
             return this;
         }
 
-        /**
-         * Sets the new value of "id" (any previous value will be replaced)
-         * 
-         * @param id
-         *     New value of the "id" property.
-         */
         @Override
-        public Builder<_B> withId(final String id) {
-            super.withId(id);
-            return this;
-        }
-
-        /**
-         * Sets the new value of "typeKode" (any previous value will be replaced)
-         * 
-         * @param typeKode
-         *     New value of the "typeKode" property.
-         */
-        @Override
-        public Builder<_B> withTypeKode(final AktoerType typeKode) {
-            super.withTypeKode(typeKode);
-            return this;
-        }
-
-        /**
-         * Sets the new value of "navn" (any previous value will be replaced)
-         * 
-         * @param navn
-         *     New value of the "navn" property.
-         */
-        @Override
-        public Builder<_B> withNavn(final String navn) {
-            super.withNavn(navn);
-            return this;
-        }
-
-        @Override
-        public Organisasjon build() {
+        public Returadresse build() {
             if (_storedValue == null) {
-                return this.init(new Organisasjon());
+                return this.init(new Returadresse());
             } else {
-                return ((Organisasjon) _storedValue);
+                return ((Returadresse) _storedValue);
             }
         }
 
@@ -341,7 +327,7 @@ public class Organisasjon
     }
 
     public static class Selector<TRoot extends com.kscs.util.jaxb.Selector<TRoot, ?> , TParent >
-        extends Mottaker.Selector<TRoot, TParent>
+        extends AdresseEnhet.Selector<TRoot, TParent>
     {
 
 
