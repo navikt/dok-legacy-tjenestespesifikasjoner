@@ -9,7 +9,7 @@
 
 	<modules>
 		<module>metaforce-general-service-tjenestespesifikasjon</module>
-		<module>brevdata-felles</module>
+		<module>dok-brevdata-felles</module>
 	</modules>
 
 	<distributionManagement>

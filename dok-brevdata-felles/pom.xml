@@ -8,9 +8,9 @@
 	</parent>
 
 	<groupId>no.nav.dok.metaforcemal</groupId>
-	<artifactId>brevdata-felles</artifactId>
+	<artifactId>dok-brevdata-felles</artifactId>
 	<version>${revision}</version>
-	<name>brevdata-felles</name>
+	<name>dok-brevdata-felles</name>
 
 	<properties>
 		<maven-jaxb2-plugin.version>0.15.2</maven-jaxb2-plugin.version>
