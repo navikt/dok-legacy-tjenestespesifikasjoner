@@ -12,43 +12,109 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>brevdata-felles</name>
 
+	<!--dokdistsentralprint
+		dokdistspi-2-->
 
 	<properties>
-		<jaxb2-maven-plugin.version>0.13.2</jaxb2-maven-plugin.version>
+		<!--<jaxb2-maven-plugin.version>0.15.2</jaxb2-maven-plugin.version>
 		<jaxb2-rich-contract-plugin.version>1.18.0</jaxb2-rich-contract-plugin.version>
 		<maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
+		<jaxb2-basics-annotate.version>1.1.0</jaxb2-basics-annotate.version>-->
+
+		<!--test-->
+
+		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
+		<maven-jaxb2-plugin.version>0.13.2</maven-jaxb2-plugin.version>
+		<jaxb2-basics.version>0.13.1</jaxb2-basics.version>
 		<jaxb2-basics-annotate.version>1.1.0</jaxb2-basics-annotate.version>
-		<jaxb2-basics.version>0.6.5</jaxb2-basics.version>
+		<jaxb2-fluent-api.version>3.0</jaxb2-fluent-api.version>
+		<jaxb-xew-plugin.version>2.1</jaxb-xew-plugin.version>
+		<jaxb-runtime.version>2.3.6</jaxb-runtime.version>
 	</properties>
 
 	<dependencies>
-		<!--<dependency>
-			<groupId>org.jvnet.jaxb2_commons</groupId>
-			<artifactId>jaxb2-basics</artifactId>
-		</dependency>-->
 		<dependency>
-			<groupId>net.codesup.util</groupId>
-			<artifactId>jaxb2-rich-contract-plugin</artifactId>
-			<version>${jaxb2-rich-contract-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
+			<groupId>jakarta.xml.ws</groupId>
+			<artifactId>jakarta.xml.ws-api</artifactId>
 		</dependency>
 	</dependencies>
 
+
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>${maven-jaxb2-plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.glassfish.jaxb</groupId>
+						<artifactId>jaxb-runtime</artifactId>
+						<version>${jaxb-runtime.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>generate-jaxb-brevdata-felles</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<generatePackage>no.nav.dok.brevdata.felles.v1</generatePackage>
+							<schemaDirectory>src/main/resources</schemaDirectory>
+							<generateDirectory>${project.basedir}/target</generateDirectory>
+							<strict>false</strict>
+							<plugins>
+								<plugin>
+									<groupId>org.jvnet.jaxb2_commons</groupId>
+									<artifactId>jaxb2-basics</artifactId>
+									<version>${jaxb2-basics.version}</version>
+								</plugin>
+								<plugin>
+									<groupId>org.jvnet.jaxb2_commons</groupId>
+									<artifactId>jaxb2-basics-annotate</artifactId>
+									<version>${jaxb2-basics-annotate.version}</version>
+								</plugin>
+								<plugin>
+									<groupId>org.jvnet.jaxb2_commons</groupId>
+									<artifactId>jaxb2-fluent-api</artifactId>
+									<version>${jaxb2-fluent-api.version}</version>
+								</plugin>
+								<plugin>
+									<groupId>com.github.jaxb-xew-plugin</groupId>
+									<artifactId>jaxb-xew-plugin</artifactId>
+									<version>${jaxb-xew-plugin.version}</version>
+								</plugin>
+							</plugins>
+							<args>
+								<arg>-Xxew</arg>
+								<arg>-Xannotate</arg>
+								<arg>-Xfluent-api</arg>
+							</args>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<!--<dependency>
+		<groupId>org.jvnet.jaxb2_commons</groupId>
+		<artifactId>jaxb2-basics</artifactId>
+	</dependency>-->
+	<!--<dependency>
+		<groupId>net.codesup.util</groupId>
+		<artifactId>jaxb2-rich-contract-plugin</artifactId>
+		<version>${jaxb2-rich-contract-plugin.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>jakarta.xml.bind</groupId>
+		<artifactId>jakarta.xml.bind-api</artifactId>
+	</dependency>-->
+<!--	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>${maven-release-plugin.version}</version>
-					<configuration>
-						<autoVersionSubmodules>true</autoVersionSubmodules>
-						<goals>deploy</goals>
-						<preparationGoals>clean install</preparationGoals>
-					</configuration>
-				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-assembly-plugin</artifactId>
@@ -104,7 +170,7 @@
 						<configuration>
 							<schemaDirectory>src/main/resources/navfelles</schemaDirectory>
 							<generateDirectory>${project.build.directory}/generated-sources/</generateDirectory>
-							<strict>false</strict>
+							<strict>true</strict>
 							<plugins>
 								<plugin>
 									<groupId>org.jvnet.jaxb2_commons</groupId>
@@ -133,6 +199,6 @@
 				</executions>
 			</plugin>
 		</plugins>
-	</build>
+	</build>-->
 
 </project>
