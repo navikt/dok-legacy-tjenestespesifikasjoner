@@ -4,27 +4,16 @@
 	<parent>
 		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
 		<groupId>no.nav.dok</groupId>
-		<version>1.0-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<groupId>no.nav.dok.metaforcemal</groupId>
 	<artifactId>brevdata-felles</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>${revision}</version>
 	<name>brevdata-felles</name>
 
-	<!--dokdistsentralprint
-		dokdistspi-2-->
-
 	<properties>
-		<!--<jaxb2-maven-plugin.version>0.15.2</jaxb2-maven-plugin.version>
-		<jaxb2-rich-contract-plugin.version>1.18.0</jaxb2-rich-contract-plugin.version>
-		<maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
-		<jaxb2-basics-annotate.version>1.1.0</jaxb2-basics-annotate.version>-->
-
-		<!--test-->
-
-		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
-		<maven-jaxb2-plugin.version>0.13.2</maven-jaxb2-plugin.version>
+		<maven-jaxb2-plugin.version>0.15.2</maven-jaxb2-plugin.version>
 		<jaxb2-basics.version>0.13.1</jaxb2-basics.version>
 		<jaxb2-basics-annotate.version>1.1.0</jaxb2-basics-annotate.version>
 		<jaxb2-fluent-api.version>3.0</jaxb2-fluent-api.version>
@@ -33,12 +22,12 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
-			<groupId>jakarta.xml.ws</groupId>
-			<artifactId>jakarta.xml.ws-api</artifactId>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
 		</dependency>
 	</dependencies>
-
 
 	<build>
 		<plugins>
@@ -60,7 +49,6 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<generatePackage>no.nav.dok.brevdata.felles.v1</generatePackage>
 							<schemaDirectory>src/main/resources</schemaDirectory>
 							<generateDirectory>${project.basedir}/target</generateDirectory>
 							<strict>false</strict>
@@ -97,108 +85,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-	<!--<dependency>
-		<groupId>org.jvnet.jaxb2_commons</groupId>
-		<artifactId>jaxb2-basics</artifactId>
-	</dependency>-->
-	<!--<dependency>
-		<groupId>net.codesup.util</groupId>
-		<artifactId>jaxb2-rich-contract-plugin</artifactId>
-		<version>${jaxb2-rich-contract-plugin.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>jakarta.xml.bind</groupId>
-		<artifactId>jakarta.xml.bind-api</artifactId>
-	</dependency>-->
-<!--	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${maven-assembly-plugin.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>xsd</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<classifier>xsd</classifier>
-							<includes>
-								<include>navfelles/*.xsd</include>
-							</includes>
-						</configuration>
-					</execution>
-					<execution>
-						<id>jaxb</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<classifier>jaxb</classifier>
-							<includes>
-								<include>no/nav/dok/**</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>${jaxb2-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>generate-jaxb-xsd.navfelles</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<schemaDirectory>src/main/resources/navfelles</schemaDirectory>
-							<generateDirectory>${project.build.directory}/generated-sources/</generateDirectory>
-							<strict>true</strict>
-							<plugins>
-								<plugin>
-									<groupId>org.jvnet.jaxb2_commons</groupId>
-									<artifactId>jaxb2-basics</artifactId>
-								</plugin>
-								<plugin>
-									<groupId>org.jvnet.jaxb2_commons</groupId>
-									<artifactId>jaxb2-basics-annotate</artifactId>
-									<version>${jaxb2-basics-annotate.version}</version>
-								</plugin>
-								<plugin>
-									<groupId>net.codesup.util</groupId>
-									<artifactId>jaxb2-rich-contract-plugin</artifactId>
-									<version>${jaxb2-rich-contract-plugin.version}</version>
-								</plugin>
-							</plugins>
-							<args>
-								<arg>-Xannotate</arg>
-								<arg>-Xequals</arg>
-								<arg>-XhashCode</arg>
-								<arg>-XtoString</arg>
-								<arg>-Xfluent-builder</arg>
-							</args>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>-->
-
 </project>
