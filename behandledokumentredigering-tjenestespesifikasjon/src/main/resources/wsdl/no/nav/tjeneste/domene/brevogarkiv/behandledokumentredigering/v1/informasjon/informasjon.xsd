@@ -1,0 +1,12 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/behandledokumentredigering/v1/informasjon" 
+	xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/behandledokumentredigering/v1/informasjon">
+
+	<xs:simpleType name="DokumentStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DokumentFerdigRedigert"/>
+			<xs:enumeration value="DokumentAvbrutt"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

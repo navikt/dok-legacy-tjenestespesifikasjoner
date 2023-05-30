@@ -10,6 +10,7 @@
 	<modules>
 		<module>metaforce-general-service-tjenestespesifikasjon</module>
 		<module>dok-brevdata-felles</module>
+		<module>behandledokumentredigering-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
