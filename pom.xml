@@ -10,6 +10,7 @@
 	<modules>
 		<module>metaforce-general-service-tjenestespesifikasjon</module>
 		<module>dok-brevdata-felles</module>
+		<module>nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
