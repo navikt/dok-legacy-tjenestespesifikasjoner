@@ -1,40 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
 		<groupId>no.nav.dok</groupId>
 		<version>${revision}</version>
 	</parent>
-
 	<groupId>no.nav.tjenester.brevogarkiv</groupId>
-	<artifactId>behandledokumentredigering-tjenestespesifikasjon</artifactId>
+	<artifactId>dokumentbehandling-tjenestespesifikasjon</artifactId>
 	<version>${revision}</version>
 
 	<properties>
-		<wsdl.directory>src/main/resources/wsdl/no/nav/tjeneste/domene/brevogarkiv/behandledokumentredigering/v1</wsdl.directory>
+		<wsdl.directory>src/main/resources</wsdl.directory>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jvnet.jaxb2_commons</groupId>
-			<artifactId>jaxb2-basics</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>jakarta.jws</groupId>
 			<artifactId>jakarta.jws-api</artifactId>
-			<optional>true</optional>
+			<version>${jakarta.jws-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.xml.ws</groupId>
 			<artifactId>jakarta.xml.ws-api</artifactId>
+			<version>${jakarta.xml.ws-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics</artifactId>
 			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
@@ -71,10 +78,7 @@
 							</defaultOptions>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${wsdl.directory}/behandledokumentredigering.wsdl</wsdl>
-									<bindingFiles>
-										<bindingFile>src/main/resources/bindings.xml</bindingFile>
-									</bindingFiles>
+									<wsdl>${wsdl.directory}/META-INF/wsdl/Dokumentbehandling.wsdl</wsdl>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
@@ -93,7 +97,10 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
