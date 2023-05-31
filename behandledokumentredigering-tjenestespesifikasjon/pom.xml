@@ -13,8 +13,6 @@
 
 	<properties>
 		<wsdl.directory>src/main/resources/wsdl/no/nav/tjeneste/domene/brevogarkiv/behandledokumentredigering/v1</wsdl.directory>
-
-		<jaxb-fluent-api.version>2.1.8</jaxb-fluent-api.version>
 	</properties>
 
 	<dependencies>
