@@ -12,7 +12,6 @@
 	<groupId>no.nav.tjenester.fim</groupId>
 	<artifactId>nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</artifactId>
 	<version>${revision}</version>
-	<name>${project.artifactId}</name>
 
 	<properties>
 		<jaxb-fluent-api.version>2.1.8</jaxb-fluent-api.version>
@@ -23,17 +22,6 @@
 		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics</artifactId>
-			<optional>true</optional>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
