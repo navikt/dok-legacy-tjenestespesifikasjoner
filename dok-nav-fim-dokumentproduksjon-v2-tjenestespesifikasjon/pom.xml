@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>no.nav.tjenester.fim</groupId>
-	<artifactId>nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</artifactId>
+	<artifactId>dok-nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</artifactId>
 	<version>${revision}</version>
 
 	<properties>
