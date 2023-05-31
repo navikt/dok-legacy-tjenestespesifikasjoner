@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
+        <groupId>no.nav.dok</groupId>
+        <version>${revision}</version>
+    </parent>
+
+
+    <groupId>no.nav.meldinger.virksomhet</groupId>
+    <artifactId>nav-virksomhet-dokumentstatusOppdatert-v1-meldingsdefinisjon</artifactId>
+    <version>${revision}</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <configuration>
+                    <schemaDirectory>${project.build.outputDirectory}/xsd/no/nav/melding/virksomhet/dokumentstatusOppdatert/v1/dokumentstatusOppdatert/</schemaDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
