@@ -13,6 +13,7 @@
 		<module>dokumentbehandling-tjenestespesifikasjon</module>
 		<module>behandledokumentredigering-tjenestespesifikasjon</module>
 		<module>dok-nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</module>
+		<module>dok-nav-dokumentproduksjon-v3-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
