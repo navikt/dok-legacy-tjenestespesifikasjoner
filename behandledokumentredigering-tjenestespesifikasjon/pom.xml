@@ -1,48 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
-		<groupId>no.nav.dok</groupId>
 		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
+		<groupId>no.nav.dok</groupId>
 		<version>${revision}</version>
 	</parent>
-	<groupId>no.nav.tjenester.metaforce</groupId>
-	<artifactId>metaforce-general-service-tjenestespesifikasjon</artifactId>
+
+	<groupId>no.nav.tjenester.brevogarkiv</groupId>
+	<artifactId>behandledokumentredigering-tjenestespesifikasjon</artifactId>
 	<version>${revision}</version>
-	<name>${project.artifactId}</name>
-	<description>
-		Pakking av MetaForce grensesnitt sammen med generert JAXB javakode.
-		Selve wsdl'en forvaltes av MetaForce leverandør og ligger her kun som en kopi.
-		Versjonsnummeret til dette prosjektet skal tilsvare MetaForce versjonen wsdl'en stammer fra.
-	</description>
 
 	<properties>
-		<wsdl.directory>src/main/resources</wsdl.directory>
-		<joda-time.version>2.12.5</joda-time.version>
+		<wsdl.directory>src/main/resources/wsdl/no/nav/tjeneste/domene/brevogarkiv/behandledokumentredigering/v1</wsdl.directory>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics</artifactId>
-			<optional>true</optional>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.jws</groupId>
@@ -59,7 +35,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
@@ -96,9 +71,9 @@
 							</defaultOptions>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${wsdl.directory}/metaforce.wsdl</wsdl>
+									<wsdl>${wsdl.directory}/behandledokumentredigering.wsdl</wsdl>
 									<bindingFiles>
-										<bindingFile>${wsdl.directory}/bindings.xml</bindingFile>
+										<bindingFile>src/main/resources/bindings.xml</bindingFile>
 									</bindingFiles>
 								</wsdlOption>
 							</wsdlOptions>
@@ -117,10 +92,6 @@
 						<version>${jaxb2-basics.version}</version>
 					</dependency>
 				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-toolchains-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
