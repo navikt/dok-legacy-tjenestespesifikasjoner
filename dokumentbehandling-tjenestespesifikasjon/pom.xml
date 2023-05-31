@@ -9,7 +9,6 @@
 	<groupId>no.nav.tjenester.brevogarkiv</groupId>
 	<artifactId>dokumentbehandling-tjenestespesifikasjon</artifactId>
 	<version>${revision}</version>
-	<name>${project.artifactId}</name>
 
 	<properties>
 		<wsdl.directory>src/main/resources</wsdl.directory>
