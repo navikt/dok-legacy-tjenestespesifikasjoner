@@ -12,6 +12,7 @@
 		<module>dok-brevdata-felles</module>
 		<module>dokumentbehandling-tjenestespesifikasjon</module>
 		<module>behandledokumentredigering-tjenestespesifikasjon</module>
+		<module>nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>

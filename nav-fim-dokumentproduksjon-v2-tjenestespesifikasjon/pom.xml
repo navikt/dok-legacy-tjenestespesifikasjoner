@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -6,42 +8,20 @@
 		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
 		<version>${revision}</version>
 	</parent>
-	<groupId>no.nav.tjenester.metaforce</groupId>
-	<artifactId>metaforce-general-service-tjenestespesifikasjon</artifactId>
+
+	<groupId>no.nav.tjenester.fim</groupId>
+	<artifactId>nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</artifactId>
 	<version>${revision}</version>
-	<name>${project.artifactId}</name>
-	<description>
-		Pakking av MetaForce grensesnitt sammen med generert JAXB javakode.
-		Selve wsdl'en forvaltes av MetaForce leverandør og ligger her kun som en kopi.
-		Versjonsnummeret til dette prosjektet skal tilsvare MetaForce versjonen wsdl'en stammer fra.
-	</description>
 
 	<properties>
-		<wsdl.directory>src/main/resources</wsdl.directory>
-		<joda-time.version>2.12.5</joda-time.version>
+		<jaxb-fluent-api.version>2.1.8</jaxb-fluent-api.version>
+		<wsdl.directory>src/main/resources/wsdl/no/nav/tjeneste/virksomhet/dokumentproduksjon/v2</wsdl.directory>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics</artifactId>
-			<optional>true</optional>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -96,9 +76,15 @@
 							</defaultOptions>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${wsdl.directory}/metaforce.wsdl</wsdl>
+									<wsdl>${wsdl.directory}/Binding.wsdl</wsdl>
+									<wsdlLocation>
+										classpath:wsdl/no/nav/tjeneste/virksomhet/dokumentproduksjon/v2/Binding.wsdl
+									</wsdlLocation>
+									<serviceName>Dokumentproduksjon_v2</serviceName>
 									<bindingFiles>
-										<bindingFile>${wsdl.directory}/bindings.xml</bindingFile>
+										<bindingFile>${basedir}/src/main/resources/Binding.xjb</bindingFile>
+										<bindingFile>${basedir}/src/main/resources/dokumentproduksjon.xjb</bindingFile>
+										<bindingFile>${basedir}/src/main/resources/meldinger.xjb</bindingFile>
 									</bindingFiles>
 								</wsdlOption>
 							</wsdlOptions>
@@ -124,5 +110,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

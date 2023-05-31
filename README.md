@@ -5,3 +5,4 @@ SOAP grensesnitt pakker for Team Dokumentløsninger
 - `behandledokumentredigering-tjenestespesifikasjon` -  WSDL til JAXB objekter for `dokprod`
 - `dokumentbehandling-tjenestespesifikasjon` -  WSDL til JAXB objekter for `brevserver-nais`
 - `dok-brevdata-felles` -  XSD til JAXB objekter for `regoppslag`
+- `nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon` - WSDL til JAXB objekter for `dokprod`
