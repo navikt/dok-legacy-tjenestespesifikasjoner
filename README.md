@@ -7,4 +7,4 @@ SOAP grensesnitt pakker for Team Dokumentløsninger
 - `dok-brevdata-felles` - XSD til JAXB objekter for `regoppslag`
 - `nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon` - WSDL til JAXB objekter for `dokprod`
 - `dok-nav-dokumentproduksjon-v3-tjenestespesifikasjon` - WSDL til JAXB objekter for `dokprod`
-- `nav-virksomhet-dokumentstatusOppdatert-v1-meldingsdefinisjon` - XSD til JAXB objekter for `dokprod`
+- `nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon` - XSD til JAXB objekter for `dokprod`

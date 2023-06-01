@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>no.nav.meldinger.virksomhet</groupId>
-    <artifactId>nav-virksomhet-dokumentstatusOppdatert-v1-meldingsdefinisjon</artifactId>
+    <artifactId>nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon</artifactId>
     <version>${revision}</version>
 
     <properties>
