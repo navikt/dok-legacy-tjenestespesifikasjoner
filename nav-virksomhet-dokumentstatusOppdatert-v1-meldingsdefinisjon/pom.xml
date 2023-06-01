@@ -11,6 +11,10 @@
     <artifactId>nav-virksomhet-dokumentstatusOppdatert-v1-meldingsdefinisjon</artifactId>
     <version>${revision}</version>
 
+    <properties>
+        <maven-jaxb2-plugin.version>0.15.2</maven-jaxb2-plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -23,6 +27,7 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>${maven-jaxb2-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>generate-jaxb-dokumenstatusoppdatert</id>
