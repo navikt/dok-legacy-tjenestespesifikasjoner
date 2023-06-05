@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://loggmottak.brevogarkiv.tjenester.nav.no/" xmlns:tns="http://loggmottak.brevogarkiv.tjenester.nav.no/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="logg" type="tns:logg"/>
+
+  <xs:element name="loggResponse" type="tns:loggResponse"/>
+
+  <xs:complexType name="logg">
+    <xs:sequence>
+      <xs:element name="request" type="tns:LoggRequest" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LoggRequest">
+    <xs:sequence>
+      <xs:element name="brevklientArguments" type="tns:BrevklientArguments"/>
+      <xs:element name="severity" type="tns:Severity"/>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element name="exception" type="tns:WrappedException"/>
+      <xs:element name="brukerId" type="xs:string"/>
+      <xs:element name="klientVersion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BrevklientArguments">
+    <xs:sequence>
+      <xs:element name="brevreferanse" type="xs:string"/>
+      <xs:element name="systemId" type="xs:string"/>
+      <xs:element name="filename" type="xs:string"/>
+      <xs:element name="infotrygdId" type="xs:string"/>
+      <xs:element name="server" type="xs:string"/>
+      <xs:element name="kvitteringskoe" type="xs:string"/>
+      <xs:element name="malpakke" type="xs:string"/>
+      <xs:element name="readOnly" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WrappedException">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element name="stacktrace" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loggResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:simpleType name="Severity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INFO"/>
+      <xs:enumeration value="WARNING"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="FATAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
