@@ -12,7 +12,6 @@
 
 	<properties>
 		<wsdl.directory>src/main/resources</wsdl.directory>
-		<joda-time.version>2.12.5</joda-time.version>
 	</properties>
 
 	<dependencies>
@@ -109,5 +108,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
