@@ -83,7 +83,7 @@
 							</defaultOptions>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${wsdl.directory}/Loggmottak.wsdl</wsdl>
+									<wsdl>${wsdl.directory}/META-INF/wsdl/Loggmottak.wsdl</wsdl>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
