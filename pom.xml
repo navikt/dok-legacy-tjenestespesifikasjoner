@@ -15,6 +15,7 @@
 		<module>dok-nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</module>
 		<module>dok-nav-dokumentproduksjon-v3-tjenestespesifikasjon</module>
 		<module>nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon</module>
+		<module>loggmottak-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
