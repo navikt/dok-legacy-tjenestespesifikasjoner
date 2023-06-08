@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
 		<groupId>no.nav.dok</groupId>
@@ -13,12 +14,8 @@
 	<name>dok-brevdata-felles</name>
 
 	<properties>
-		<maven-jaxb2-plugin.version>0.15.2</maven-jaxb2-plugin.version>
-		<jaxb2-basics.version>0.13.1</jaxb2-basics.version>
-		<jaxb2-basics-annotate.version>1.1.0</jaxb2-basics-annotate.version>
-		<jaxb2-fluent-api.version>3.0</jaxb2-fluent-api.version>
-		<jaxb-xew-plugin.version>2.1</jaxb-xew-plugin.version>
-		<jaxb-runtime.version>2.3.6</jaxb-runtime.version>
+		<jaxb40-maven-plugin.version>0.16.1</jaxb40-maven-plugin.version>
+		<jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
 	</properties>
 
 	<dependencies>
@@ -26,60 +23,21 @@
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>${jakarta.xml.bind-api.version}</version>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>${maven-jaxb2-plugin.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.glassfish.jaxb</groupId>
-						<artifactId>jaxb-runtime</artifactId>
-						<version>${jaxb-runtime.version}</version>
-					</dependency>
-				</dependencies>
+				<groupId>com.helger.maven</groupId>
+				<artifactId>jaxb40-maven-plugin</artifactId>
+				<version>${jaxb40-maven-plugin.version}</version>
 				<executions>
 					<execution>
-						<id>generate-jaxb-brevdata-felles</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
-						<configuration>
-							<schemaDirectory>src/main/resources</schemaDirectory>
-							<generateDirectory>${project.basedir}/target</generateDirectory>
-							<strict>false</strict>
-							<plugins>
-								<plugin>
-									<groupId>org.jvnet.jaxb2_commons</groupId>
-									<artifactId>jaxb2-basics</artifactId>
-									<version>${jaxb2-basics.version}</version>
-								</plugin>
-								<plugin>
-									<groupId>org.jvnet.jaxb2_commons</groupId>
-									<artifactId>jaxb2-basics-annotate</artifactId>
-									<version>${jaxb2-basics-annotate.version}</version>
-								</plugin>
-								<plugin>
-									<groupId>org.jvnet.jaxb2_commons</groupId>
-									<artifactId>jaxb2-fluent-api</artifactId>
-									<version>${jaxb2-fluent-api.version}</version>
-								</plugin>
-								<plugin>
-									<groupId>com.github.jaxb-xew-plugin</groupId>
-									<artifactId>jaxb-xew-plugin</artifactId>
-									<version>${jaxb-xew-plugin.version}</version>
-								</plugin>
-							</plugins>
-							<args>
-								<arg>-Xxew</arg>
-								<arg>-Xannotate</arg>
-								<arg>-Xfluent-api</arg>
-							</args>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
