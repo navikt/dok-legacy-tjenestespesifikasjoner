@@ -17,6 +17,7 @@
 		<module>nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon</module>
 		<module>loggmottak-tjenestespesifikasjon</module>
 		<module>nav-journal-tjenestespesifikasjon</module>
+		<module>nav-journalbehandling-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
