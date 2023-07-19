@@ -9,6 +9,7 @@
 
 	<modules>
 		<module>metaforce-general-service-tjenestespesifikasjon</module>
+		<module>metaforce-metawrite-service-tjenestespesifikasjon</module>
 		<module>dok-brevdata-felles</module>
 		<module>dokumentbehandling-tjenestespesifikasjon</module>
 		<module>behandledokumentredigering-tjenestespesifikasjon</module>

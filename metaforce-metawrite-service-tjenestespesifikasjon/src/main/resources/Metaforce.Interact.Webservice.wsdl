@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://metaforce.se/services/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://metaforce.se/services/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://metaforce.se/services/Imports">
+      <xsd:import schemaLocation="Metaforce.Interact.Webservice.xsd" namespace="http://metaforce.se/services/"/>
+      <xsd:import schemaLocation="Metaforce.Interact.Webservice_1_2.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      <xsd:import schemaLocation="Metaforce.Interact.Webservice_1.xsd" namespace="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      <xsd:import schemaLocation="Metaforce.Interact.Webservice_1_2_3.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+      <xsd:import schemaLocation="Metaforce.Interact.Webservice_1_2_3_4.xsd" namespace="http://schemas.datacontract.org/2004/07/Metaforce.Interact.Interfaces"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IInteractConfigurationService_GetConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfiguration"/>
+  </wsdl:message>
+  <wsdl:message name="IInteractConfigurationService_GetConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigurationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IInteractConfigurationService_GetCustomizedConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomizedConfiguration"/>
+  </wsdl:message>
+  <wsdl:message name="IInteractConfigurationService_GetCustomizedConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomizedConfigurationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_CreateDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_CreateDocument"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_CreateDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_CreateDocumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetProcessList_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetProcessList"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetProcessList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetProcessListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetDocTexts_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetDocTexts"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetDocTexts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetDocTextsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetForm_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetForm"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetForm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetFormResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_ExecRule_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_ExecRule"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_ExecRule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_ExecRuleResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_CheckInput_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_CheckInput"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_CheckInput_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_CheckInputResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PrintXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PrintXML"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PrintXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PrintXMLResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_LoadInArchive_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_LoadInArchive"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_LoadInArchive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_LoadInArchiveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_LoadInArchiveXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_LoadInArchiveXML"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_LoadInArchiveXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_LoadInArchiveXMLResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetInfoAndFonts_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetInfoAndFonts"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetInfoAndFonts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetInfoAndFontsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_OpenDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_OpenDocument"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_OpenDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_OpenDocumentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetAttachments_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetAttachments"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetAttachments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetAttachmentsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_InitializeAndLeaseInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_InitializeAndLeaseInstance"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_InitializeAndLeaseInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_InitializeAndLeaseInstanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_LeaseInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_LeaseInstance"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_LeaseInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_LeaseInstanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetInstance"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetInstanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetLeasedInstanceInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetLeasedInstanceInfo"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetLeasedInstanceInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetLeasedInstanceInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetInstanceList_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetInstanceList"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetInstanceList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetInstanceListResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_SaveInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_SaveInstance"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_SaveInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_SaveInstanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_FinalizeInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_FinalizeInstance"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_FinalizeInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_FinalizeInstanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PostUpdateProcedureExecute_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PostUpdateProcedureExecute"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PostUpdateProcedureExecute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PostUpdateProcedureExecuteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PreUpdateProcedureExecute_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PreUpdateProcedureExecute"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PreUpdateProcedureExecute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PreUpdateProcedureExecuteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetOnlineDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetOnlineDocuments"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetOnlineDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetOnlineDocumentsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetTextSearchConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetTextSearchConfig"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetTextSearchConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetTextSearchConfigResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_SearchTexts_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_SearchTexts"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_SearchTexts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_SearchTextsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetExtDocSearchConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetExtDocSearchConfig"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetExtDocSearchConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetExtDocSearchConfigResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_SearchExtDocs_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_SearchExtDocs"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_SearchExtDocs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_SearchExtDocsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetExtDocAXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetExtDocAXML"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetExtDocAXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetExtDocAXMLResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetExtDoc_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetExtDoc"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_GetExtDoc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_GetExtDocResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_ReleaseLeasedInstance_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_ReleaseLeasedInstance"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_ReleaseLeasedInstance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_ReleaseLeasedInstanceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PrintXMLWithAttachments_InputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PrintXMLWithAttachments"/>
+  </wsdl:message>
+  <wsdl:message name="IMetaWriteService_MW_PrintXMLWithAttachments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MW_PrintXMLWithAttachmentsResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IInteractConfigurationService">
+    <wsdl:operation name="GetConfiguration">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IInteractConfigurationService/GetConfiguration" message="tns:IInteractConfigurationService_GetConfiguration_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IInteractConfigurationService/GetConfigurationResponse" message="tns:IInteractConfigurationService_GetConfiguration_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomizedConfiguration">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IInteractConfigurationService/GetCustomizedConfiguration" message="tns:IInteractConfigurationService_GetCustomizedConfiguration_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IInteractConfigurationService/GetCustomizedConfigurationResponse" message="tns:IInteractConfigurationService_GetCustomizedConfiguration_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMetaWriteService">
+    <wsdl:operation name="MW_CreateDocument">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_CreateDocument" message="tns:IMetaWriteService_MW_CreateDocument_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_CreateDocumentResponse" message="tns:IMetaWriteService_MW_CreateDocument_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetProcessList">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetProcessList" message="tns:IMetaWriteService_MW_GetProcessList_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetProcessListResponse" message="tns:IMetaWriteService_MW_GetProcessList_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetDocTexts">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetDocTexts" message="tns:IMetaWriteService_MW_GetDocTexts_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetDocTextsResponse" message="tns:IMetaWriteService_MW_GetDocTexts_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetForm">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetForm" message="tns:IMetaWriteService_MW_GetForm_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetFormResponse" message="tns:IMetaWriteService_MW_GetForm_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_ExecRule">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_ExecRule" message="tns:IMetaWriteService_MW_ExecRule_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_ExecRuleResponse" message="tns:IMetaWriteService_MW_ExecRule_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_CheckInput">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_CheckInput" message="tns:IMetaWriteService_MW_CheckInput_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_CheckInputResponse" message="tns:IMetaWriteService_MW_CheckInput_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_PrintXML">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PrintXML" message="tns:IMetaWriteService_MW_PrintXML_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PrintXMLResponse" message="tns:IMetaWriteService_MW_PrintXML_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_LoadInArchive">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_LoadInArchive" message="tns:IMetaWriteService_MW_LoadInArchive_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_LoadInArchiveResponse" message="tns:IMetaWriteService_MW_LoadInArchive_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_LoadInArchiveXML">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_LoadInArchiveXML" message="tns:IMetaWriteService_MW_LoadInArchiveXML_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_LoadInArchiveXMLResponse" message="tns:IMetaWriteService_MW_LoadInArchiveXML_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetInfoAndFonts">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetInfoAndFonts" message="tns:IMetaWriteService_MW_GetInfoAndFonts_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetInfoAndFontsResponse" message="tns:IMetaWriteService_MW_GetInfoAndFonts_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_OpenDocument">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_OpenDocument" message="tns:IMetaWriteService_MW_OpenDocument_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_OpenDocumentResponse" message="tns:IMetaWriteService_MW_OpenDocument_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetAttachments">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetAttachments" message="tns:IMetaWriteService_MW_GetAttachments_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetAttachmentsResponse" message="tns:IMetaWriteService_MW_GetAttachments_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_InitializeAndLeaseInstance">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_InitializeAndLeaseInstance" message="tns:IMetaWriteService_MW_InitializeAndLeaseInstance_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_InitializeAndLeaseInstanceResponse" message="tns:IMetaWriteService_MW_InitializeAndLeaseInstance_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_LeaseInstance">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_LeaseInstance" message="tns:IMetaWriteService_MW_LeaseInstance_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_LeaseInstanceResponse" message="tns:IMetaWriteService_MW_LeaseInstance_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetInstance">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetInstance" message="tns:IMetaWriteService_MW_GetInstance_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetInstanceResponse" message="tns:IMetaWriteService_MW_GetInstance_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetLeasedInstanceInfo">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetLeasedInstanceInfo" message="tns:IMetaWriteService_MW_GetLeasedInstanceInfo_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetLeasedInstanceInfoResponse" message="tns:IMetaWriteService_MW_GetLeasedInstanceInfo_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetInstanceList">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetInstanceList" message="tns:IMetaWriteService_MW_GetInstanceList_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetInstanceListResponse" message="tns:IMetaWriteService_MW_GetInstanceList_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_SaveInstance">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_SaveInstance" message="tns:IMetaWriteService_MW_SaveInstance_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_SaveInstanceResponse" message="tns:IMetaWriteService_MW_SaveInstance_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_FinalizeInstance">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_FinalizeInstance" message="tns:IMetaWriteService_MW_FinalizeInstance_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_FinalizeInstanceResponse" message="tns:IMetaWriteService_MW_FinalizeInstance_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_PostUpdateProcedureExecute">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PostUpdateProcedureExecute" message="tns:IMetaWriteService_MW_PostUpdateProcedureExecute_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PostUpdateProcedureExecuteResponse" message="tns:IMetaWriteService_MW_PostUpdateProcedureExecute_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_PreUpdateProcedureExecute">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PreUpdateProcedureExecute" message="tns:IMetaWriteService_MW_PreUpdateProcedureExecute_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PreUpdateProcedureExecuteResponse" message="tns:IMetaWriteService_MW_PreUpdateProcedureExecute_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetOnlineDocuments">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetOnlineDocuments" message="tns:IMetaWriteService_MW_GetOnlineDocuments_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetOnlineDocumentsResponse" message="tns:IMetaWriteService_MW_GetOnlineDocuments_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetTextSearchConfig">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetTextSearchConfig" message="tns:IMetaWriteService_MW_GetTextSearchConfig_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetTextSearchConfigResponse" message="tns:IMetaWriteService_MW_GetTextSearchConfig_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_SearchTexts">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_SearchTexts" message="tns:IMetaWriteService_MW_SearchTexts_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_SearchTextsResponse" message="tns:IMetaWriteService_MW_SearchTexts_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetExtDocSearchConfig">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetExtDocSearchConfig" message="tns:IMetaWriteService_MW_GetExtDocSearchConfig_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetExtDocSearchConfigResponse" message="tns:IMetaWriteService_MW_GetExtDocSearchConfig_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_SearchExtDocs">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_SearchExtDocs" message="tns:IMetaWriteService_MW_SearchExtDocs_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_SearchExtDocsResponse" message="tns:IMetaWriteService_MW_SearchExtDocs_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetExtDocAXML">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetExtDocAXML" message="tns:IMetaWriteService_MW_GetExtDocAXML_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetExtDocAXMLResponse" message="tns:IMetaWriteService_MW_GetExtDocAXML_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_GetExtDoc">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetExtDoc" message="tns:IMetaWriteService_MW_GetExtDoc_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_GetExtDocResponse" message="tns:IMetaWriteService_MW_GetExtDoc_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_ReleaseLeasedInstance">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_ReleaseLeasedInstance" message="tns:IMetaWriteService_MW_ReleaseLeasedInstance_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_ReleaseLeasedInstanceResponse" message="tns:IMetaWriteService_MW_ReleaseLeasedInstance_OutputMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="MW_PrintXMLWithAttachments">
+      <wsdl:input wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PrintXMLWithAttachments" message="tns:IMetaWriteService_MW_PrintXMLWithAttachments_InputMessage"/>
+      <wsdl:output wsaw:Action="http://metaforce.se/services/IMetaWriteService/MW_PrintXMLWithAttachmentsResponse" message="tns:IMetaWriteService_MW_PrintXMLWithAttachments_OutputMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

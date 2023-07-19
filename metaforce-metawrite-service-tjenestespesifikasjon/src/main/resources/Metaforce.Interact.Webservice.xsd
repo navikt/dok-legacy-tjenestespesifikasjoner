@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://metaforce.se/services/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://metaforce.se/services/">
+  <xs:import schemaLocation="Metaforce.Interact.Webservice_1.xsd" namespace="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+  <xs:import schemaLocation="Metaforce.Interact.Webservice_1_2.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  <xs:import schemaLocation="Metaforce.Interact.Webservice_1_2_3.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+  <xs:import schemaLocation="Metaforce.Interact.Webservice_1_2_3_4.xsd" namespace="http://schemas.datacontract.org/2004/07/Metaforce.Interact.Interfaces"/>
+  <xs:element name="GetConfiguration">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetConfigurationResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomizedConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientLang" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="configSuffix" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCustomizedConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCustomizedConfigurationResult" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_CreateDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metafile" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="textRows" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="attachments" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_CreateDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_CreateDocumentResult" nillable="true" type="q1:DocumentReturn" xmlns:q1="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetProcessList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metafile" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetProcessListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetProcessListResult" nillable="true" type="q2:ProcListReturn" xmlns:q2="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetDocTexts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFile" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q3:guid" xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetDocTextsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetDocTextsResult" nillable="true" type="q4:DocTextsReturn" xmlns:q4="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFile" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="form" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q5:guid" xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetFormResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetFormResult" nillable="true" type="q6:FormReturn" xmlns:q6="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_ExecRule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFile" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="ruleName" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q7:guid" xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_ExecRuleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_ExecRuleResult" nillable="true" type="q8:ExecRuleReturn" xmlns:q8="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_CheckInput">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFile" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="textRows" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="FormHeader" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="Width" type="xs:int"/>
+        <xs:element minOccurs="0" name="numberOfCols" type="xs:int"/>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q9:guid" xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_CheckInputResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_CheckInputResult" nillable="true" type="q10:CheckInputReturn" xmlns:q10="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PrintXML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="docXML" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PrintXMLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_PrintXMLResult" nillable="true" type="q11:DocumentReturn" xmlns:q11="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_LoadInArchive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFile" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="document" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="textRows" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="attachments" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q12:guid" xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_LoadInArchiveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_LoadInArchiveResult" nillable="true" type="q13:UpdateDocReturn" xmlns:q13="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_LoadInArchiveXML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="docXML" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="attachments" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q14:guid" xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_LoadInArchiveXMLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_LoadInArchiveXMLResult" nillable="true" type="q15:UpdateDocReturn" xmlns:q15="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetInfoAndFonts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetInfoAndFontsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetInfoAndFontsResult" nillable="true" type="q16:MetaEngineInfoReturn" xmlns:q16="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_OpenDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="row" nillable="true" type="q17:Row" xmlns:q17="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="folder" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_OpenDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_OpenDocumentResult" nillable="true" type="q18:DocumentReturn" xmlns:q18="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetAttachments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="top" type="xs:int"/>
+        <xs:element minOccurs="0" name="whereConditions" nillable="true" type="q19:ArrayOfWhereCondition" xmlns:q19="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="sorters" nillable="true" type="q20:ArrayOfSorter" xmlns:q20="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetAttachmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetAttachmentsResult" nillable="true" type="q21:AttachmentListReturn" xmlns:q21="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_InitializeAndLeaseInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parameters" nillable="true" type="q22:ArrayOfKeyValueOfstringstring" xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        <xs:element minOccurs="0" name="xData" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_InitializeAndLeaseInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_InitializeAndLeaseInstanceResult" nillable="true" type="q23:InitInstanceReturn" xmlns:q23="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_LeaseInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_LeaseInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_LeaseInstanceResult" nillable="true" type="q24:InitInstanceReturn" xmlns:q24="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q25:guid" xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetInstanceResult" nillable="true" type="q26:InstanceReturn" xmlns:q26="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetLeasedInstanceInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="leaseId" type="q27:guid" xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetLeasedInstanceInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetLeasedInstanceInfoResult" nillable="true" type="q28:InitInstanceReturn" xmlns:q28="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetInstanceList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="top" type="xs:int"/>
+        <xs:element minOccurs="0" name="whereConditions" nillable="true" type="q29:ArrayOfWhereCondition" xmlns:q29="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="sorters" nillable="true" type="q30:ArrayOfSorter" xmlns:q30="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="dataLevel" type="q31:DataLevel" xmlns:q31="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetInstanceListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetInstanceListResult" nillable="true" type="q32:InstanceListReturn" xmlns:q32="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_SaveInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="status" type="q33:InstanceStatus" xmlns:q33="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="leaseId" type="q34:guid" xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/"/>
+        <xs:element minOccurs="0" name="instanceid" type="xs:int"/>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="logicTimeStamp" type="xs:unsignedLong"/>
+        <xs:element minOccurs="0" name="step" type="xs:int"/>
+        <xs:element minOccurs="0" name="process" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="doc" nillable="true" type="xs:base64Binary"/>
+        <xs:element minOccurs="0" name="texts" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="xResImages" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="xCheckInputForm" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="xAttachments" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="errText" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="jobId" type="xs:int"/>
+        <xs:element minOccurs="0" name="docId" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_SaveInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_SaveInstanceResult" nillable="true" type="q35:InstanceBaseReturn" xmlns:q35="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_FinalizeInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="status" type="q36:InstanceStatus" xmlns:q36="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="leaseId" type="q37:guid" xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/"/>
+        <xs:element minOccurs="0" name="instanceid" type="xs:int"/>
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="errText" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="jobId" type="xs:int"/>
+        <xs:element minOccurs="0" name="docId" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_FinalizeInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_FinalizeInstanceResult" nillable="true" type="q38:InstanceBaseReturn" xmlns:q38="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PostUpdateProcedureExecute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procKey" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="input" nillable="true" type="q39:PostUpdateProcedureInput" xmlns:q39="http://schemas.datacontract.org/2004/07/Metaforce.Interact.Interfaces"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PostUpdateProcedureExecuteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_PostUpdateProcedureExecuteResult" nillable="true" type="q40:PostUpdateProcedureReturn" xmlns:q40="http://schemas.datacontract.org/2004/07/Metaforce.Interact.Interfaces"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PreUpdateProcedureExecute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procKey" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="input" nillable="true" type="q41:PreUpdateProcedureInput" xmlns:q41="http://schemas.datacontract.org/2004/07/Metaforce.Interact.Interfaces"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PreUpdateProcedureExecuteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_PreUpdateProcedureExecuteResult" nillable="true" type="q42:PreUpdateProcedureReturn" xmlns:q42="http://schemas.datacontract.org/2004/07/Metaforce.Interact.Interfaces"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetOnlineDocuments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaLogic" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetOnlineDocumentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetOnlineDocumentsResult" nillable="true" type="q43:BaseReturn" xmlns:q43="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetTextSearchConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientLang" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="xData" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="parameters" nillable="true" type="q44:ArrayOfKeyValueOfstringstring" xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetTextSearchConfigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetTextSearchConfigResult" nillable="true" type="q45:BaseReturn" xmlns:q45="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_SearchTexts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="top" type="xs:int"/>
+        <xs:element minOccurs="0" name="whereConditions" nillable="true" type="q46:ArrayOfWhereCondition" xmlns:q46="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="sorters" nillable="true" type="q47:ArrayOfSorter" xmlns:q47="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_SearchTextsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_SearchTextsResult" nillable="true" type="q48:BaseReturn" xmlns:q48="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetExtDocSearchConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientLang" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="xData" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="parameters" nillable="true" type="q49:ArrayOfKeyValueOfstringstring" xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetExtDocSearchConfigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetExtDocSearchConfigResult" nillable="true" type="q50:BaseReturn" xmlns:q50="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_SearchExtDocs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="top" type="xs:int"/>
+        <xs:element minOccurs="0" name="whereConditions" nillable="true" type="q51:ArrayOfWhereCondition" xmlns:q51="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="sorters" nillable="true" type="q52:ArrayOfSorter" xmlns:q52="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+        <xs:element minOccurs="0" name="xCustomParams" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_SearchExtDocsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_SearchExtDocsResult" nillable="true" type="q53:BaseReturn" xmlns:q53="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetExtDocAXML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xRow" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetExtDocAXMLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetExtDocAXMLResult" nillable="true" type="q54:BaseReturn" xmlns:q54="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetExtDoc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xRow" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_GetExtDocResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_GetExtDocResult" nillable="true" type="q55:DocumentReturn" xmlns:q55="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_ReleaseLeasedInstance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="instanceId" type="xs:int"/>
+        <xs:element minOccurs="0" name="leaseId" type="q56:guid" xmlns:q56="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_ReleaseLeasedInstanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_ReleaseLeasedInstanceResult" nillable="true" type="q57:InstanceReturn" xmlns:q57="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PrintXMLWithAttachments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metaFileKey" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="docXML" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="data" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="printConfiguration" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="0" name="attachments" nillable="true">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any minOccurs="0" processContents="lax"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MW_PrintXMLWithAttachmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MW_PrintXMLWithAttachmentsResult" nillable="true" type="q58:DocumentReturn" xmlns:q58="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
