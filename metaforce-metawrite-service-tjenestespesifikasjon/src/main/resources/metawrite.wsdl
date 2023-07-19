@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="MetaWriteInteractOnlineProcess" targetNamespace="http://metaforce.se/services/"
+				  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+				  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+				  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+				  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+				  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://metaforce.se/services/"
+				  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+				  xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+				  xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+				  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+				  xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+				  xmlns:i0="http://metaforce.se/services/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+				  xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+				  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+	<wsp:Policy wsu:Id="ConfigurationBinding_policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken/>
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256/>
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict/>
+							</wsp:Policy>
+						</sp:Layout>
+					</wsp:Policy>
+				</sp:TransportBinding>
+				<wsaw:UsingAddressing/>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsp:Policy wsu:Id="MetaWriteServiceBinding_policy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsoma:OptimizedMimeSerialization
+						xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+				<sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+					<wsp:Policy>
+						<sp:TransportToken>
+							<wsp:Policy>
+								<sp:HttpsToken/>
+							</wsp:Policy>
+						</sp:TransportToken>
+						<sp:AlgorithmSuite>
+							<wsp:Policy>
+								<sp:Basic256/>
+							</wsp:Policy>
+						</sp:AlgorithmSuite>
+						<sp:Layout>
+							<wsp:Policy>
+								<sp:Strict/>
+							</wsp:Policy>
+						</sp:Layout>
+					</wsp:Policy>
+				</sp:TransportBinding>
+				<wsaw:UsingAddressing/>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	<wsdl:import namespace="http://metaforce.se/services/" location="Metaforce.Interact.Webservice.wsdl"/>
+	<wsdl:types/>
+	<wsdl:binding name="ConfigurationBinding" type="i0:IInteractConfigurationService">
+		<wsp:PolicyReference URI="#ConfigurationBinding_policy"/>
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="GetConfiguration">
+			<soap12:operation soapAction="http://metaforce.se/services/IInteractConfigurationService/GetConfiguration"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetCustomizedConfiguration">
+			<soap12:operation
+					soapAction="http://metaforce.se/services/IInteractConfigurationService/GetCustomizedConfiguration"
+					style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="MetaWriteServiceBinding" type="i0:IMetaWriteService">
+		<wsp:PolicyReference URI="#MetaWriteServiceBinding_policy"/>
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="MW_CreateDocument">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_CreateDocument"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetProcessList">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetProcessList"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetDocTexts">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetDocTexts"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetForm">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetForm" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_ExecRule">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_ExecRule" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_CheckInput">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_CheckInput"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_PrintXML">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_PrintXML" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_LoadInArchive">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_LoadInArchive"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_LoadInArchiveXML">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_LoadInArchiveXML"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetInfoAndFonts">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetInfoAndFonts"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_OpenDocument">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_OpenDocument"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetAttachments">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetAttachments"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_InitializeAndLeaseInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_InitializeAndLeaseInstance"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_LeaseInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_LeaseInstance"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetInstance"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetLeasedInstanceInfo">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetLeasedInstanceInfo"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetInstanceList">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetInstanceList"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_SaveInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_SaveInstance"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_FinalizeInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_FinalizeInstance"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_PostUpdateProcedureExecute">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_PostUpdateProcedureExecute"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_PreUpdateProcedureExecute">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_PreUpdateProcedureExecute"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetOnlineDocuments">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetOnlineDocuments"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetTextSearchConfig">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetTextSearchConfig"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_SearchTexts">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_SearchTexts"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetExtDocSearchConfig">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetExtDocSearchConfig"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_SearchExtDocs">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_SearchExtDocs"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetExtDocAXML">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetExtDocAXML"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_GetExtDoc">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_GetExtDoc"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_ReleaseLeasedInstance">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_ReleaseLeasedInstance"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MW_PrintXMLWithAttachments">
+			<soap12:operation soapAction="http://metaforce.se/services/IMetaWriteService/MW_PrintXMLWithAttachments"
+							  style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="MetaWriteInteractOnlineProcess">
+		<wsdl:port name="ConfigurationBinding" binding="tns:ConfigurationBinding">
+			<soap12:address
+					location="https://d26isvw070.test.local/metaforce/Metaforce.Interact.MW_Webservice/Metaforce.Interact.Webservice.svc/Ws2007HttpBindingConfigurationService"/>
+			<wsa10:EndpointReference>
+				<wsa10:Address>
+					https://d26isvw070.test.local/metaforce/Metaforce.Interact.MW_Webservice/Metaforce.Interact.Webservice.svc/Ws2007HttpBindingConfigurationService
+				</wsa10:Address>
+			</wsa10:EndpointReference>
+		</wsdl:port>
+		<wsdl:port name="MetaWriteServiceBinding" binding="tns:MetaWriteServiceBinding">
+			<soap12:address
+					location="https://d26isvw070.test.local/metaforce/Metaforce.Interact.MW_Webservice/Metaforce.Interact.Webservice.svc/ws2007HttpBindingMetaWriteService"/>
+			<wsa10:EndpointReference>
+				<wsa10:Address>
+					https://d26isvw070.test.local/metaforce/Metaforce.Interact.MW_Webservice/Metaforce.Interact.Webservice.svc/ws2007HttpBindingMetaWriteService
+				</wsa10:Address>
+			</wsa10:EndpointReference>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

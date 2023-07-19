@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Metaforce.Common.UtilsAndConstants">
+  <xs:import schemaLocation="Metaforce.Interact.Webservice_1_2.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  <xs:import schemaLocation="Metaforce.Interact.Webservice_1_2_3.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+  <xs:complexType name="DocumentReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Document" nillable="true" type="tns:Document"/>
+          <xs:element minOccurs="0" name="ExecutionTime" type="ser:duration"/>
+          <xs:element minOccurs="0" name="ExecutionTimeInternal" type="ser:duration"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DocumentReturn" nillable="true" type="tns:DocumentReturn"/>
+  <xs:complexType name="BaseReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="IsOK" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseReturn" nillable="true" type="tns:BaseReturn"/>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Blob" nillable="true" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="Format" nillable="true" type="tns:DocumentFormat"/>
+      <xs:element minOccurs="0" name="Length" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Document" nillable="true" type="tns:Document"/>
+  <xs:complexType name="DocumentFormat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocFormat" type="tns:Format"/>
+      <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentFormat" nillable="true" type="tns:DocumentFormat"/>
+  <xs:simpleType name="Format">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOTSET"/>
+      <xs:enumeration value="PDF"/>
+      <xs:enumeration value="XML"/>
+      <xs:enumeration value="AFPDS"/>
+      <xs:enumeration value="Postscript"/>
+      <xs:enumeration value="RTF"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Format" nillable="true" type="tns:Format"/>
+  <xs:complexType name="ProcListReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsStoreStateEnabled" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="Steps" nillable="true" type="tns:ArrayOfStep"/>
+          <xs:element minOccurs="0" name="TimeStamp" type="xs:unsignedInt"/>
+          <xs:element minOccurs="0" name="UseWord" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProcListReturn" nillable="true" type="tns:ProcListReturn"/>
+  <xs:complexType name="ArrayOfStep">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Step" nillable="true" type="tns:Step"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStep" nillable="true" type="tns:ArrayOfStep"/>
+  <xs:complexType name="Step">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomCalls" nillable="true" type="tns:ArrayOfCustomCall"/>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Function" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Params" nillable="true" type="tns:ArrayOfParam"/>
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Step" nillable="true" type="tns:Step"/>
+  <xs:complexType name="ArrayOfCustomCall">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomCall" nillable="true" type="tns:CustomCall"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomCall" nillable="true" type="tns:ArrayOfCustomCall"/>
+  <xs:complexType name="CustomCall">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomCallType" type="tns:CustomCallType"/>
+      <xs:element minOccurs="0" name="Params" nillable="true" type="tns:ArrayOfParam"/>
+      <xs:element minOccurs="0" name="ProcKey" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomCall" nillable="true" type="tns:CustomCall"/>
+  <xs:simpleType name="CustomCallType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOTSET"/>
+      <xs:enumeration value="PreUpdate"/>
+      <xs:enumeration value="PostUpdate"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CustomCallType" nillable="true" type="tns:CustomCallType"/>
+  <xs:complexType name="ArrayOfParam">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Param" nillable="true" type="tns:Param"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParam" nillable="true" type="tns:ArrayOfParam"/>
+  <xs:complexType name="Param">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Param" nillable="true" type="tns:Param"/>
+  <xs:complexType name="DocTextsReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrCode" type="tns:InstanceErrorCodes"/>
+          <xs:element minOccurs="0" name="SessionLifeSpan" type="xs:int"/>
+          <xs:element minOccurs="0" name="Texts" nillable="true" type="tns:ArrayOfText"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DocTextsReturn" nillable="true" type="tns:DocTextsReturn"/>
+  <xs:simpleType name="InstanceErrorCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="DataMissing"/>
+      <xs:enumeration value="MetaFileMissing"/>
+      <xs:enumeration value="InstanceLocked"/>
+      <xs:enumeration value="InstanceLeasingClosed"/>
+      <xs:enumeration value="InstanceMissing"/>
+      <xs:enumeration value="InstanceClosed"/>
+      <xs:enumeration value="InstanceLeasingExpired"/>
+      <xs:enumeration value="InstanceInvalid"/>
+      <xs:enumeration value="InstanceLeasedByOtherUser"/>
+      <xs:enumeration value="GeneralError"/>
+      <xs:enumeration value="NoProcessAttachedToDocument"/>
+      <xs:enumeration value="CustomServiceCallError"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InstanceErrorCodes" nillable="true" type="tns:InstanceErrorCodes"/>
+  <xs:complexType name="ArrayOfText">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Text" nillable="true" type="tns:Text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfText" nillable="true" type="tns:ArrayOfText"/>
+  <xs:complexType name="Text">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Counter" type="xs:int"/>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Handle" type="xs:int"/>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Text" nillable="true" type="tns:Text"/>
+  <xs:complexType name="FormReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrCode" type="tns:InstanceErrorCodes"/>
+          <xs:element minOccurs="0" name="Form" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:any minOccurs="0" processContents="lax"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="SessionLifeSpan" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FormReturn" nillable="true" type="tns:FormReturn"/>
+  <xs:complexType name="ExecRuleReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrCode" type="tns:InstanceErrorCodes"/>
+          <xs:element minOccurs="0" name="RuleResult" nillable="true" type="tns:RuleResult"/>
+          <xs:element minOccurs="0" name="SessionLifeSpan" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExecRuleReturn" nillable="true" type="tns:ExecRuleReturn"/>
+  <xs:complexType name="RuleResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="IsOK" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="RetVal" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RuleResult" nillable="true" type="tns:RuleResult"/>
+  <xs:complexType name="CheckInputReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FormReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="hasForm" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CheckInputReturn" nillable="true" type="tns:CheckInputReturn"/>
+  <xs:complexType name="UpdateDocReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocID" type="xs:int"/>
+          <xs:element minOccurs="0" name="ErrCode" type="tns:InstanceErrorCodes"/>
+          <xs:element minOccurs="0" name="JobID" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateDocReturn" nillable="true" type="tns:UpdateDocReturn"/>
+  <xs:complexType name="MetaEngineInfoReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Fonts" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:any minOccurs="0" processContents="lax"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="MetaEngineInfo" nillable="true" type="tns:MetaEngineInfo"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MetaEngineInfoReturn" nillable="true" type="tns:MetaEngineInfoReturn"/>
+  <xs:complexType name="MetaEngineInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ComputerName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="ConfigPath" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Current_MetaLogic" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="DEBUG_MODE" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="DEBUG_PATH" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="EngineVersion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="FontPath" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="MetaConfigPath" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="MetaDir" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="MetaEngineLocation" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="MetaFontPath" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="MetaLogicVersion" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="StartAppFileName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetaEngineInfo" nillable="true" type="tns:MetaEngineInfo"/>
+  <xs:complexType name="Row">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Columns" nillable="true" type="q1:ArrayOfKeyValueOfstringColumnvBNv3oMe" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Row" nillable="true" type="tns:Row"/>
+  <xs:complexType name="Column">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Column" nillable="true" type="tns:Column"/>
+  <xs:complexType name="ArrayOfWhereCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WhereCondition" nillable="true" type="tns:WhereCondition"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWhereCondition" nillable="true" type="tns:ArrayOfWhereCondition"/>
+  <xs:complexType name="WhereCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Chainer" type="tns:Chainer"/>
+      <xs:element minOccurs="0" name="Column" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Comparer" type="tns:Comparer"/>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WhereCondition" nillable="true" type="tns:WhereCondition"/>
+  <xs:simpleType name="Chainer">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOTSET"/>
+      <xs:enumeration value="AND"/>
+      <xs:enumeration value="OR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Chainer" nillable="true" type="tns:Chainer"/>
+  <xs:simpleType name="Comparer">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EQ"/>
+      <xs:enumeration value="LT"/>
+      <xs:enumeration value="LTE"/>
+      <xs:enumeration value="GT"/>
+      <xs:enumeration value="GTE"/>
+      <xs:enumeration value="LIKE"/>
+      <xs:enumeration value="NE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Comparer" nillable="true" type="tns:Comparer"/>
+  <xs:complexType name="ArrayOfSorter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sorter" nillable="true" type="tns:Sorter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSorter" nillable="true" type="tns:ArrayOfSorter"/>
+  <xs:complexType name="Sorter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Column" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="SortOrder" type="tns:SortOrder"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sorter" nillable="true" type="tns:Sorter"/>
+  <xs:simpleType name="SortOrder">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASC"/>
+      <xs:enumeration value="DESC"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortOrder" nillable="true" type="tns:SortOrder"/>
+  <xs:complexType name="AttachmentListReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment"/>
+      <xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="IsOK" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AttachmentListReturn" nillable="true" type="tns:AttachmentListReturn"/>
+  <xs:complexType name="ArrayOfAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachment" nillable="true" type="tns:Attachment"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachment" nillable="true" type="tns:ArrayOfAttachment"/>
+  <xs:complexType name="Attachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AXMLBody" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="AttGroup" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="AttId" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="AttName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="AttType" type="xs:int"/>
+      <xs:element minOccurs="0" name="Data" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="MetaLogic" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="SaveTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attachment" nillable="true" type="tns:Attachment"/>
+  <xs:complexType name="InitInstanceReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InstanceBaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InstanceId" type="xs:int"/>
+          <xs:element minOccurs="0" name="LeaseId" type="ser:guid"/>
+          <xs:element minOccurs="0" name="StartURL" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="UseWord" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InitInstanceReturn" nillable="true" type="tns:InitInstanceReturn"/>
+  <xs:complexType name="InstanceBaseReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrCode" type="tns:InstanceErrorCodes"/>
+      <xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="IsOK" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="SessionLifeSpan" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InstanceBaseReturn" nillable="true" type="tns:InstanceBaseReturn"/>
+  <xs:complexType name="InstanceReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InstanceBaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Instance" nillable="true" type="tns:Instance"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InstanceReturn" nillable="true" type="tns:InstanceReturn"/>
+  <xs:complexType name="Instance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachments" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="CheckInputForm" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Data" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Doc" nillable="true" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="DocId" type="xs:int"/>
+      <xs:element minOccurs="0" name="ErrorText" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Id" type="xs:int"/>
+      <xs:element minOccurs="0" name="JobId" type="xs:int"/>
+      <xs:element minOccurs="0" name="LeaseId" type="ser:guid"/>
+      <xs:element minOccurs="0" name="LeaseStatus" type="xs:int"/>
+      <xs:element minOccurs="0" name="LeasedTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="Letter" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="LogicTimeStamp" type="xs:unsignedLong"/>
+      <xs:element minOccurs="0" name="MetaLogic" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Process" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResImages" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" processContents="lax"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="SaveTime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="Status" type="tns:InstanceStatus"/>
+      <xs:element minOccurs="0" name="Step" type="xs:int"/>
+      <xs:element minOccurs="0" name="Texts" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="UrlParams" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="UseAttachments" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="UseSpellcheck" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="UseStoreState" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="UseWord" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Instance" nillable="true" type="tns:Instance"/>
+  <xs:simpleType name="InstanceStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Initialized"/>
+      <xs:enumeration value="Locked"/>
+      <xs:enumeration value="UserSaved"/>
+      <xs:enumeration value="UserSaveAndContinue"/>
+      <xs:enumeration value="EndWithError"/>
+      <xs:enumeration value="EndApproved"/>
+      <xs:enumeration value="UserCanceled"/>
+      <xs:enumeration value="PendingApproval"/>
+      <xs:enumeration value="ErrorApproval"/>
+      <xs:enumeration value="RevertToSaved"/>
+      <xs:enumeration value="InstanceError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">99</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InstanceStatus" nillable="true" type="tns:InstanceStatus"/>
+  <xs:simpleType name="DataLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="Root"/>
+      <xs:enumeration value="All"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataLevel" nillable="true" type="tns:DataLevel"/>
+  <xs:complexType name="InstanceListReturn">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InstanceBaseReturn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Instances" nillable="true" type="tns:ArrayOfInstance"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InstanceListReturn" nillable="true" type="tns:InstanceListReturn"/>
+  <xs:complexType name="ArrayOfInstance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Instance" nillable="true" type="tns:Instance"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInstance" nillable="true" type="tns:ArrayOfInstance"/>
+</xs:schema>
