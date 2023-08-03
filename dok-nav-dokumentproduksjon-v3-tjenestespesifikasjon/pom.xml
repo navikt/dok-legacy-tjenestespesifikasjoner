@@ -21,11 +21,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jvnet.jaxb2_commons</groupId>
-			<artifactId>jaxb2-basics</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>jakarta.jws</groupId>
 			<artifactId>jakarta.jws-api</artifactId>
 			<optional>true</optional>
@@ -52,8 +47,6 @@
 						<configuration>
 							<defaultOptions>
 								<extraargs>
-									<extraarg>-xjc-Xfluent-api</extraarg>
-									<extraarg>-xjc-Xannotate</extraarg>
 									<extraarg>-client</extraarg>
 								</extraargs>
 							</defaultOptions>
@@ -74,18 +67,6 @@
 						</configuration>
 					</execution>
 				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.jvnet.jaxb2_commons</groupId>
-						<artifactId>jaxb2-basics-annotate</artifactId>
-						<version>${jaxb2-basics-annotate.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.jvnet.jaxb2_commons</groupId>
-						<artifactId>jaxb2-fluent-api</artifactId>
-						<version>${jaxb2-fluent-api.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
