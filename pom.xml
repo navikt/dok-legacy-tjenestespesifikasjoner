@@ -15,6 +15,7 @@
 		<module>behandledokumentredigering-tjenestespesifikasjon</module>
 		<module>dok-nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</module>
 		<module>dok-nav-dokumentproduksjon-v3-tjenestespesifikasjon</module>
+		<module>nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon</module>
 		<module>loggmottak-tjenestespesifikasjon</module>
 		<module>nav-journal-tjenestespesifikasjon</module>
 		<module>nav-journalbehandling-tjenestespesifikasjon</module>
@@ -33,12 +34,11 @@
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jaxb2-basics.version>0.13.1</jaxb2-basics.version>
-		<jaxb-fluent-api.version>2.1.8</jaxb-fluent-api.version>
 		<jakarta.xml.version>4.0.0</jakarta.xml.version>
 		<jakarta.xml.ws-api.version>4.0.0</jakarta.xml.ws-api.version>
-		<jakarta.jws-api.version>2.1.0</jakarta.jws-api.version>
+		<jakarta.jws-api.version>3.0.0</jakarta.jws-api.version>
 		<!-- plugins -->
+		<hisrc-jaxb.version>2.1.0</hisrc-jaxb.version>
 		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
 		<cxf-codegen-plugin.version>4.0.2</cxf-codegen-plugin.version>
 		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
@@ -52,6 +52,16 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.patrodyne.jvnet</groupId>
+				<artifactId>hisrc-basicjaxb-plugins</artifactId>
+				<version>${hisrc-jaxb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.patrodyne.jvnet</groupId>
+				<artifactId>hisrc-hyperjaxb-annox-plugin</artifactId>
+				<version>${hisrc-jaxb.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>jakarta.xml.bind</groupId>
 				<artifactId>jakarta.xml.bind-api</artifactId>

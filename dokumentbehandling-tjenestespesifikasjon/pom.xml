@@ -25,6 +25,11 @@
 			<artifactId>jakarta.xml.ws-api</artifactId>
 			<version>${jakarta.xml.ws-api.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.patrodyne.jvnet</groupId>
+			<artifactId>hisrc-basicjaxb-plugins</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -65,6 +70,13 @@
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.patrodyne.jvnet</groupId>
+						<artifactId>hisrc-basicjaxb-plugins</artifactId>
+						<version>${hisrc-jaxb.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
