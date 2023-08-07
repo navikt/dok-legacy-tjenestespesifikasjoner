@@ -15,6 +15,7 @@
 		<module>behandledokumentredigering-tjenestespesifikasjon</module>
 		<module>dok-nav-fim-dokumentproduksjon-v2-tjenestespesifikasjon</module>
 		<module>dok-nav-dokumentproduksjon-v3-tjenestespesifikasjon</module>
+		<module>nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon</module>
 		<module>loggmottak-tjenestespesifikasjon</module>
 		<module>nav-journal-tjenestespesifikasjon</module>
 		<module>nav-journalbehandling-tjenestespesifikasjon</module>
@@ -39,6 +40,7 @@
 		<!-- plugins -->
 		<hisrc-jaxb.version>2.1.0</hisrc-jaxb.version>
 		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
+		<jaxb40-maven-plugin.version>0.16.1</jaxb40-maven-plugin.version>
 		<cxf-codegen-plugin.version>4.0.2</cxf-codegen-plugin.version>
 		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 		<maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
@@ -86,6 +88,11 @@
 					<groupId>org.apache.cxf</groupId>
 					<artifactId>cxf-codegen-plugin</artifactId>
 					<version>${cxf-codegen-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.helger.maven</groupId>
+					<artifactId>jaxb40-maven-plugin</artifactId>
+					<version>${jaxb40-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
