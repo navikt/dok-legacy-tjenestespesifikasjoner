@@ -34,14 +34,13 @@
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jaxb2-basics.version>0.13.1</jaxb2-basics.version>
-		<jaxb-fluent-api.version>2.1.8</jaxb-fluent-api.version>
-		<jakarta.xml.version>2.3.3</jakarta.xml.version>
-		<jakarta.xml.ws-api.version>2.3.3</jakarta.xml.ws-api.version>
-		<jakarta.jws-api.version>2.1.0</jakarta.jws-api.version>
+		<jakarta.xml.version>3.0.1</jakarta.xml.version>
+		<jakarta.xml.ws-api.version>3.0.1</jakarta.xml.ws-api.version>
 		<!-- plugins -->
+		<hisrc-jaxb.version>2.1.0</hisrc-jaxb.version>
 		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
-		<cxf-codegen-plugin.version>3.5.5</cxf-codegen-plugin.version>
+		<jaxb40-maven-plugin.version>0.16.1</jaxb40-maven-plugin.version>
+		<cxf-codegen-plugin.version>4.0.2</cxf-codegen-plugin.version>
 		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 		<maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
 		<maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
@@ -54,31 +53,14 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.jvnet.jaxb2_commons</groupId>
-				<artifactId>jaxb2-basics</artifactId>
-				<version>${jaxb2-basics.version}</version>
-				<optional>true</optional>
-				<exclusions>
-					<exclusion>
-						<groupId>commons-logging</groupId>
-						<artifactId>commons-logging</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.jvnet.jaxb2_commons</groupId>
-				<artifactId>jaxb2-basics-runtime</artifactId>
-				<version>${jaxb2-basics.version}</version>
+				<groupId>org.patrodyne.jvnet</groupId>
+				<artifactId>hisrc-hyperjaxb-annox-plugin</artifactId>
+				<version>${hisrc-jaxb.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>jakarta.xml.bind</groupId>
 				<artifactId>jakarta.xml.bind-api</artifactId>
 				<version>${jakarta.xml.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>jakarta.jws</groupId>
-				<artifactId>jakarta.jws-api</artifactId>
-				<version>${jakarta.jws-api.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>jakarta.xml.ws</groupId>
@@ -95,6 +77,11 @@
 					<groupId>org.apache.cxf</groupId>
 					<artifactId>cxf-codegen-plugin</artifactId>
 					<version>${cxf-codegen-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>com.helger.maven</groupId>
+					<artifactId>jaxb40-maven-plugin</artifactId>
+					<version>${jaxb40-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>

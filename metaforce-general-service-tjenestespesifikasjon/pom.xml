@@ -29,27 +29,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.jvnet.jaxb2_commons</groupId>
-			<artifactId>jaxb2-basics</artifactId>
-			<optional>true</optional>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.jws</groupId>
-			<artifactId>jakarta.jws-api</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>jakarta.xml.ws</groupId>
 			<artifactId>jakarta.xml.ws-api</artifactId>
 			<optional>true</optional>
@@ -86,14 +65,6 @@
 							<goal>wsdl2java</goal>
 						</goals>
 						<configuration>
-							<defaultOptions>
-								<extraargs>
-									<extraarg>-xjc-Xfluent-api</extraarg>
-									<extraarg>-xjc-XhashCode</extraarg>
-									<extraarg>-xjc-Xequals</extraarg>
-									<extraarg>-xjc-XtoString</extraarg>
-								</extraargs>
-							</defaultOptions>
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>${wsdl.directory}/metaforce.wsdl</wsdl>
@@ -105,18 +76,6 @@
 						</configuration>
 					</execution>
 				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>net.java.dev.jaxb2-commons</groupId>
-						<artifactId>jaxb-fluent-api</artifactId>
-						<version>${jaxb-fluent-api.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.jvnet.jaxb2_commons</groupId>
-						<artifactId>jaxb2-basics</artifactId>
-						<version>${jaxb2-basics.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

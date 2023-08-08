@@ -1,4 +1,7 @@
-<jaxws:bindings xmlns:jaxws="http://java.sun.com/xml/ns/jaxws" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<jaxws:bindings xmlns:jaxws="https://jakarta.ee/xml/ns/jaxws"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="https://jakarta.ee/xml/ns/jaxws https://jakarta.ee/xml/ns/jaxws/wsdl_customizationschema_3_0.xsd"
+				version="3.0"
 				xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 				wsdlLocation="./wsdl/no/nav/tjeneste/virksomhet/dokumentproduksjon/v2/Binding.wsdl" >
 	<jaxws:bindings node="wsdl:definitions/wsdl:service[@name='Dokumentproduksjon_v2']">

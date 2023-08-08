@@ -1,6 +1,6 @@
 package no.nav.brevogarkiv.adapters;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import org.joda.time.LocalDate;
 

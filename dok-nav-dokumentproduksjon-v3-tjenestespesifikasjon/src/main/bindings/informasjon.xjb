@@ -1,14 +1,14 @@
 <jaxb:bindings
-		xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-		xmlns:annox="http://annox.dev.java.net"
-		version="2.1"
-		jaxb:extensionBindingPrefixes="xjc annox">
-	<jaxb:bindings schemaLocation="../resources/wsdl/no/nav/tjeneste/virksomhet/dokumentproduksjon/v3/informasjon/informasjon.xsd">
-		<jaxb:bindings node="//xsd:complexType[@name='Dokumentbestillingsinformasjon']/xsd:sequence/xsd:element[@name='utledRegisterInfo']">
-			<annox:annotate target="field">@java.lang.Deprecated</annox:annotate>
-			<annox:annotate target="getter">@java.lang.Deprecated</annox:annotate>
-			<annox:annotate target="setter">@java.lang.Deprecated</annox:annotate>
-		</jaxb:bindings>
-	</jaxb:bindings>
+            xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:annox="http://jvnet.org/basicjaxb/xjc/annox"
+            version="3.0"
+            jaxb:extensionBindingPrefixes="xjc annox">
+    <jaxb:bindings schemaLocation="../resources/wsdl/no/nav/tjeneste/virksomhet/dokumentproduksjon/v3/informasjon/informasjon.xsd">
+        <jaxb:bindings node="//xsd:complexType[@name='Dokumentbestillingsinformasjon']/xsd:sequence/xsd:element[@name='utledRegisterInfo']">
+            <annox:annotate target="field">@java.lang.Deprecated</annox:annotate>
+            <annox:annotate target="getter">@java.lang.Deprecated</annox:annotate>
+            <annox:annotate target="setter">@java.lang.Deprecated</annox:annotate>
+        </jaxb:bindings>
+    </jaxb:bindings>
 </jaxb:bindings>
