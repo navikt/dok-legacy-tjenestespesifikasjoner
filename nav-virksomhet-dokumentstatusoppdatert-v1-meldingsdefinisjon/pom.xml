@@ -11,14 +11,6 @@
     <artifactId>nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon</artifactId>
     <version>${revision}</version>
 
-
-	<dependencies>
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

@@ -15,26 +15,9 @@
 
 	<properties>
 		<wsdl.directory>src/main/resources/wsdl/no/nav/tjeneste/virksomhet/dokumentproduksjon/v3</wsdl.directory>
-		<jaxb2-fluent-api.version>3.0</jaxb2-fluent-api.version>
-		<jaxb2-basics-annotate.version>1.1.0</jaxb2-basics-annotate.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.patrodyne.jvnet</groupId>
-			<artifactId>hisrc-basicjaxb-plugins</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.patrodyne.jvnet</groupId>
-			<artifactId>hisrc-hyperjaxb-annox-plugin</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.jws</groupId>
-			<artifactId>jakarta.jws-api</artifactId>
-			<optional>true</optional>
-		</dependency>
 		<dependency>
 			<groupId>jakarta.xml.ws</groupId>
 			<artifactId>jakarta.xml.ws-api</artifactId>
@@ -79,11 +62,6 @@
 					</execution>
 				</executions>
 				<dependencies>
-					<dependency>
-						<groupId>org.patrodyne.jvnet</groupId>
-						<artifactId>hisrc-basicjaxb-plugins</artifactId>
-						<version>${hisrc-jaxb.version}</version>
-					</dependency>
 					<dependency>
 						<groupId>org.patrodyne.jvnet</groupId>
 						<artifactId>hisrc-hyperjaxb-annox-plugin</artifactId>
