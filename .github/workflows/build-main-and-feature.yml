@@ -6,8 +6,11 @@ on:
       - '**'
 
 jobs:
-  build-main-and-feature-branch:
+  build:
     uses: navikt/dok-workflows/.github/workflows/build-artifact.yml@main
+    permissions:
+      contents: read
+      pull-requests: read
     with:
       java-version: '17'
     secrets: inherit
