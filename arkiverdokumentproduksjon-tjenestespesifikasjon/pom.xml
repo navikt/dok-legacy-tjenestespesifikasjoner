@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>no.nav.dok</groupId>
+		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<groupId>no.nav.tjenester.brevogarkiv</groupId>
+	<artifactId>arkiverdokumentproduksjon-tjenestespesifikasjon</artifactId>
+	<version>${revision}</version>
+
+	<properties>
+		<wsdl.directory>src/main/resources</wsdl.directory>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>jakarta.xml.ws</groupId>
+			<artifactId>jakarta.xml.ws-api</artifactId>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>wsdl2java-generate</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+						<configuration>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/wsdl/arkiverdokumentproduksjon.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-autoNameResolution</extraarg>
+									</extraargs>
+									<wsdlLocation>classpath:wsdl/arkiverdokumentproduksjon.wsdl</wsdlLocation>
+									<bindingFiles>
+										<bindingFile>${basedir}/src/main/resources/bindings/bindings.xml</bindingFile>
+									</bindingFiles>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

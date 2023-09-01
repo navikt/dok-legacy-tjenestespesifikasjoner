@@ -19,7 +19,7 @@
 		<module>loggmottak-tjenestespesifikasjon</module>
 		<module>nav-journal-tjenestespesifikasjon</module>
 		<module>nav-journalbehandling-tjenestespesifikasjon</module>
-		<module>domene-arkiverdokumentproduksjon</module>
+		<module>arkiverdokumentproduksjon-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
