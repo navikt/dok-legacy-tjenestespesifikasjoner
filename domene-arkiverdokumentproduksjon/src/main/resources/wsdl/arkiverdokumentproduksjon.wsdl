@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+		xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/"
+		targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/">
+
+	<wsdl:types>
+		<xsd:schema xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/"
+					xmlns:feil="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/feil"
+					xmlns:meldinger="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/meldinger"
+					targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/">
+
+			<xsd:import
+					namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/feil"
+					schemaLocation="../feil/feil.xsd"/>
+
+			<xsd:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/meldinger"
+						schemaLocation="../meldinger/meldinger.xsd"/>
+
+			<xsd:element name="arkiverVedleggJournalpostIkkeFunnet" type="feil:JournalpostIkkeFunnet"/>
+			<xsd:element name="arkiverVedleggJournalpostIkkeUnderArbeid" type="feil:JournalpostIkkeUnderArbeid"/>
+			<xsd:element name="avbrytJournalpostJournalpostIkkeFunnet" type="feil:JournalpostIkkeFunnet"/>
+			<xsd:element name="avbrytJournalpostAvbrytelseIkkeTillatt" type="feil:AvbrytelseIkkeTillatt"/>
+			<xsd:element name="avbrytJournalpostJournalpostAlleredeAvbrutt" type="feil:JournalpostAlleredeAvbrutt"/>
+			<xsd:element name="avbrytVedleggJournalpostIkkeFunnet" type="feil:JournalpostIkkeFunnet"/>
+			<xsd:element name="avbrytVedleggJournalpostIkkeUnderArbeid" type="feil:JournalpostIkkeUnderArbeid"/>
+			<xsd:element name="avbrytVedleggDokumentIkkeFunnet" type="feil:DokumentIkkeFunnet"/>
+			<xsd:element name="avbrytVedleggDokumentIkkeVedlegg" type="feil:DokumentIkkeVedlegg"/>
+			<xsd:element name="avbrytVedleggDokumentAlleredeAvbrutt" type="feil:DokumentAlleredeAvbrutt"/>
+			<xsd:element name="ferdigstillJournalpostJournalpostIkkeFunnet" type="feil:JournalpostIkkeFunnet"/>
+			<xsd:element name="ferdigstillJournalpostInneholderDokumenterUnderRedigering"
+						 type="feil:InneholderDokumenterUnderRedigering"/>
+			<xsd:element name="ferdigstillJournalpostJournalpostIkkeUnderArbeid"
+						 type="feil:JournalpostIkkeUnderArbeid"/>
+			<xsd:element name="fjernFerdigstiltDokumentJournalpostIkkeFunnet" type="feil:JournalpostIkkeFunnet"/>
+			<xsd:element name="fjernFerdigstiltDokumentJournalpostIkkeUnderArbeid"
+						 type="feil:JournalpostIkkeUnderArbeid"/>
+			<xsd:element name="fjernFerdigstiltDokumentDokumentIkkeFunnet" type="feil:DokumentIkkeFunnet"/>
+			<xsd:element name="fjernFerdigstiltDokumentDokumentAlleredeRedigerbart"
+						 type="feil:DokumentAlleredeRedigerbart"/>
+			<xsd:element name="fjernFerdigstiltDokumentDokumentAlleredeAvbrutt" type="feil:DokumentAlleredeAvbrutt"/>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggJournalpostIkkeFunnet"
+						 type="feil:JournalpostIkkeFunnet"/>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggJournalpostIkkeUnderArbeid"
+						 type="feil:JournalpostIkkeUnderArbeid"/>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggEksterneVedleggIkkeTillatt"
+						 type="feil:EksterneVedleggIkkeTillatt"/>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggJournalpostIkkeFerdigstilt"
+						 type="feil:JournalpostIkkeFerdigstilt"/>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggDokumentIkkeFunnet" type="feil:DokumentIkkeFunnet"/>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggDokumentTillatesIkkeGjenbrukt"
+						 type="feil:DokumentTillatesIkkeGjenbrukt"/>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggUlikeFagomraader" type="feil:UlikeFagomraader"/>
+
+			<xsd:element name="OpprettUtgaaendeJournalpostArkiverDokumentValideringAvVedleggFeilet"
+						 type="feil:ValideringAvVedleggFeilet"/>
+			<xsd:element name="OpprettUtgaaendeJournalpostArkiverDokumentUgyldigInput" type="feil:UgyldigInput"/>
+
+			<xsd:element name="UgyldigInputFault" type="feil:UgyldigInputFault"/>
+			<xsd:element name="FeilStrukturFault" type="feil:FeilStrukturFault"/>
+			<xsd:element name="ObjektIkkeFunnetFault" type="feil:ObjektIkkeFunnetFault"/>
+			<xsd:element name="KanIkkeFerdigstillesFault" type="feil:KanIkkeFerdigstillesFault"/>
+			<xsd:element name="AlleredeFerdigstiltFault" type="feil:AlleredeFerdigstiltFault"/>
+
+			<xsd:element name="opprettJournalpostArkiverDokument">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:opprettJournalpostArkiverDokumentRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="opprettJournalpostArkiverDokumentResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:opprettJournalpostArkiverDokumentResponse"
+									 minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="opprettJournalpostArkiverDokumenter">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:opprettJournalpostArkiverDokumenterRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="opprettJournalpostArkiverDokumenterResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:opprettJournalpostArkiverDokumenterResponse"
+									 minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="opprettUtgaaendeJournalpostArkiverDokument">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:opprettUtgaaendeJournalpostArkiverDokumentRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="opprettUtgaaendeJournalpostArkiverDokumentResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:opprettUtgaaendeJournalpostArkiverDokumentResponse"
+									 minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="opprettJournalpost">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:opprettJournalpostRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="opprettJournalpostResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:opprettJournalpostResponse" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="oppdaterJournalpostArkiverDokument">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:oppdaterJournalpostArkiverDokumentRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="oppdaterJournalpostArkiverDokumentResponse"
+						 type="meldinger:oppdaterJournalpostArkiverDokumentResponse"/>
+
+			<xsd:element name="arkiverVedlegg">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:arkiverVedleggRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="arkiverVedleggResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:arkiverVedleggResponse" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="avbrytJournalpost">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:avbrytJournalpostRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="avbrytJournalpostResponse" type="meldinger:avbrytJournalpostResponse"/>
+
+			<xsd:element name="avbrytVedlegg">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:avbrytVedleggRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="avbrytVedleggResponse" type="meldinger:avbrytVedleggResponse"/>
+
+			<xsd:element name="settDatoSendt">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:settDatoSendtRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="settDatoSendtResponse" type="meldinger:settDatoSendtResponse"/>
+
+			<xsd:element name="fjernFerdigstiltDokument">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:fjernFerdigstiltDokumentRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="fjernFerdigstiltDokumentResponse" type="meldinger:fjernFerdigstiltDokumentResponse"/>
+
+			<xsd:element name="ferdigstillJournalpost">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:ferdigstillJournalpostRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ferdigstillJournalpostResponse" type="meldinger:ferdigstillJournalpostResponse"/>
+
+			<xsd:element name="knyttDokumentTilJournalpostSomVedlegg">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:knyttDokumentTilJournalpostSomVedleggRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="knyttDokumentTilJournalpostSomVedleggResponse"
+						 type="meldinger:knyttDokumentTilJournalpostSomVedleggResponse"/>
+
+			<xsd:element name="settJournalpostAttributter">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:settJournalpostAttributterRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="settJournalpostAttributterResponse" type="meldinger:settJournalpostAttributterResponse"/>
+
+			<xsd:element name="ping" type="meldinger:PingRequest"/>
+			<xsd:element name="pingResponse" type="meldinger:PingResponse"/>
+
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="arkiverVedlegg_journalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet" element="tns:arkiverVedleggJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="arkiverVedlegg_journalpostIkkeUnderArbeid">
+		<wsdl:part name="journalpostIkkeUnderArbeid" element="tns:arkiverVedleggJournalpostIkkeUnderArbeid"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytJournalpost_journalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet" element="tns:avbrytJournalpostJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytJournalpost_avbrytelseIkkeTillatt">
+		<wsdl:part name="avbrytelseIkkeTillatt" element="tns:avbrytJournalpostAvbrytelseIkkeTillatt"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytJournalpost_journalpostAlleredeAvbrutt">
+		<wsdl:part name="journalpostAlleredeAvbrutt" element="tns:avbrytJournalpostJournalpostAlleredeAvbrutt"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytVedlegg_journalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet" element="tns:avbrytVedleggJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytVedlegg_journalpostIkkeUnderArbeid">
+		<wsdl:part name="journalpostIkkeUnderArbeid" element="tns:avbrytVedleggJournalpostIkkeUnderArbeid"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytVedlegg_dokumentIkkeFunnet">
+		<wsdl:part name="dokumentIkkeFunnet" element="tns:avbrytVedleggDokumentIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytVedlegg_dokumentIkkeVedlegg">
+		<wsdl:part name="dokumentIkkeVedlegg" element="tns:avbrytVedleggDokumentIkkeVedlegg"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytVedlegg_dokumentAlleredeAvbrutt">
+		<wsdl:part name="dokumentAlleredeAvbrutt" element="tns:avbrytVedleggDokumentAlleredeAvbrutt"/>
+	</wsdl:message>
+	<wsdl:message name="opprettJournalpostArkiverDokumentRequest">
+		<wsdl:part name="parameters" element="tns:opprettJournalpostArkiverDokument"/>
+	</wsdl:message>
+	<wsdl:message name="opprettJournalpostArkiverDokumentResponse">
+		<wsdl:part name="parameters" element="tns:opprettJournalpostArkiverDokumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="opprettJournalpostArkiverDokumenterRequest">
+		<wsdl:part name="parameters" element="tns:opprettJournalpostArkiverDokumenter"/>
+	</wsdl:message>
+	<wsdl:message name="opprettJournalpostArkiverDokumenterResponse">
+		<wsdl:part name="parameters" element="tns:opprettJournalpostArkiverDokumenterResponse"/>
+	</wsdl:message>
+	<wsdl:message name="opprettUtgaaendeJournalpostArkiverDokumentRequest">
+		<wsdl:part name="parameters" element="tns:opprettUtgaaendeJournalpostArkiverDokument"/>
+	</wsdl:message>
+	<wsdl:message name="opprettUtgaaendeJournalpostArkiverDokumentResponse">
+		<wsdl:part name="parameters" element="tns:opprettUtgaaendeJournalpostArkiverDokumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="opprettJournalpostRequest">
+		<wsdl:part name="parameters" element="tns:opprettJournalpost"/>
+	</wsdl:message>
+	<wsdl:message name="opprettJournalpostResponse">
+		<wsdl:part name="parameters" element="tns:opprettJournalpostResponse"/>
+	</wsdl:message>
+	<wsdl:message name="oppdaterJournalpostArkiverDokumentRequest">
+		<wsdl:part name="parameters" element="tns:oppdaterJournalpostArkiverDokument"/>
+	</wsdl:message>
+	<wsdl:message name="oppdaterJournalpostArkiverDokumentResponse">
+		<wsdl:part name="parameters" element="tns:oppdaterJournalpostArkiverDokumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="arkiverVedleggRequest">
+		<wsdl:part name="parameters" element="tns:arkiverVedlegg"/>
+	</wsdl:message>
+	<wsdl:message name="arkiverVedleggResponse">
+		<wsdl:part name="parameters" element="tns:arkiverVedleggResponse"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytJournalpostRequest">
+		<wsdl:part name="parameters" element="tns:avbrytJournalpost"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytJournalpostResponse">
+		<wsdl:part name="parameters" element="tns:avbrytJournalpostResponse"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytVedleggRequest">
+		<wsdl:part name="parameters" element="tns:avbrytVedlegg"/>
+	</wsdl:message>
+	<wsdl:message name="avbrytVedleggResponse">
+		<wsdl:part name="parameters" element="tns:avbrytVedleggResponse"/>
+	</wsdl:message>
+	<wsdl:message name="settDatoSendtRequest">
+		<wsdl:part name="parameters" element="tns:settDatoSendt"/>
+	</wsdl:message>
+	<wsdl:message name="settDatoSendtResponse">
+		<wsdl:part name="parameters" element="tns:settDatoSendtResponse"/>
+	</wsdl:message>
+	<wsdl:message name="fjernFerdigstiltDokumentRequest">
+		<wsdl:part name="parameters" element="tns:fjernFerdigstiltDokument"/>
+	</wsdl:message>
+	<wsdl:message name="fjernFerdigstiltDokumentResponse">
+		<wsdl:part name="parameters" element="tns:fjernFerdigstiltDokumentResponse"/>
+	</wsdl:message>
+	<wsdl:message name="fjernFerdigstiltDokument_journalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet" element="tns:fjernFerdigstiltDokumentJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="fjernFerdigstiltDokument_journalpostIkkeUnderArbeid">
+		<wsdl:part name="journalpostIkkeUnderArbeid" element="tns:fjernFerdigstiltDokumentJournalpostIkkeUnderArbeid"/>
+	</wsdl:message>
+	<wsdl:message name="fjernFerdigstiltDokument_dokumentIkkeFunnet">
+		<wsdl:part name="dokumentIkkeFunnet" element="tns:fjernFerdigstiltDokumentDokumentIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="fjernFerdigstiltDokument_dokumentAlleredeRedigerbart">
+		<wsdl:part name="dokumentAlleredeRedigerbart"
+				   element="tns:fjernFerdigstiltDokumentDokumentAlleredeRedigerbart"/>
+	</wsdl:message>
+	<wsdl:message name="fjernFerdigstiltDokument_dokumentAlleredeAvbrutt">
+		<wsdl:part name="dokumentAlleredeAvbrutt" element="tns:fjernFerdigstiltDokumentDokumentAlleredeAvbrutt"/>
+	</wsdl:message>
+	<wsdl:message name="ferdigstillJournalpostRequest">
+		<wsdl:part name="parameters" element="tns:ferdigstillJournalpost"/>
+	</wsdl:message>
+	<wsdl:message name="ferdigstillJournalpostResponse">
+		<wsdl:part name="parameters" element="tns:ferdigstillJournalpostResponse"/>
+	</wsdl:message>
+	<wsdl:message name="ferdigstillJournalpost_journalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet" element="tns:ferdigstillJournalpostJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="ferdigstillJournalpost_inneholderDokumenterUnderRedigering">
+		<wsdl:part name="inneholderDokumenterUnderRedigering"
+				   element="tns:ferdigstillJournalpostInneholderDokumenterUnderRedigering"/>
+	</wsdl:message>
+	<wsdl:message name="ferdigstillJournalpost_journalpostIkkeUnderArbeid">
+		<wsdl:part name="journalpostIkkeUnderArbeid" element="tns:ferdigstillJournalpostJournalpostIkkeUnderArbeid"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedleggRequest">
+		<wsdl:part name="parameters" element="tns:knyttDokumentTilJournalpostSomVedlegg"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedleggResponse">
+		<wsdl:part name="parameters" element="tns:knyttDokumentTilJournalpostSomVedleggResponse"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedlegg_JournalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet"
+				   element="tns:knyttDokumentTilJournalpostSomVedleggJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedlegg_JournalpostIkkeUnderArbeid">
+		<wsdl:part name="journalpostIkkeUnderArbeid"
+				   element="tns:knyttDokumentTilJournalpostSomVedleggJournalpostIkkeUnderArbeid"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedlegg_EksterneVedleggIkkeTillatt">
+		<wsdl:part name="eksterneVedleggIkkeTillatt"
+				   element="tns:knyttDokumentTilJournalpostSomVedleggEksterneVedleggIkkeTillatt"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedlegg_JournalpostIkkeFerdigstilt">
+		<wsdl:part name="journalpostIkkeFerdigstilt"
+				   element="tns:knyttDokumentTilJournalpostSomVedleggJournalpostIkkeFerdigstilt"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedlegg_DokumentIkkeFunnet">
+		<wsdl:part name="dokumentIkkeFunnet" element="tns:knyttDokumentTilJournalpostSomVedleggDokumentIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedlegg_DokumentTillatesIkkeGjenbrukt">
+		<wsdl:part name="dokumentTillatesIkkeGjenbrukt"
+				   element="tns:knyttDokumentTilJournalpostSomVedleggDokumentTillatesIkkeGjenbrukt"/>
+	</wsdl:message>
+	<wsdl:message name="knyttDokumentTilJournalpostSomVedlegg_UlikeFagomraader">
+		<wsdl:part name="ulikeFagomraader" element="tns:knyttDokumentTilJournalpostSomVedleggUlikeFagomraader"/>
+	</wsdl:message>
+
+	<!---OpprettUtgaaendeJournalPostArkiverDokument - Faults -->
+	<wsdl:message name="OpprettUtgaaendeJournalpostValideringAvVedleggFeilet">
+		<wsdl:part name="ValideringAvVedleggFeilet"
+				   element="tns:OpprettUtgaaendeJournalpostArkiverDokumentValideringAvVedleggFeilet"/>
+	</wsdl:message>
+	<wsdl:message name="OpprettUtgaaendeJournalpostUgyldigInput">
+		<wsdl:part name="UgyldigInput" element="tns:OpprettUtgaaendeJournalpostArkiverDokumentUgyldigInput"/>
+	</wsdl:message>
+
+	<!--OppdaterJournalpostArkiverDokument - Faults-->
+	<wsdl:message name="UgyldigInputException">
+		<wsdl:part name="UgyldigInputFault" element="tns:UgyldigInputFault"/>
+	</wsdl:message>
+	<wsdl:message name="FeilStrukturException">
+		<wsdl:part name="FeilStrukturFault" element="tns:FeilStrukturFault"/>
+	</wsdl:message>
+	<wsdl:message name="ObjektIkkeFunnetException">
+		<wsdl:part name="ObjektIkkeFunnetFault" element="tns:ObjektIkkeFunnetFault"/>
+	</wsdl:message>
+	<wsdl:message name="KanIkkeFerdigstillesException">
+		<wsdl:part name="KanIkkeFerdigstillesFault" element="tns:KanIkkeFerdigstillesFault"/>
+	</wsdl:message>
+	<wsdl:message name="AlleredeFerdigstiltException">
+		<wsdl:part name="AlleredeFerdigstiltFault" element="tns:AlleredeFerdigstiltFault"/>
+	</wsdl:message>
+
+	<wsdl:message name="settJournalpostAttributterRequest">
+		<wsdl:part name="parameters" element="tns:settJournalpostAttributter"/>
+	</wsdl:message>
+	<wsdl:message name="settJournalpostAttributterResponse">
+		<wsdl:part name="parameters" element="tns:settJournalpostAttributterResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="pingRequest">
+		<wsdl:part name="parameters" element="tns:ping"/>
+	</wsdl:message>
+	<wsdl:message name="pingResponse">
+		<wsdl:part name="parameters" element="tns:pingResponse"/>
+	</wsdl:message>
+
+	<wsdl:portType name="ArkiverDokumentproduksjon_v1">
+		<wsdl:operation name="opprettJournalpostArkiverDokument">
+			<wsdl:input message="tns:opprettJournalpostArkiverDokumentRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:opprettJournalpostArkiverDokumentResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="opprettJournalpostArkiverDokumenter">
+			<wsdl:input message="tns:opprettJournalpostArkiverDokumenterRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:opprettJournalpostArkiverDokumenterResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="opprettUtgaaendeJournalpostArkiverDokument">
+			<wsdl:input message="tns:opprettUtgaaendeJournalpostArkiverDokumentRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:opprettUtgaaendeJournalpostArkiverDokumentResponse">
+			</wsdl:output>
+			<wsdl:fault name="ValideringAvVedleggFeilet"
+						message="tns:OpprettUtgaaendeJournalpostValideringAvVedleggFeilet">
+			</wsdl:fault>
+			<wsdl:fault name="UgyldigInput" message="tns:OpprettUtgaaendeJournalpostUgyldigInput"/>
+		</wsdl:operation>
+		<wsdl:operation name="opprettJournalpost">
+			<wsdl:input message="tns:opprettJournalpostRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:opprettJournalpostResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="oppdaterJournalpostArkiverDokument">
+			<wsdl:input message="tns:oppdaterJournalpostArkiverDokumentRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:oppdaterJournalpostArkiverDokumentResponse">
+			</wsdl:output>
+			<wsdl:fault name="UgyldigInput" message="tns:UgyldigInputException"/>
+			<wsdl:fault name="FeilStruktur" message="tns:FeilStrukturException"/>
+			<wsdl:fault name="ObjektIkkeFunnet" message="tns:ObjektIkkeFunnetException"/>
+			<wsdl:fault name="KanIkkeFerdigstilles" message="tns:KanIkkeFerdigstillesException"/>
+			<wsdl:fault name="AlleredeFerdigstilt" message="tns:AlleredeFerdigstiltException"/>
+		</wsdl:operation>
+		<wsdl:operation name="arkiverVedlegg">
+			<wsdl:input message="tns:arkiverVedleggRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:arkiverVedleggResponse">
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet" message="tns:arkiverVedlegg_journalpostIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="journalpostIkkeUnderArbeid" message="tns:arkiverVedlegg_journalpostIkkeUnderArbeid">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="avbrytJournalpost">
+			<wsdl:input message="tns:avbrytJournalpostRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:avbrytJournalpostResponse">
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet" message="tns:avbrytJournalpost_journalpostIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="avbrytelseIkkeTillatt" message="tns:avbrytJournalpost_avbrytelseIkkeTillatt">
+			</wsdl:fault>
+			<wsdl:fault name="journalpostAlleredeAvbrutt" message="tns:avbrytJournalpost_journalpostAlleredeAvbrutt">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="avbrytVedlegg">
+			<wsdl:input message="tns:avbrytVedleggRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:avbrytVedleggResponse">
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet" message="tns:avbrytVedlegg_journalpostIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="journalpostIkkeUnderArbeid" message="tns:avbrytVedlegg_journalpostIkkeUnderArbeid">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentIkkeFunnet" message="tns:avbrytVedlegg_dokumentIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentIkkeVedlegg" message="tns:avbrytVedlegg_dokumentIkkeVedlegg">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentAlleredeAvbrutt" message="tns:avbrytVedlegg_dokumentAlleredeAvbrutt">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="settDatoSendt">
+			<wsdl:input message="tns:settDatoSendtRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:settDatoSendtResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="fjernFerdigstiltDokument">
+			<wsdl:input message="tns:fjernFerdigstiltDokumentRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:fjernFerdigstiltDokumentResponse">
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet" message="tns:fjernFerdigstiltDokument_journalpostIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="journalpostIkkeUnderArbeid"
+						message="tns:fjernFerdigstiltDokument_journalpostIkkeUnderArbeid">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentIkkeFunnet" message="tns:fjernFerdigstiltDokument_dokumentIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentAlleredeRedigerbart"
+						message="tns:fjernFerdigstiltDokument_dokumentAlleredeRedigerbart">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentAlleredeAvbrutt" message="tns:fjernFerdigstiltDokument_dokumentAlleredeAvbrutt">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ferdigstillJournalpost">
+			<wsdl:input message="tns:ferdigstillJournalpostRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:ferdigstillJournalpostResponse">
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet" message="tns:ferdigstillJournalpost_journalpostIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="inneholderDokumenterUnderRedigering"
+						message="tns:ferdigstillJournalpost_inneholderDokumenterUnderRedigering">
+			</wsdl:fault>
+			<wsdl:fault name="journalpostIkkeUnderArbeid"
+						message="tns:ferdigstillJournalpost_journalpostIkkeUnderArbeid">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="knyttDokumentTilJournalpostSomVedlegg">
+			<wsdl:input message="tns:knyttDokumentTilJournalpostSomVedleggRequest"/>
+			<wsdl:output message="tns:knyttDokumentTilJournalpostSomVedleggResponse"/>
+			<wsdl:fault name="journalpostIkkeFunnet"
+						message="tns:knyttDokumentTilJournalpostSomVedlegg_JournalpostIkkeFunnet"/>
+			<wsdl:fault name="journalpostIkkeUnderArbeid"
+						message="tns:knyttDokumentTilJournalpostSomVedlegg_JournalpostIkkeUnderArbeid"/>
+			<wsdl:fault name="eksterneVedleggIkkeTillatt"
+						message="tns:knyttDokumentTilJournalpostSomVedlegg_EksterneVedleggIkkeTillatt"/>
+			<wsdl:fault name="journalpostIkkeFerdigstilt"
+						message="tns:knyttDokumentTilJournalpostSomVedlegg_JournalpostIkkeFerdigstilt"/>
+			<wsdl:fault name="dokumentIkkeFunnet"
+						message="tns:knyttDokumentTilJournalpostSomVedlegg_DokumentIkkeFunnet"/>
+			<wsdl:fault name="dokumentTillatesIkkeGjenbrukt"
+						message="tns:knyttDokumentTilJournalpostSomVedlegg_DokumentTillatesIkkeGjenbrukt"/>
+			<wsdl:fault name="ulikeFagomraader" message="tns:knyttDokumentTilJournalpostSomVedlegg_UlikeFagomraader"/>
+		</wsdl:operation>
+		<wsdl:operation name="settJournalpostAttributter">
+			<wsdl:input message="tns:settJournalpostAttributterRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:settJournalpostAttributterResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ping">
+			<wsdl:input message="tns:pingRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:pingResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="ArkiverDokumentproduksjonBinding" type="tns:ArkiverDokumentproduksjon_v1">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsaw:UsingAddressing/>
+		<wsdl:operation name="opprettJournalpostArkiverDokument">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/opprettJournalpostArkiverDokument"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="opprettJournalpostArkiverDokumenter">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/opprettJournalpostArkiverDokumenter"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="opprettUtgaaendeJournalpostArkiverDokument">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/opprettUtgaaendeJournalpostArkiverDokument"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="opprettJournalpost">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/opprettJournalpost"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="oppdaterJournalpostArkiverDokument">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/oppdaterJournalpostArkiverDokument"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="arkiverVedlegg">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/arkiverVedlegg"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="avbrytJournalpost">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/avbrytJournalpost"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="avbrytVedlegg">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/avbrytVedlegg"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="settDatoSendt">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/settDatoSendt"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="fjernFerdigstiltDokument">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/fjernFerdigstiltDokument"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ferdigstillJournalpost">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/ferdigstillJournalpost"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="knyttDokumentTilJournalpostSomVedlegg">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/knyttDokumentTilJournalpostSomVedlegg"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="settJournalpostAttributter">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/settJournalpostAttributter"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ping">
+			<soap:operation soapAction="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/ping"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="ArkiverDokumentproduksjonService_v1">
+		<wsdl:port binding="tns:ArkiverDokumentproduksjonBinding" name="ArkiverDokumentproduksjonPort_v1">
+			<soap:address location="http://localhost:9060/joark/ArkiverDokumentproduksjonService_v1"/>
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

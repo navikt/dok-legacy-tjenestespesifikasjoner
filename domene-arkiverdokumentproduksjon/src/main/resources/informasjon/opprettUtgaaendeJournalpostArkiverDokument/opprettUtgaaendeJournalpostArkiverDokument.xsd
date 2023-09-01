@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettUtgaaendeJournalpostArkiverDokument"
+	xmlns:arkiverDokumentproduksjon="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+	xmlns:opprettUtgaaendeJournalpostArkiverDokument="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettUtgaaendeJournalpostArkiverDokument">
+
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon" schemaLocation="../arkiverDokumentproduksjon/arkiverDokumentproduksjon.xsd"/>
+
+	<xs:complexType name="Fildetaljer">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:FildetaljerBase">
+				<xs:sequence>
+					<xs:element name="ikkeRedigerbartdokument" type="xs:base64Binary"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Vedlegg">
+			<xs:sequence>
+				<xs:element name="knyttesFraJournalpostId" type="xs:string"/>
+				<xs:element name="dokumentInfoId" type="xs:string"/>
+			</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DokumentInfo">
+		<xs:sequence>
+			<xs:element name="kategori" type="xs:string"/>
+			<xs:element name="tittel" type="xs:string"/>
+			<xs:element name="brevkode" type="xs:string" minOccurs="0"/>
+			<xs:element name="dokumentTypeId" type="xs:string"/>
+			<xs:element name="fildetaljerListe" type="opprettUtgaaendeJournalpostArkiverDokument:Fildetaljer" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="JournalpostDokumentInfoRelasjon">
+		<xs:sequence>
+			<xs:element name="tilknyttetJournalpostSom" type="xs:string"/>
+			<xs:element name="dokumentInfo" type="opprettUtgaaendeJournalpostArkiverDokument:DokumentInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Journalpost">
+		<xs:sequence>
+			<xs:element name="tema" type="xs:string" minOccurs="0"/>
+			<xs:element name="opprettetAvNavn" type="xs:string"/>
+			<xs:element name="journalforendeEnhet" type="xs:string" minOccurs="0"/>
+			<xs:element name="innhold" type="xs:string" minOccurs="0"/>
+			<xs:element name="datoDokument" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="avsenderMottakerNavn" type="xs:string" minOccurs="0"/>
+			<xs:element name="avsenderMottakerId" type="xs:string" minOccurs="0"/>
+			<xs:element name="utsendingskanal" type="xs:string" minOccurs="0"/>
+			<xs:element name="kanalreferanseId" type="xs:string"/>
+			<xs:element name="tilleggsopplysninger" type="arkiverDokumentproduksjon:Tilleggsopplysning" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

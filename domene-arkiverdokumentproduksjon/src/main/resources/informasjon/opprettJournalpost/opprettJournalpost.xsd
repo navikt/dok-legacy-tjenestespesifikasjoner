@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpost" 
+	xmlns:arkiverDokumentproduksjon="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+	xmlns:opprettJournalpost="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpost">
+
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon" schemaLocation="../arkiverDokumentproduksjon/arkiverDokumentproduksjon.xsd"/>
+
+	<xs:complexType name="Fildetaljer">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:FildetaljerBase">
+				<xs:sequence>
+					<xs:element name="metaForceInstanceId" type="xs:long"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DokumentInfo">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:DokumentInfoBase">
+				<xs:sequence>
+					<xs:element name="fildetaljer" type="opprettJournalpost:Fildetaljer" />
+					<xs:element name="tilleggsopplysninger" type="arkiverDokumentproduksjon:Tilleggsopplysning" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Journalpost">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:JournalpostBase">
+				<xs:sequence>
+					<xs:element name="dokumentInfo" type="opprettJournalpost:DokumentInfo" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>
