@@ -7,10 +7,11 @@ on:
 
 jobs:
   build:
-    uses: navikt/dok-workflows/.github/workflows/build-artifact.yml@main
     permissions:
-      contents: read
-      pull-requests: read
+      packages: write
+      pull-requests: write
+      contents: write
+    uses: navikt/dok-workflows/.github/workflows/build-deploy-main.yml@main
     with:
       java-version: '17'
     secrets: inherit
