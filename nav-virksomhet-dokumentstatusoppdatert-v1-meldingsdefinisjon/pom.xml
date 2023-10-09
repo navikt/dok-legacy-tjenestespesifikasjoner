@@ -11,6 +11,13 @@
     <artifactId>nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon</artifactId>
     <version>${revision}</version>
 
+	<dependencies>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -21,6 +28,10 @@
 						<goals>
 							<goal>generate</goal>
 						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/xsd/no/nav/melding/virksomhet/dokumentstatusOppdatert/v1/dokumentstatusOppdatert</schemaDirectory>
+							<generateDirectory>${project.basedir}/target</generateDirectory>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
