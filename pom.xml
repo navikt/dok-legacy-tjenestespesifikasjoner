@@ -19,6 +19,7 @@
 		<module>loggmottak-tjenestespesifikasjon</module>
 		<module>nav-journal-tjenestespesifikasjon</module>
 		<module>nav-journalbehandling-tjenestespesifikasjon</module>
+		<module>nav-brukervarsel-v1-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
