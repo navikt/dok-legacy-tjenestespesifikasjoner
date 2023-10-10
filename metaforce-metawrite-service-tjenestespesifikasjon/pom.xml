@@ -64,6 +64,11 @@
 							<goal>wsdl2java</goal>
 						</goals>
 						<configuration>
+							<defaultOptions>
+								<extraargs>
+									<extraarg>-xjc-XfluentAPI</extraarg>
+								</extraargs>
+							</defaultOptions>
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdl>${wsdl.directory}/metawrite.wsdl</wsdl>
@@ -75,6 +80,13 @@
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.patrodyne.jvnet</groupId>
+						<artifactId>hisrc-basicjaxb-plugins</artifactId>
+						<version>${hisrc-jaxb.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
