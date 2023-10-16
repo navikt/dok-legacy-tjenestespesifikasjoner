@@ -1,0 +1,20 @@
+<jaxb:bindings version="3.0"
+			   xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+			   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="https://jakarta.ee/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
+			   jaxb:extensionBindingPrefixes="xjc">
+	<jaxb:bindings schemaLocation="../xsd/varsel.xsd" node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:nameXmlTransform>
+				<jaxb:typeName prefix="XML"/>
+				<jaxb:anonymousTypeName prefix="XML"/>
+			</jaxb:nameXmlTransform>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+	<jaxb:globalBindings>
+		<xjc:javaType name="org.joda.time.DateTime" xmlType="xsd:dateTime" adapter="no.nav.commons.DateTimeAdapter"/>
+		<xjc:simple/>
+	</jaxb:globalBindings>
+</jaxb:bindings>
