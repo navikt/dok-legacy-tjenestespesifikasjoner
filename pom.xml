@@ -20,6 +20,7 @@
 		<module>nav-journal-tjenestespesifikasjon</module>
 		<module>nav-journalbehandling-tjenestespesifikasjon</module>
 		<module>nav-brukervarsel-v1-tjenestespesifikasjon</module>
+		<module>nav-varsel-inn</module>
 	</modules>
 
 	<distributionManagement>
@@ -37,6 +38,7 @@
 
 		<jakarta.xml.version>3.0.1</jakarta.xml.version>
 		<jakarta.xml.ws-api.version>3.0.1</jakarta.xml.ws-api.version>
+		<joda.version>2.12.5</joda.version>
 		<!-- plugins -->
 		<hisrc-jaxb.version>2.1.1</hisrc-jaxb.version>
 		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
@@ -72,6 +74,11 @@
 				<groupId>jakarta.xml.ws</groupId>
 				<artifactId>jakarta.xml.ws-api</artifactId>
 				<version>${jakarta.xml.ws-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
