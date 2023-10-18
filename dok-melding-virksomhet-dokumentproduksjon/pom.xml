@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>no.nav.dok</groupId>
+		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<groupId>no.nav.tjenester</groupId>
+	<artifactId>dok-melding-virksomhet-dokumentproduksjon</artifactId>
+	<version>${revision}</version>
+	<name>${project.artifactId}</name>
+
+	<properties>
+		<wsdl.directory>src/main/wsdl</wsdl.directory>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.helger.maven</groupId>
+				<artifactId>jaxb40-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-jaxb-dokmot</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<generatePackage>no.nav.dok.meldinger.virksomhet.dokumentproduksjon</generatePackage>
+							<schemaDirectory>src/main/resources/no/nav/meldinger/virksomhet/dokumentproduksjon/xsd
+							</schemaDirectory>
+							<bindingDirectory>src/main/resources/no/nav/meldinger/virksomhet/dokumentproduksjon/bindings
+							</bindingDirectory>
+							<generateDirectory>target/generated-sources</generateDirectory>
+							<strict>false</strict>
+							<schemaExcludes>*-skipbrevdata.xsd</schemaExcludes>
+							<plugins>
+					<plugin>
+						<groupId>org.patrodyne.jvnet</groupId>
+						<artifactId>hisrc-hyperjaxb-annox-plugin</artifactId>
+						<version>${hisrc-jaxb.version}</version>
+					</plugin>
+					<plugin>
+						<groupId>org.patrodyne.jvnet</groupId>
+						<artifactId>hisrc-basicjaxb-plugins</artifactId>
+						<version>${hisrc-jaxb.version}</version>
+					</plugin>
+							</plugins>
+							<args>
+								<arg>-Xannotate</arg>
+								<arg>-XfluentAPI</arg>
+							</args>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>include-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

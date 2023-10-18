@@ -21,6 +21,7 @@
 		<module>nav-journalbehandling-tjenestespesifikasjon</module>
 		<module>nav-brukervarsel-v1-tjenestespesifikasjon</module>
 		<module>nav-varsel-inn</module>
+		<module>dok-melding-virksomhet-dokumentproduksjon</module>
 	</modules>
 
 	<distributionManagement>
