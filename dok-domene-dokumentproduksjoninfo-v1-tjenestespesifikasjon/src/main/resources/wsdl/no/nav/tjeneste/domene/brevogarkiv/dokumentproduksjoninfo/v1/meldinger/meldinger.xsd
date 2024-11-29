@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/meldinger"
+	xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/meldinger"
+	xmlns:dokumentproduksjonInfo="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/informasjon">
+
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/informasjon" schemaLocation="../informasjon/informasjon.xsd"/>
+
+	<xs:complexType name="HentJournalOgDokumentStatusRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="dokumentproduksjonInfo:JournalpostId"/>
+			<xs:element name="dokumentInfoId" type="dokumentproduksjonInfo:DokumentInfoId" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HentJournalOgDokumentStatusResponse">
+		<xs:sequence>
+			<xs:element name="journalStatus" type="xs:string"/>
+			<xs:element name="dokumentStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="metaForceInstanceId" type="xs:long" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HentJournalpostInfoRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="dokumentproduksjonInfo:JournalpostId"/>
+			<xs:element name="dokumentInfoId" type="dokumentproduksjonInfo:DokumentInfoId" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HentJournalpostInfoResponse">
+		<xs:sequence>
+			<xs:element name="journalStatus" type="xs:string"/>
+			<xs:element name="dokumentStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="metaForceInstanceId" type="xs:long" minOccurs="0"/>
+			<xs:element name="journalfEnhet" type="xs:string" minOccurs="0"/>
+			<xs:element name="fagomrade" type="xs:string" minOccurs="0"/>
+			<xs:element name="brukerId" type="xs:string" minOccurs="0"/>
+			<xs:element name="brukerType" type="xs:string" minOccurs="0"/>
+			<xs:element name="saksNummer" type="xs:string" minOccurs="0"/>
+			<xs:element name="fagsystem" type="xs:string" minOccurs="0"/>
+			<xs:element name="antallRetur" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HentFerdigstilteDokumenterRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="dokumentproduksjonInfo:JournalpostId" />
+			<xs:element name="dokumentInfoListe" type="dokumentproduksjonInfo:DokumentInfoId" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HentFerdigstilteDokumenterResponse">
+		<xs:sequence>
+			<xs:element name="dokumentListe" type="dokumentproduksjonInfo:Dokument" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PingRequest">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="PingResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	
+</xs:schema>

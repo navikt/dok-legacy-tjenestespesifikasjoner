@@ -22,6 +22,7 @@
 		<module>nav-brukervarsel-v1-tjenestespesifikasjon</module>
 		<module>nav-varsel-inn</module>
 		<module>dok-melding-virksomhet-dokumentproduksjon</module>
+		<module>dok-domene-dokumentproduksjoninfo-v1-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>
