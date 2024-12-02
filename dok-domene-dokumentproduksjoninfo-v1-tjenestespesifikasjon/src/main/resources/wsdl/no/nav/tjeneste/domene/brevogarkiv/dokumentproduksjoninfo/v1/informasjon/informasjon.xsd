@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/informasjon" 
+	xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/informasjon"
+	xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+
+	<xs:simpleType name="JournalpostId">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DokumentInfoId">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+
+	<xs:complexType name="Dokument">
+		<xs:sequence>
+            <xs:element name="dokumentInfoId" type="tns:DokumentInfoId"/>
+            <xs:element name="fil" type="xs:base64Binary"
+            xmime:expectedContentTypes="application/pdf"/>
+            <xs:element name="tittel" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

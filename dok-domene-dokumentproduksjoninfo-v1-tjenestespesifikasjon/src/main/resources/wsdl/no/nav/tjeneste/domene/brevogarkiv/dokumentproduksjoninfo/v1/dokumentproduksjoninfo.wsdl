@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+		xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/"
+		targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/">
+
+	<wsdl:types>
+		<xsd:schema xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/"
+					xmlns:feil="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/feil"
+					xmlns:meldinger="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/meldinger"
+					targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/">
+
+			<xsd:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/meldinger"
+						schemaLocation="meldinger/meldinger.xsd"/>
+			<xsd:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/feil"
+						schemaLocation="feil/feil.xsd"/>
+
+			<xsd:element name="hentJournalOgDokumentStatus">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:HentJournalOgDokumentStatusRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="hentJournalOgDokumentStatusResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:HentJournalOgDokumentStatusResponse" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="hentJournalOgDokumentStatusJournalpostIkkeFunnet" type="feil:FunctionalFault"/>
+			<xsd:element name="hentJournalOgDokumentStatusDokumentInfoIkkeFunnet" type="feil:FunctionalFault"/>
+
+			<xsd:element name="hentJournalpostInfo">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:HentJournalpostInfoRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="hentJournalpostInfoResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:HentJournalpostInfoResponse" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="hentJournalpostInfoJournalpostIkkeFunnet" type="feil:FunctionalFault"/>
+			<xsd:element name="hentJournalpostInfoDokumentInfoIkkeFunnet" type="feil:FunctionalFault"/>
+
+			<xsd:element name="ping" type="meldinger:PingRequest"/>
+			<xsd:element name="pingResponse" type="meldinger:PingResponse"/>
+
+			<xsd:element name="hentFerdigstilteDokumenter">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="request" type="meldinger:HentFerdigstilteDokumenterRequest"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="hentFerdigstilteDokumenterResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="meldinger:HentFerdigstilteDokumenterResponse"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="hentFerdigstilteDokumenterDokumenterIkkeFunnet" type="feil:FunctionalFault"/>
+			<xsd:element name="hentFerdigstilteDokumenterUgyldigInput" type="feil:FunctionalFault"/>
+			<xsd:element name="hentFerdigstilteDokumenterDokumenterKanIkkeHentes" type="feil:FunctionalFault"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="hentJournalOgDokumentStatusRequest">
+		<wsdl:part name="parameters" element="tns:hentJournalOgDokumentStatus"/>
+	</wsdl:message>
+	<wsdl:message name="hentJournalOgDokumentStatusResponse">
+		<wsdl:part name="parameters" element="tns:hentJournalOgDokumentStatusResponse"/>
+	</wsdl:message>
+	<wsdl:message name="hentJournalOgDokumentStatus_journalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet" element="tns:hentJournalOgDokumentStatusJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="hentJournalOgDokumentStatus_dokumentInfoIkkeFunnet">
+		<wsdl:part name="dokumentInfoIkkeFunnet" element="tns:hentJournalOgDokumentStatusDokumentInfoIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="hentJournalpostInfoRequest">
+		<wsdl:part name="parameters" element="tns:hentJournalpostInfo"/>
+	</wsdl:message>
+	<wsdl:message name="hentJournalpostInfoResponse">
+		<wsdl:part name="parameters" element="tns:hentJournalpostInfoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="hentJournalpostInfo_journalpostIkkeFunnet">
+		<wsdl:part name="journalpostIkkeFunnet" element="tns:hentJournalpostInfoJournalpostIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="hentJournalpostInfo_dokumentInfoIkkeFunnet">
+		<wsdl:part name="dokumentInfoIkkeFunnet" element="tns:hentJournalpostInfoDokumentInfoIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="pingRequest">
+		<wsdl:part name="parameters" element="tns:ping"/>
+	</wsdl:message>
+	<wsdl:message name="pingResponse">
+		<wsdl:part name="parameters" element="tns:pingResponse"/>
+	</wsdl:message>
+	<wsdl:message name="hentFerdigstilteDokumenterRequest">
+		<wsdl:part name="parameters" element="tns:hentFerdigstilteDokumenter"/>
+	</wsdl:message>
+	<wsdl:message name="hentFerdigstilteDokumenterResponse">
+		<wsdl:part name="parameters" element="tns:hentFerdigstilteDokumenterResponse"/>
+	</wsdl:message>
+	<wsdl:message name="hentFerdigstilteDokumenter_dokumenterIkkeFunnet">
+		<wsdl:part name="dokumenterIkkeFunnet" element="tns:hentFerdigstilteDokumenterDokumenterIkkeFunnet"/>
+	</wsdl:message>
+	<wsdl:message name="hentFerdigstilteDokumenter_ugyldingInput">
+		<wsdl:part name="ugyldigInput" element="tns:hentFerdigstilteDokumenterUgyldigInput"/>
+	</wsdl:message>
+	<wsdl:message name="hentFerdigstilteDokumenter_dokumenterKanIkkeHentes">
+		<wsdl:part name="dokumenterKanIkkeHentes" element="tns:hentFerdigstilteDokumenterDokumenterKanIkkeHentes"/>
+	</wsdl:message>
+
+	<wsdl:portType name="DokumentproduksjonInfo_v1">
+		<wsdl:operation name="hentJournalOgDokumentStatus">
+			<wsdl:input message="tns:hentJournalOgDokumentStatusRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:hentJournalOgDokumentStatusResponse">
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet" message="tns:hentJournalOgDokumentStatus_journalpostIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentInfoIkkeFunnet" message="tns:hentJournalOgDokumentStatus_dokumentInfoIkkeFunnet">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="hentJournalpostInfo">
+			<wsdl:input message="tns:hentJournalpostInfoRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:hentJournalpostInfoResponse">
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet" message="tns:hentJournalpostInfo_journalpostIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="dokumentInfoIkkeFunnet" message="tns:hentJournalpostInfo_dokumentInfoIkkeFunnet">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ping">
+			<wsdl:input message="tns:pingRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:pingResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="hentFerdigstilteDokumenter">
+			<wsdl:input message="tns:hentFerdigstilteDokumenterRequest"/>
+			<wsdl:output message="tns:hentFerdigstilteDokumenterResponse"/>
+			<wsdl:fault name="ugyldigInput" message="tns:hentFerdigstilteDokumenter_ugyldingInput">
+			</wsdl:fault>
+			<wsdl:fault name="dokumenterIkkeFunnet" message="tns:hentFerdigstilteDokumenter_dokumenterIkkeFunnet">
+			</wsdl:fault>
+			<wsdl:fault name="dokumenterKanIkkeHentes" message="tns:hentFerdigstilteDokumenter_dokumenterKanIkkeHentes">
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="DokumentproduksjonInfoBinding" type="tns:DokumentproduksjonInfo_v1">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsaw:UsingAddressing/>
+		<wsdl:operation name="hentFerdigstilteDokumenter">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/hentFerdigstilteDokumenter"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ugyldigInput">
+				<soap:fault name="ugyldigInput" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="dokumenterIkkeFunnet">
+				<soap:fault name="dokumenterIkkeFunnet" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="dokumenterKanIkkeHentes">
+				<soap:fault name="dokumenterKanIkkeHentes" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="hentJournalOgDokumentStatus">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/hentJournalOgDokumentStatus"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet">
+				<soap:fault name="journalpostIkkeFunnet" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="dokumentInfoIkkeFunnet">
+				<soap:fault name="dokumentInfoIkkeFunnet" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="hentJournalpostInfo">
+			<soap:operation
+					soapAction="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/hentJournalpostInfo"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="journalpostIkkeFunnet">
+				<soap:fault name="journalpostIkkeFunnet" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="dokumentInfoIkkeFunnet">
+				<soap:fault name="dokumentInfoIkkeFunnet" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ping">
+			<soap:operation soapAction="http://nav.no/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/ping"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="DokumentproduksjonInfo_v1">
+		<wsdl:port binding="tns:DokumentproduksjonInfoBinding" name="DokumentproduksjonInfoPort_v1">
+			<soap:address location="http://localhost:9060/joark/DokumentproduksjonInfoService_v1"/>
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
