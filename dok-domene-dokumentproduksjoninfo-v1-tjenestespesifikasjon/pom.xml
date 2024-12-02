@@ -60,20 +60,18 @@
 							<goal>wsdl2java</goal>
 						</goals>
 						<configuration>
-							<defaultOptions>
-								<extraargs>
-									<extraarg>-xjc-XfluentAPI</extraarg>
-									<extraarg>-xjc-XhashCode</extraarg>
-									<extraarg>-xjc-Xequals</extraarg>
-									<extraarg>-xjc-XtoString</extraarg>
-									<extraarg>-exceptionSuper</extraarg>
-									<extraarg>
-										no.nav.tjeneste.domene.brevogarkiv.dokumentproduksjoninfo.DokumentproduksjonInfoFunctionalException
-									</extraarg>
-								</extraargs>
-							</defaultOptions>
 							<wsdlOptions>
 								<wsdlOption>
+									<extraargs>
+										<extraarg>-xjc-XfluentAPI</extraarg>
+										<extraarg>-xjc-XhashCode</extraarg>
+										<extraarg>-xjc-Xequals</extraarg>
+										<extraarg>-xjc-XtoString</extraarg>
+										<extraarg>-exceptionSuper</extraarg>
+										<extraarg>
+											no.nav.tjeneste.domene.brevogarkiv.dokumentproduksjoninfo.DokumentproduksjonInfoFunctionalException
+										</extraarg>
+									</extraargs>
 									<wsdl>${wsdl.directory}/dokumentproduksjoninfo.wsdl</wsdl>
 									<wsdlLocation>
 										classpath:wsdl/no/nav/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/dokumentproduksjoninfo.wsdl
