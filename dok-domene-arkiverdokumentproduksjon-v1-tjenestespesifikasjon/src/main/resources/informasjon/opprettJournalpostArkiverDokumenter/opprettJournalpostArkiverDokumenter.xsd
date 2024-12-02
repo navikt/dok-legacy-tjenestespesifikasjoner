@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpostArkiverDokumenter"
+	xmlns:arkiverDokumentproduksjon="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+	xmlns:opprettJournalpostArkiverDokumenter="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpostArkiverDokumenter">
+
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon" schemaLocation="../arkiverDokumentproduksjon/arkiverDokumentproduksjon.xsd"/>
+
+	<xs:complexType name="DokumentInfo">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:DokumentInfoBase">
+				<xs:sequence>
+					<xs:element name="tilleggsopplysninger" type="arkiverDokumentproduksjon:Tilleggsopplysning" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Journalpost">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:JournalpostBase">
+				<xs:sequence>
+					<xs:element name="dokumentInfoHoveddokument" type="opprettJournalpostArkiverDokumenter:DokumentInfo"/>
+					<xs:element name="dokumentInfoVedlegg" type="opprettJournalpostArkiverDokumenter:DokumentInfo" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="datoDokument" type="xs:dateTime"/>
+					<xs:element name="journalpostType" type="arkiverDokumentproduksjon:JournalpostType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DokumentInfoIdEntry">
+		<xs:sequence>
+			<xs:element name="filreferanse" type="opprettJournalpostArkiverDokumenter:Filreferanse" />
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="Filreferanse">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+
+</xs:schema>

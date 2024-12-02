@@ -9,12 +9,12 @@
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>dok-domene-dokumentproduksjoninfo-v1-tjenestespesifikasjon</artifactId>
+	<artifactId>dok-domene-arkiverdokumentproduksjon-v1-tjenestespesifikasjon</artifactId>
 	<version>${revision}</version>
 	<name>${project.artifactId}</name>
 
 	<properties>
-		<wsdl.directory>src/main/resources/wsdl/no/nav/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1</wsdl.directory>
+		<wsdl.directory>src/main/resources/</wsdl.directory>
 	</properties>
 
 	<dependencies>
@@ -63,21 +63,15 @@
 							<wsdlOptions>
 								<wsdlOption>
 									<extraargs>
-										<extraarg>-xjc-XfluentAPI</extraarg>
 										<extraarg>-xjc-XhashCode</extraarg>
 										<extraarg>-xjc-Xequals</extraarg>
 										<extraarg>-xjc-XtoString</extraarg>
-										<extraarg>-exceptionSuper</extraarg>
-										<extraarg>
-											no.nav.tjeneste.domene.brevogarkiv.dokumentproduksjoninfo.DokumentproduksjonInfoFunctionalException
-										</extraarg>
+										<extraarg>-xjc-XfluentAPI</extraarg>
+										<extraarg>-xjc-XfluentAPI-fluentMethodPrefix=with</extraarg>
 									</extraargs>
-									<wsdl>${wsdl.directory}/dokumentproduksjoninfo.wsdl</wsdl>
-									<wsdlLocation>
-										classpath:wsdl/no/nav/tjeneste/domene/brevogarkiv/dokumentproduksjoninfo/v1/dokumentproduksjoninfo.wsdl
-									</wsdlLocation>
+									<wsdl>${wsdl.directory}/wsdl/arkiverdokumentproduksjon.wsdl</wsdl>
 									<bindingFiles>
-										<bindingFile>src/main/bindings/bindings.xml</bindingFile>
+										<bindingFile>${wsdl.directory}/bindings/bindings.xml</bindingFile>
 									</bindingFiles>
 								</wsdlOption>
 							</wsdlOptions>

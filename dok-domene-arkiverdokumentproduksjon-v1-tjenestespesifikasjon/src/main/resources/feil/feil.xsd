@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/feil"
+		   xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/feil">
+
+	<xs:complexType abstract="true" name="ForretningsmessigUnntak">
+		<xs:sequence>
+			<xs:element name="feilaarsak" type="xs:string"/>
+			<xs:element name="feilkilde" type="xs:string"/>
+			<xs:element name="feilmelding" type="xs:string"/>
+			<xs:element name="tidspunkt" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="JournalpostIkkeUnderArbeid">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="JournalpostIkkeFunnet">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="JournalpostIkkeFerdigstilt">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="UlikeFagomraader">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="AvbrytelseIkkeTillatt">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="JournalpostAlleredeAvbrutt">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="InneholderDokumenterUnderRedigering">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak" />
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DokumentIkkeFunnet">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DokumentAlleredeRedigerbart">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DokumentAlleredeAvbrutt">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DokumentIkkeVedlegg">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DokumentTillatesIkkeGjenbrukt">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="EksterneVedleggIkkeTillatt">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="UgyldigInput">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ValideringAvVedleggFeilet">
+		<xs:complexContent>
+			<xs:extension base="tns:ForretningsmessigUnntak"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="UgyldigInputFault"/>
+	<xs:complexType name="FeilStrukturFault"/>
+	<xs:complexType name="ObjektIkkeFunnetFault"/>
+	<xs:complexType name="KanIkkeFerdigstillesFault"/>
+	<xs:complexType name="AlleredeFerdigstiltFault"/>
+
+</xs:schema>

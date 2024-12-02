@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/oppdaterJournalpostArkiverDokument"
+	xmlns:arkiverDokumentproduksjon="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+	xmlns:oppdaterJournalpostArkiverDokument="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/oppdaterJournalpostArkiverDokument">
+
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon" schemaLocation="../arkiverDokumentproduksjon/arkiverDokumentproduksjon.xsd"/>
+
+	<xs:complexType name="Fildetaljer">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:FildetaljerBase">
+				<xs:sequence>
+					<xs:element name="redigerbartDokument" type="xs:base64Binary"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>
