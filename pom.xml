@@ -53,6 +53,7 @@
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 		<maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
 		<maven-deploy-plugin.version>3.0.0</maven-deploy-plugin.version>
+		<maven-source-plugin.version>3.3.1</maven-source-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -156,6 +157,11 @@
 							</jdk>
 						</toolchains>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
