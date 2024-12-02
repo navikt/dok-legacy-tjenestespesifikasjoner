@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverVedlegg"
+		   xmlns:arkiverDokumentproduksjon="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+		   xmlns:arkiverVedlegg="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverVedlegg">
+
+	<xs:import
+			namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+			schemaLocation="../arkiverDokumentproduksjon/arkiverDokumentproduksjon.xsd"/>
+
+	<xs:complexType name="Fildetaljer">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:FildetaljerBase">
+				<xs:sequence>
+					<xs:element name="ikkeRedigerbartDokument" type="xs:base64Binary" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DokumentInfo">
+		<xs:complexContent>
+			<xs:extension base="arkiverDokumentproduksjon:DokumentInfoBase">
+				<xs:sequence>
+					<xs:element name="fildetaljer" type="arkiverVedlegg:Fildetaljer" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Journalpost">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="xs:string"/>
+			<xs:element name="endretAvNavn" type="xs:string"/>
+			<xs:element name="dokumentInfo" type="arkiverVedlegg:DokumentInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

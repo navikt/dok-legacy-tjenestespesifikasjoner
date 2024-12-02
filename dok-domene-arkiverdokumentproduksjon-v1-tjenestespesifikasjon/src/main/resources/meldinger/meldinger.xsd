@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/meldinger"
+	xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/meldinger"
+	xmlns:arkiverDokumentproduksjon="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+	xmlns:opprettJournalpost="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpost"
+	xmlns:opprettJournalpostArkiverDokument="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpostArkiverDokument"
+	xmlns:opprettJournalpostArkiverDokumenter="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpostArkiverDokumenter"
+	xmlns:opprettUtgaaendeJournalpostArkiverDokument="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettUtgaaendeJournalpostArkiverDokument"
+	xmlns:oppdaterJournalpostArkiverDokument="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/oppdaterJournalpostArkiverDokument"
+	xmlns:arkiverVedlegg="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverVedlegg">
+
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon" 
+		schemaLocation="../informasjon/arkiverDokumentproduksjon/arkiverDokumentproduksjon.xsd"/>
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpost" 
+		schemaLocation="../informasjon/opprettJournalpost/opprettJournalpost.xsd"/>
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpostArkiverDokument"
+		schemaLocation="../informasjon/opprettJournalpostArkiverDokument/opprettJournalpostArkiverDokument.xsd"/>
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettJournalpostArkiverDokumenter"
+		schemaLocation="../informasjon/opprettJournalpostArkiverDokumenter/opprettJournalpostArkiverDokumenter.xsd"/>
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/opprettUtgaaendeJournalpostArkiverDokument"
+			   schemaLocation="../informasjon/opprettUtgaaendeJournalpostArkiverDokument/opprettUtgaaendeJournalpostArkiverDokument.xsd"/>
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/oppdaterJournalpostArkiverDokument"
+		schemaLocation="../informasjon/oppdaterJournalpostArkiverDokument/oppdaterJournalpostArkiverDokument.xsd"/>
+	<xs:import namespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverVedlegg"
+			   schemaLocation="../informasjon/arkiverVedlegg/arkiverVedlegg.xsd"/>
+
+	<xs:complexType name="opprettJournalpostArkiverDokumentRequest">
+		<xs:sequence>
+			<xs:element name="ferdigstillJournalpost" type="xs:boolean"/>
+			<xs:element name="journalpost" type="opprettJournalpostArkiverDokument:Journalpost"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="opprettUtgaaendeJournalpostArkiverDokumentRequest">
+		<xs:sequence>
+			<xs:element name="forsokFerdigstilling" type="xs:boolean"/>
+			<xs:element name="journalpost" type="opprettUtgaaendeJournalpostArkiverDokument:Journalpost"/>
+			<xs:element name="bruker" type="arkiverDokumentproduksjon:Bruker" minOccurs="0"/>
+			<xs:element name="saksrelasjon" type="arkiverDokumentproduksjon:Saksrelasjon" minOccurs="0"/>
+			<xs:element name="journalpostDokumentInfoRelasjon" type="opprettUtgaaendeJournalpostArkiverDokument:JournalpostDokumentInfoRelasjon" maxOccurs="unbounded"/>
+			<xs:element name="vedlegg" type="opprettUtgaaendeJournalpostArkiverDokument:Vedlegg" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="opprettUtgaaendeJournalpostArkiverDokumentResponse">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="dokumentInfoIdHoveddokument" type="arkiverDokumentproduksjon:DokumentInfoId"/>
+			<xs:element name="dokumentInfoIdVedleggListe" type="arkiverDokumentproduksjon:DokumentInfoId" maxOccurs="unbounded"/>
+			<xs:element name="journalTilstand" type="arkiverDokumentproduksjon:JournalTilstand"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="opprettJournalpostArkiverDokumentResponse">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId"/>			
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="opprettJournalpostRequest">
+		<xs:sequence>
+			<xs:element name="journalpost" type="opprettJournalpost:Journalpost"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="opprettJournalpostArkiverDokumenterRequest">
+		<xs:sequence>
+			<xs:element name="journalpost" type="opprettJournalpostArkiverDokumenter:Journalpost"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="opprettJournalpostArkiverDokumenterResponse">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="dokumentInfoIdMap" type="opprettJournalpostArkiverDokumenter:DokumentInfoIdEntry" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="opprettJournalpostResponse">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId"/>			
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="oppdaterJournalpostArkiverDokumentRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="ferdigstillJournalpost" type="xs:boolean"/>
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId"/>
+			<xs:element name="utsendingskanal" type="xs:string" minOccurs="0"/>
+			<xs:element name="endretAvNavn" type="xs:string"/>
+			<xs:element name="datoDokument" type="xs:dateTime"/>
+			<xs:element name="fildetaljerListe" type="oppdaterJournalpostArkiverDokument:Fildetaljer" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="oppdaterJournalpostArkiverDokumentResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="arkiverVedleggRequest">
+		<xs:sequence>
+			<xs:element name="journalpost" type="arkiverVedlegg:Journalpost"/>
+			<xs:element name="ferdigstillDokument" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="arkiverVedleggResponse">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="avbrytJournalpostRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="endretAvNavn" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="avbrytJournalpostResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="avbrytVedleggRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId"/>
+			<xs:element name="endretAvNavn" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="avbrytVedleggResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="settDatoSendtRequest">
+		<xs:sequence>
+			<xs:element name="journalpostIdListe" type="arkiverDokumentproduksjon:JournalpostId" maxOccurs="unbounded"/>
+			<xs:element name="datoSendt" type="xs:dateTime"/>
+			<xs:element name="endretAvNavn" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="settDatoSendtResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="fjernFerdigstiltDokumentRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId"/>
+			<xs:element name="endretAvNavn" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="fjernFerdigstiltDokumentResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="ferdigstillJournalpostRequest">
+		<xs:sequence>
+			<xs:element name="journalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="endretAvNavn" type="xs:string"/>
+			<xs:element name="utsendingskanal" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ferdigstillJournalpostResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="knyttDokumentTilJournalpostSomVedleggRequest">
+		<xs:sequence>
+			<xs:element name="dokumentInfoId" type="arkiverDokumentproduksjon:DokumentInfoId"/>
+			<xs:element name="knyttesFraJournalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="knyttesTilJournalpostId" type="arkiverDokumentproduksjon:JournalpostId"/>
+			<xs:element name="endretAvNavn" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="knyttDokumentTilJournalpostSomVedleggResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="settJournalpostAttributterRequest">
+		<xs:sequence>
+			<xs:element name="journalpostIdListe" type="arkiverDokumentproduksjon:JournalpostId" maxOccurs="unbounded"/>
+			<xs:element name="datoSendt" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="endretAvNavn" type="xs:string" minOccurs="0"/>
+			<xs:element name="antallReturpost" type="xs:int" minOccurs="0"/>
+			<xs:element name="utsendingskanal" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="settJournalpostAttributterResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="PingRequest">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="PingResponse">
+		<xs:sequence/>
+	</xs:complexType>
+	
+</xs:schema>

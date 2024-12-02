@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon"
+	xmlns:tns="http://nav.no/tjeneste/domene/brevogarkiv/arkiverdokumentproduksjon/v1/informasjon/arkiverDokumentproduksjon">
+
+	<xs:simpleType name="JournalpostId">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="DokumentInfoId">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+
+
+
+	<xs:complexType name="Bruker" >
+		<xs:sequence>
+			<xs:element name="brukerId" type="xs:string"/>
+			<xs:element name="brukerType" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Saksrelasjon">
+		<xs:sequence>
+			<xs:element name="saksnummer" type="xs:string"/>
+			<xs:element name="fagsystem" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Kryssreferanse">
+		<xs:sequence>
+			<xs:element name="referanseId" type="xs:string"/>
+			<xs:element name="referanseType" type="tns:ReferanseTypeCode"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FildetaljerBase" abstract="true">
+		<xs:sequence>
+			<xs:element name="filtype" type="xs:string"/>
+			<xs:element name="variantformat" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DokumentInfoBase" abstract="true">
+		<xs:sequence>
+			<xs:element name="kategori" type="xs:string"/>
+			<xs:element name="tittel" type="xs:string"/>
+			<xs:element name="brevkode" type="xs:string"/>
+			<xs:element name="dokumentTypeId" type="xs:string"/>
+			<xs:element name="sensitivt" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="JournalpostBase" abstract="true">
+		<xs:sequence>
+			<xs:element name="saksrelasjon" type="tns:Saksrelasjon" />
+			<xs:element name="bruker" type="tns:Bruker"/>
+			<xs:element name="fagomrade" type="xs:string"/>
+			<xs:element name="opprettetAvNavn" type="xs:string"/>
+			<xs:element name="journalforendeEnhet" type="xs:string"/>
+			<xs:element name="innhold" type="xs:string"/>
+			<xs:element name="avsenderMottakerNavn" type="xs:string"/>
+			<xs:element name="avsenderMottakerId" type="xs:string" minOccurs="0"/>
+			<xs:element name="land" type="xs:string" minOccurs="0"/>		
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Tilleggsopplysning">
+		<xs:sequence>
+			<xs:element name="opplysningsnoekkel" type="xs:string"/>
+			<xs:element name="opplysningsverdi" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="JournalpostType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="U"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ReferanseTypeCode">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="JournalTilstand">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="UNDER_ARBEID"/>
+			<xs:enumeration value="FERDIGSTILT"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
