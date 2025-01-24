@@ -6,8 +6,8 @@
                jaxb:extensionBindingPrefixes="xjc">
 
 	<jaxb:globalBindings generateElementProperty="false">
-        <xjc:javaType name="org.joda.time.LocalDateTime" xmlType="xsd:dateTime" adapter="no.nav.brevogarkiv.adapters.LocalDateTimeAdapter" />
-        <xjc:javaType name="org.joda.time.LocalDate" xmlType="xsd:date" adapter="no.nav.brevogarkiv.adapters.LocalDateAdapter" />
+        <xjc:javaType name="java.time.LocalDateTime" xmlType="xsd:dateTime" adapter="no.nav.brevogarkiv.adapters.LocalDateTimeAdapter" />
+        <xjc:javaType name="java.time.LocalDate" xmlType="xsd:date" adapter="no.nav.brevogarkiv.adapters.LocalDateAdapter" />
 	</jaxb:globalBindings>
 
 </jaxb:bindings>

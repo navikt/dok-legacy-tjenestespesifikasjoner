@@ -18,16 +18,9 @@
 
 	<properties>
 		<wsdl.directory>src/main/resources</wsdl.directory>
-		<joda-time.version>2.12.5</joda-time.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version>
-			<optional>true</optional>
-		</dependency>
 		<dependency>
 			<groupId>jakarta.xml.ws</groupId>
 			<artifactId>jakarta.xml.ws-api</artifactId>
