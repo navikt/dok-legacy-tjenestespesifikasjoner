@@ -14,7 +14,7 @@
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
 	<jaxb:globalBindings>
-		<xjc:javaType name="org.joda.time.DateTime" xmlType="xsd:dateTime" adapter="no.nav.commons.DateTimeAdapter"/>
+		<xjc:javaType name="java.time.ZonedDateTime" xmlType="xsd:dateTime" adapter="no.nav.commons.DateTimeAdapter"/>
 		<xjc:simple/>
 	</jaxb:globalBindings>
 </jaxb:bindings>
