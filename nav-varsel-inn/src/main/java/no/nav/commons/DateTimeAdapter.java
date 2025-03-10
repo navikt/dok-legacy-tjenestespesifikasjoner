@@ -1,16 +1,26 @@
 package no.nav.commons;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-import org.joda.time.DateTime;
 
-public class DateTimeAdapter extends XmlAdapter<String, DateTime> {
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
-    public DateTime unmarshal(String value) {
-    	return new DateTime(value);
-    }
+public class DateTimeAdapter extends XmlAdapter<String, ZonedDateTime> {
 
-    public String marshal(DateTime value) {
-        return value.toString();
-    }
+	private static final DateTimeFormatter LOCAL_DATE_TIME_FORMATTER = new DateTimeFormatterBuilder()
+			.appendPattern("yyyy-MM-dd'T'HH:mm:ss")
+			.appendFraction(java.time.temporal.ChronoField.MICRO_OF_SECOND, 0, 9, true)
+			.appendPattern("[z][Z]")
+			.toFormatter();
 
+	@Override
+	public ZonedDateTime unmarshal(String v) throws Exception {
+		return ZonedDateTime.from(LOCAL_DATE_TIME_FORMATTER.parse(v));
+	}
+
+	@Override
+	public String marshal(ZonedDateTime v) throws Exception {
+		return LOCAL_DATE_TIME_FORMATTER.format(v);
+	}
 }
