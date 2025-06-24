@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>no.nav.dok</groupId>
 		<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
@@ -17,12 +18,12 @@
 			<artifactId>jakarta.xml.bind-api</artifactId>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.patrodyne.jvnet</groupId>
-				<artifactId>hisrc-higherjaxb30-maven-plugin</artifactId>
-				<version>2.1.0</version>
+				<artifactId>hisrc-higherjaxb40-maven-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>generate-jaxb-sdp</id>

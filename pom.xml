@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>no.nav.dok</groupId>
 	<artifactId>dok-legacy-tjenestespesifikasjoner</artifactId>
 	<version>${revision}</version>
@@ -24,6 +25,7 @@
 		<module>dok-melding-virksomhet-dokumentproduksjon</module>
 		<module>dok-domene-dokumentproduksjoninfo-v1-tjenestespesifikasjon</module>
 		<module>dok-domene-arkiverdokumentproduksjon-v1-tjenestespesifikasjon</module>
+		<module>melding-virksomhet-dokdistfordeling</module>
 	</modules>
 
 	<distributionManagement>
@@ -39,10 +41,12 @@
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jakarta.xml.version>3.0.1</jakarta.xml.version>
-		<jakarta.xml.ws-api.version>3.0.1</jakarta.xml.ws-api.version>
+		<jakarta.xml.version>4.0.2</jakarta.xml.version>
+		<jakarta.xml.ws-api.version>4.0.2</jakarta.xml.ws-api.version>
+
 		<!-- plugins -->
 		<hisrc-jaxb.version>2.2.1</hisrc-jaxb.version>
+		<hisrc-higherjaxb40-maven-plugin.version>2.1.1</hisrc-higherjaxb40-maven-plugin.version>
 		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
 		<jaxb40-maven-plugin.version>0.16.1</jaxb40-maven-plugin.version>
 		<cxf-codegen-plugin.version>4.0.2</cxf-codegen-plugin.version>
@@ -93,6 +97,11 @@
 					<groupId>org.apache.cxf</groupId>
 					<artifactId>cxf-codegen-plugin</artifactId>
 					<version>${cxf-codegen-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.patrodyne.jvnet</groupId>
+					<artifactId>hisrc-higherjaxb40-maven-plugin</artifactId>
+					<version>${hisrc-higherjaxb40-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>com.helger.maven</groupId>
