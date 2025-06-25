@@ -25,7 +25,7 @@
 		<module>dok-melding-virksomhet-dokumentproduksjon</module>
 		<module>dok-domene-dokumentproduksjoninfo-v1-tjenestespesifikasjon</module>
 		<module>dok-domene-arkiverdokumentproduksjon-v1-tjenestespesifikasjon</module>
-		<module>melding-virksomhet-dokdistfordeling</module>
+		<module>dok-melding-virksomhet-dokdistfordeling</module>
 	</modules>
 
 	<distributionManagement>
