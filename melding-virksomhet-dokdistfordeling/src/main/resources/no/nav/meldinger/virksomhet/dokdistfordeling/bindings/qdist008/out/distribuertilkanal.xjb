@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="3.0"
+               xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               jaxb:extensionBindingPrefixes="annox"
+               xmlns:annox="http://jvnet.org/basicjaxb/xjc/annox">
+	<!-- Annotate the following classes with XmlRootElement -->
+	<jaxb:bindings schemaLocation="../../../xsd/qdist008/out/distribuertilkanal.xsd" node="/xsd:schema">
+		<jaxb:bindings node="xsd:complexType[@name='DistribuerTilKanal']">
+			<annox:annotate>
+				<annox:annotate annox:class="jakarta.xml.bind.annotation.XmlRootElement" name="distribuerTilKanal"
+								namespace="http://nav.no/melding/virksomhet/dokdistfordeling"/>
+			</annox:annotate>
+		</jaxb:bindings>
+	</jaxb:bindings>
+</jaxb:bindings>
