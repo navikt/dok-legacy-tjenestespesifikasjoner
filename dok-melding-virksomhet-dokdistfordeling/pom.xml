@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>no.nav.meldinger.virksomhet</groupId>
-	<artifactId>melding-virksomhet-dokdistfordeling</artifactId>
+	<artifactId>dok-melding-virksomhet-dokdistfordeling</artifactId>
 	<version>${revision}</version>
 
 	<dependencies>
