@@ -37,8 +37,14 @@
 							<groupId>org.patrodyne.jvnet</groupId>
 							<artifactId>hisrc-hyperjaxb-annox-plugin</artifactId>
 						</plugin>
+						<plugin>
+							<groupId>com.github.jaxb-xew-plugin</groupId>
+							<artifactId>jaxb-xew-plugin</artifactId>
+							<version>${jaxb-xew-plugin.version}</version>
+						</plugin>
 					</plugins>
 					<args>
+						<arg>-Xxew</arg>
 						<arg>-Xannotate</arg>
 						<arg>-XfluentAPI</arg>
 					</args>
