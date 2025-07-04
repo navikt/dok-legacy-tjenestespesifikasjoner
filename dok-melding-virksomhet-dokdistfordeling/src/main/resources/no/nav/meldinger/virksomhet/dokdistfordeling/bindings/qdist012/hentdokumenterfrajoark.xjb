@@ -2,6 +2,7 @@
 <jaxb:bindings version="3.0"
                xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                jaxb:extensionBindingPrefixes="annox"
                xmlns:annox="http://jvnet.org/basicjaxb/xjc/annox">
 	<!-- Annotate the following classes with XmlRootElement -->
@@ -12,5 +13,8 @@
 								namespace="http://nav.no/melding/virksomhet/dokdistfordeling"/>
 			</annox:annotate>
 		</jaxb:bindings>
+        <jaxb:bindings node="//xsd:complexType[@name='Distribusjonbestilling']/xsd:sequence/xsd:element[@name='forsendelseMetadata']">
+            <xjc:javaType name="java.lang.String" adapter="no.nav.meldinger.virksomhet.dokdistfordeling.adapters.CDataAdapter"/>
+        </jaxb:bindings>
 	</jaxb:bindings>
 </jaxb:bindings>
