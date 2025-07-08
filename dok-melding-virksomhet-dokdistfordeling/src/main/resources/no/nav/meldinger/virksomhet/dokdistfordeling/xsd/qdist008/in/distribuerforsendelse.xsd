@@ -54,6 +54,20 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="forsendelseMetadata" type="dokdistfordeling:nonEmptyStringNoBlanks" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Metadata som skal sendes til DPO med forsendelsen.
+						Dette feltet er påkrevd hvis forsendelseMetadataType er satt.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="forsendelseMetadataType" type="dokdistfordeling:nonEmptyStringNoBlanks" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Forteller dokumentdistribusjon hvilken type metadata som er sendt til DPO. De to gyldige verdiene er DPO_ARKIVMELDING og DPO_AVTALEMELDING.
+						Dette feltet er påkrevd hvis forsendelseMetadata er satt.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="arkivInformasjon" type="dokdistfordeling:ArkivInformasjon" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Informasjon om hvor forsendelsen er arkivert. Muliggjør statusoppdatering i Joark og
@@ -70,20 +84,6 @@
 			<xs:element name="distribusjonstidspunkt" type="dokdistfordeling:nonEmptyStringNoBlanks" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Forteller dokumentdistribusjon når dokumentet kan distribueres. Det har to verdier UMIDDELBART eller KJERNETID
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="forsendelseMetadata" type="dokdistfordeling:nonEmptyStringNoBlanks" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Metadata som skal sendes til DPO med forsendelsen.
-						Dette feltet er påkrevd hvis forsendelseMetadataType er satt.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="forsendelseMetadataType" type="dokdistfordeling:nonEmptyStringNoBlanks" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Forteller dokumentdistribusjon hvilken type metadata som er sendt til DPO. Det har to verdier DPO_ARKIVMELDING eller DPO_AVTALEMELDING.
-						Dette feltet er påkrevd hvis forsendelseMetadata er satt
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
