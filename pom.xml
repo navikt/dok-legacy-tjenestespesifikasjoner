@@ -25,6 +25,7 @@
 		<module>dok-domene-dokumentproduksjoninfo-v1-tjenestespesifikasjon</module>
 		<module>dok-domene-arkiverdokumentproduksjon-v1-tjenestespesifikasjon</module>
 		<module>dok-melding-virksomhet-dokdistfordeling</module>
+		<module>opprettoppgave-tjenestespesifikasjon</module>
 	</modules>
 
 	<distributionManagement>

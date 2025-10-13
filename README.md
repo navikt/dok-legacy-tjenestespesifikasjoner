@@ -17,3 +17,4 @@ SOAP-grensesnittspakker for Team Dokumentløsninger
 - `nav-journalbehandling-tjenestespesifikasjon` - WSDL til JAXB-objekter for `brevserver-nais`, `joark`
 - `nav-varsel-inn` - XSD til JAXB-objekter for `varsel2`
 - `nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon` - XSD til JAXB-objekter for `dokprod`
+- `opprettoppgave-tjenestespesifikasjon` - XSD til JAXB-objekter for `dokopp`, `dokdistsentralprint`, `dokumentdistribusjon`
