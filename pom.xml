@@ -41,7 +41,7 @@
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jakarta.xml.version>4.0.4</jakarta.xml.version>
+		<jakarta.xml.version>4.0.5</jakarta.xml.version>
 		<jakarta.xml.ws-api.version>4.0.2</jakarta.xml.ws-api.version>
 
 		<!-- plugins -->
