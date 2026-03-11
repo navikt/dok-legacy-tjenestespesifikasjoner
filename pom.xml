@@ -52,7 +52,7 @@
 		<jaxb-xew-plugin.version>2.1</jaxb-xew-plugin.version>
 		<cxf-codegen-plugin.version>4.0.2</cxf-codegen-plugin.version>
 		<maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
-		<maven-resources-plugin.version>3.4.0</maven-resources-plugin.version>
+		<maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
 		<maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
 		<maven-install-plugin.version>3.1.4</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.5.0</maven-jar-plugin.version>
