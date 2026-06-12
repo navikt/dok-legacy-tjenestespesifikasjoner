@@ -50,7 +50,7 @@
 		<maven-toolchains-plugin.version>3.2.0</maven-toolchains-plugin.version>
 		<jaxb40-maven-plugin.version>0.16.1</jaxb40-maven-plugin.version>
 		<jaxb-xew-plugin.version>2.1</jaxb-xew-plugin.version>
-		<cxf-codegen-plugin.version>4.0.2</cxf-codegen-plugin.version>
+		<cxf-codegen-plugin.version>4.2.2</cxf-codegen-plugin.version>
 		<maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
 		<maven-resources-plugin.version>3.5.0</maven-resources-plugin.version>
 		<maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
