@@ -1,5 +1,6 @@
 # dok-legacy-tjenestespesifikasjoner
-SOAP-grensesnittspakker for Team Dokumentløsninger
+
+SOAP-grensesnittspakker for Team Dokumentløsninger.
 
 - `behandledokumentredigering-tjenestespesifikasjon` - WSDL til JAXB-objekter for `dokprod`
 - `dok-brevdata-felles` - XSD til JAXB-objekter for `regoppslag` (`melosys-brevpakke`, `gosys-brevpakke`, `brevpakke-deployer`)
@@ -18,3 +19,25 @@ SOAP-grensesnittspakker for Team Dokumentløsninger
 - `nav-varsel-inn` - XSD til JAXB-objekter for `varsel2`
 - `nav-virksomhet-dokumentstatusoppdatert-v1-meldingsdefinisjon` - XSD til JAXB-objekter for `dokprod`
 - `opprettoppgave-tjenestespesifikasjon` - XSD til JAXB-objekter for `dokopp`, `dokdistsentralprint`, `dokumentdistribusjon`
+
+## Komme i gang
+
+Kjør tester og bygg appen
+
+```
+mvn clean verify
+```
+
+---
+
+## Henvendelser
+
+Lag en issue i repository.
+
+### For Nav-ansatte
+
+Spørsmål om appen kan stilles på [#team_dokumentløsninger](https://nav-it.slack.com/archives/C6W9E5GPJ)
+
+## Lisens
+
+[MIT](LICENSE.md)
